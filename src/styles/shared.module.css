@@ -2,6 +2,7 @@
 
 .section {
   padding: 120px 0 100px;
+  position: relative;
 }
 
 .sectionDark {
@@ -40,18 +41,18 @@
   letter-spacing: 3px;
   color: var(--gold);
   text-transform: uppercase;
-  background: rgba(207, 169, 86, 0.04);
-  padding: 6px 16px;
-  border-radius: 6px;
-  border: 1px solid rgba(207, 169, 86, 0.09);
+  background: rgba(207, 169, 86, 0.06);
+  padding: 8px 18px;
+  border-radius: 100px;
+  border: 1px solid rgba(207, 169, 86, 0.12);
 }
 
 .sectionTitle {
   font-size: clamp(1.8rem, 3.5vw, 2.6rem);
   font-weight: 700;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.02em;
   line-height: 1.15;
-  margin-top: 16px;
+  margin-top: 20px;
 }
 
 .subtitle {
@@ -79,38 +80,69 @@
 /* ─── Buttons ─── */
 
 .btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font-weight: 600;
-  border-radius: 11px;
+  border-radius: var(--radius-md);
   font-family: var(--font-sans);
   letter-spacing: 0.01em;
-  transition: all 0.3s ease;
+  transition: all 0.3s var(--ease-out);
   cursor: pointer;
   border: none;
   font-size: 15px;
   padding: 16px 36px;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
+}
+
+.btn:hover::after {
+  opacity: 1;
 }
 
 .btn:hover {
-  opacity: 0.92;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+  transition-duration: 0.1s;
 }
 
 .btnPrimary {
   composes: btn;
   background: var(--gold);
   color: var(--dark);
+  box-shadow: 0 4px 24px rgba(207, 169, 86, 0.15);
+}
+
+.btnPrimary:hover {
+  box-shadow: 0 8px 32px rgba(207, 169, 86, 0.25);
+  background: var(--gold-light);
 }
 
 .btnOutline {
   composes: btn;
-  background: transparent;
+  background: rgba(255, 255, 255, 0.04);
   color: var(--text-primary);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
 }
 
 .btnOutline:hover {
-  border-color: rgba(255, 255, 255, 0.3);
+  border-color: rgba(207, 169, 86, 0.3);
+  background: rgba(207, 169, 86, 0.06);
+  color: var(--gold-light);
 }
 
 .btnSmall {
@@ -121,7 +153,7 @@
 .btnFull {
   width: 100%;
   text-align: center;
-  padding: 16px 0;
+  padding: 18px 0;
 }
 
 /* ─── Cards ─── */
@@ -129,13 +161,25 @@
 .card {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
-  border-radius: 16px;
+  border-radius: var(--radius-lg);
+  transition: all 0.35s var(--ease-out);
+}
+
+.card:hover {
+  border-color: var(--card-border-hover);
+  background: var(--card-bg-hover);
 }
 
 .cardDark {
-  background: var(--dark);
+  background: rgba(11, 15, 21, 0.7);
   border: 1px solid var(--card-border);
-  border-radius: 16px;
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(8px);
+  transition: all 0.35s var(--ease-out);
+}
+
+.cardDark:hover {
+  border-color: var(--card-border-hover);
 }
 
 /* ─── Form Elements ─── */
@@ -153,13 +197,23 @@
 .input {
   width: 100%;
   padding: 14px 16px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
   color: var(--text-primary);
   font-size: 15px;
   font-family: var(--font-sans);
-  transition: border-color 0.3s ease;
+  transition: all 0.3s var(--ease-out);
+}
+
+.input::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.5;
+}
+
+.input:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.035);
 }
 
 .inputError {
@@ -181,6 +235,15 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
+}
+
+/* ─── Section Divider ─── */
+
+.sectionDivider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(207, 169, 86, 0.12), transparent);
+  border: none;
+  margin: 0;
 }
 
 @media (max-width: 768px) {

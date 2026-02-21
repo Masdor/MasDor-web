@@ -9,9 +9,11 @@
 }
 
 .navScrolled {
-  background: rgba(11, 15, 21, 0.88);
-  backdrop-filter: blur(24px) saturate(1.2);
+  background: rgba(11, 15, 21, 0.82);
+  backdrop-filter: blur(24px) saturate(1.3);
+  -webkit-backdrop-filter: blur(24px) saturate(1.3);
   border-bottom-color: rgba(207, 169, 86, 0.08);
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.3);
 }
 
 .inner {
@@ -31,13 +33,18 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  transition: opacity 0.2s ease;
+}
+
+.logo:hover {
+  opacity: 0.85;
 }
 
 .logoBox {
   width: 36px;
   height: 36px;
   border: 2px solid var(--gold);
-  border-radius: 8px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -45,6 +52,7 @@
   font-weight: 600;
   font-size: 13px;
   color: var(--gold);
+  background: rgba(207, 169, 86, 0.04);
 }
 
 .logoText {
@@ -57,7 +65,7 @@
 
 .desktopNav {
   display: flex;
-  gap: 6px;
+  gap: 4px;
   align-items: center;
 }
 
@@ -65,18 +73,23 @@
   border: none;
   cursor: pointer;
   padding: 8px 16px;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   font-family: var(--font-sans);
   font-size: 14px;
   font-weight: 500;
-  transition: all 0.25s ease;
+  transition: all 0.25s var(--ease-out);
   position: relative;
   background: none;
   color: var(--text-secondary);
 }
 
+.navLink:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.04);
+}
+
 .navLinkActive {
-  background: rgba(207, 169, 86, 0.07);
+  background: rgba(207, 169, 86, 0.08);
   color: var(--gold);
 }
 
@@ -89,32 +102,45 @@
   height: 1.5px;
   background: var(--gold);
   transition: width 0.3s var(--ease-out), left 0.3s var(--ease-out);
+  border-radius: 1px;
 }
 
 .navLink:hover::after {
-  width: 60%;
-  left: 20%;
+  width: 50%;
+  left: 25%;
+}
+
+.navLinkActive::after {
+  width: 40%;
+  left: 30%;
 }
 
 .ctaBtn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   padding: 10px 24px;
   font-weight: 600;
   font-size: 13px;
-  border-radius: 11px;
+  border-radius: var(--radius-md);
   font-family: var(--font-sans);
   letter-spacing: 0.01em;
-  transition: all 0.3s ease;
-  margin-left: 8px;
+  transition: all 0.3s var(--ease-out);
+  margin-left: 12px;
   background: var(--gold);
   color: var(--dark);
   border: none;
   cursor: pointer;
+  box-shadow: 0 2px 12px rgba(207, 169, 86, 0.15);
 }
 
 .ctaBtn:hover {
-  opacity: 0.9;
+  background: var(--gold-light);
   transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(207, 169, 86, 0.25);
+}
+
+.ctaBtn:active {
+  transform: translateY(0);
 }
 
 /* ─── Mobile Toggle ─── */
@@ -130,14 +156,20 @@
   justify-content: center;
   flex-direction: column;
   position: relative;
+  border-radius: var(--radius-sm);
+  transition: background 0.2s ease;
+}
+
+.mobileToggle:hover {
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .hamburgerLine {
-  width: 24px;
+  width: 22px;
   height: 2px;
   background: var(--gold);
   border-radius: 2px;
-  transition: all 0.3s ease;
+  transition: all 0.3s var(--ease-out);
 }
 
 .hamburgerMiddle {
@@ -159,9 +191,10 @@
 /* ─── Mobile Menu ─── */
 
 .mobileMenu {
-  background: rgba(11, 15, 21, 0.97);
-  backdrop-filter: blur(24px);
-  padding: 12px 24px 24px;
+  background: rgba(7, 10, 15, 0.97);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  padding: 12px 24px 32px;
   border-top: 1px solid rgba(207, 169, 86, 0.08);
 }
 
@@ -173,13 +206,18 @@
   border: none;
   border-bottom: none;
   cursor: pointer;
-  padding: 14px 0;
+  padding: 16px 0;
   font-size: 16px;
   font-weight: 500;
   font-family: var(--font-sans);
   color: var(--text-secondary);
   animation: slideIn 0.3s ease both;
   animation-delay: var(--delay, 0s);
+  transition: color 0.2s ease;
+}
+
+.mobileLink:hover {
+  color: var(--text-primary);
 }
 
 .mobileLinkActive {

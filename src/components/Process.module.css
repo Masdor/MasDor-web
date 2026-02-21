@@ -7,12 +7,19 @@
 .step {
   padding: 32px 20px;
   background: var(--card-bg);
-  border-radius: 16px;
+  border-radius: var(--radius-lg);
   border: 1px solid var(--card-border);
   text-align: center;
   height: 100%;
   position: relative;
   overflow: hidden;
+  transition: all 0.35s var(--ease-out);
+}
+
+.step:hover {
+  border-color: rgba(207, 169, 86, 0.15);
+  background: var(--card-bg-hover);
+  transform: translateY(-4px);
 }
 
 .stepNum {
@@ -22,21 +29,34 @@
   font-family: var(--font-mono);
   font-size: 72px;
   font-weight: 700;
-  color: rgba(207, 169, 86, 0.024);
+  color: rgba(207, 169, 86, 0.03);
   line-height: 1;
+  transition: color 0.35s ease;
+}
+
+.step:hover .stepNum {
+  color: rgba(207, 169, 86, 0.06);
 }
 
 .stepIcon {
-  width: 48px;
-  height: 48px;
+  width: 52px;
+  height: 52px;
   margin: 0 auto 20px;
-  background: rgba(207, 169, 86, 0.03);
-  border-radius: 14px;
+  background: rgba(207, 169, 86, 0.04);
+  border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 22px;
   color: var(--gold);
+  transition: all 0.35s var(--ease-out);
+  border: 1px solid rgba(207, 169, 86, 0.06);
+}
+
+.step:hover .stepIcon {
+  background: rgba(207, 169, 86, 0.07);
+  border-color: rgba(207, 169, 86, 0.12);
+  transform: scale(1.05);
 }
 
 .stepLabel {
@@ -69,5 +89,39 @@
   .grid {
     grid-template-columns: 1fr;
     gap: 12px;
+  }
+
+  .step {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    column-gap: 16px;
+    text-align: left;
+    padding: 24px 20px;
+  }
+
+  .stepIcon {
+    grid-row: 1 / 3;
+    margin: 0;
+    width: 48px;
+    height: 48px;
+    align-self: center;
+  }
+
+  .stepLabel {
+    margin-bottom: 4px;
+  }
+
+  .stepTitle {
+    margin-bottom: 0;
+  }
+
+  .stepDesc {
+    grid-column: 1 / -1;
+    margin-top: 12px;
+  }
+
+  .stepNum {
+    display: none;
   }
 }

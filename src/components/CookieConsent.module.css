@@ -4,8 +4,9 @@
   left: 0;
   right: 0;
   z-index: 1500;
-  background: rgba(11, 15, 21, 0.95);
-  backdrop-filter: blur(16px);
+  background: rgba(7, 10, 15, 0.92);
+  backdrop-filter: blur(24px) saturate(1.2);
+  -webkit-backdrop-filter: blur(24px) saturate(1.2);
   border-top: 1px solid var(--card-border);
   padding: 20px 24px;
   display: flex;
@@ -24,6 +25,7 @@
 .link {
   color: var(--gold);
   text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .actions {
@@ -36,27 +38,30 @@
   background: var(--gold);
   color: var(--dark);
   border: none;
-  border-radius: 8px;
-  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  padding: 10px 22px;
   font-weight: 600;
   font-size: 13px;
+  font-family: var(--font-sans);
   cursor: pointer;
-  transition: opacity 0.2s ease;
+  transition: all 0.25s var(--ease-out);
 }
 
 .accept:hover {
-  opacity: 0.9;
+  background: var(--gold-light);
+  transform: translateY(-1px);
 }
 
 .reject {
   background: transparent;
   color: var(--text-secondary);
   border: 1px solid var(--card-border);
-  border-radius: 8px;
-  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  padding: 10px 22px;
   font-size: 13px;
+  font-family: var(--font-sans);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.25s var(--ease-out);
 }
 
 .reject:hover {

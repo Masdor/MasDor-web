@@ -12,6 +12,24 @@
 .valueCard {
   padding: 40px 28px;
   height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.valueCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.valueCard:hover::before {
+  opacity: 0.5;
 }
 
 .valueTitle {
@@ -28,7 +46,7 @@
 }
 
 .teamSection {
-  margin-top: 72px;
+  margin-top: 80px;
 }
 
 .teamTitle {
@@ -51,11 +69,12 @@
 }
 
 .avatar {
-  width: 60px;
-  height: 60px;
+  width: 64px;
+  height: 64px;
   flex-shrink: 0;
-  background: rgba(207, 169, 86, 0.06);
-  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(207, 169, 86, 0.12), rgba(207, 169, 86, 0.04));
+  border: 1px solid rgba(207, 169, 86, 0.15);
+  border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -63,6 +82,12 @@
   font-weight: 600;
   font-size: 20px;
   color: var(--gold);
+  transition: all 0.35s var(--ease-out);
+}
+
+.teamCard:hover .avatar {
+  border-color: rgba(207, 169, 86, 0.3);
+  background: linear-gradient(135deg, rgba(207, 169, 86, 0.18), rgba(207, 169, 86, 0.06));
 }
 
 .memberName {

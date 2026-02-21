@@ -1,6 +1,17 @@
 .section {
   padding: 120px 0 100px;
   background: var(--darker);
+  position: relative;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(207, 169, 86, 0.1), transparent);
 }
 
 .container {
@@ -19,27 +30,48 @@
 }
 
 .tab {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.025);
   border: 1px solid var(--card-border);
-  border-radius: 12px;
-  padding: 16px 28px;
+  border-radius: var(--radius-md);
+  padding: 18px 28px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s var(--ease-out);
   color: var(--text-secondary);
   font-family: var(--font-sans);
   font-weight: 500;
   font-size: 15px;
   flex: 1 1 0;
   max-width: 280px;
+  position: relative;
+  overflow: hidden;
+}
+
+.tab::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent, var(--gold));
+  transform: scaleX(0);
+  transition: transform 0.3s var(--ease-out);
+}
+
+.tab:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .tabActive {
   font-weight: 600;
   color: var(--accent);
-  background: rgba(207, 169, 86, 0.09);
-  border-color: rgba(207, 169, 86, 0.27);
-  background: color-mix(in srgb, var(--accent) 9%, transparent);
-  border-color: color-mix(in srgb, var(--accent) 27%, transparent);
+  background: rgba(207, 169, 86, 0.06);
+  border-color: rgba(207, 169, 86, 0.18);
+}
+
+.tabActive::before {
+  transform: scaleX(1);
 }
 
 .tabTag {
@@ -47,13 +79,13 @@
   font-size: 10px;
   letter-spacing: 2px;
   margin-bottom: 8px;
-  opacity: 0.7;
+  opacity: 0.6;
 }
 
 /* ─── Content ─── */
 
 .fadeIn {
-  animation: fadeTab 0.4s ease;
+  animation: fadeTab 0.4s var(--ease-out);
 }
 
 .contentGrid {
@@ -81,6 +113,7 @@
 .contentTitle {
   font-size: clamp(1.5rem, 2.5vw, 2rem);
   font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
 .contentSubtitle {
@@ -107,9 +140,15 @@
   padding: 8px 16px;
   font-size: 13px;
   color: var(--text-body);
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 100px;
+  transition: all 0.25s ease;
+}
+
+.principle:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.045);
 }
 
 /* ─── Focus Cards ─── */
@@ -123,23 +162,22 @@
 .focusCard {
   display: flex;
   gap: 16px;
-  padding: 20px 18px;
+  padding: 22px 20px;
   background: var(--card-bg);
-  border-radius: 14px;
+  border-radius: var(--radius-md);
   border: 1px solid var(--card-border);
 }
 
 .focusIcon {
   font-size: 22px;
   flex-shrink: 0;
-  width: 44px;
-  height: 44px;
+  width: 46px;
+  height: 46px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
-  background: rgba(207, 169, 86, 0.06);
-  background: color-mix(in srgb, var(--accent) 6%, transparent);
+  border-radius: 12px;
+  background: rgba(207, 169, 86, 0.05);
 }
 
 .focusTitle {
@@ -164,11 +202,9 @@
 
 .audienceCard {
   padding: 36px 32px;
-  border-radius: 16px;
+  border-radius: var(--radius-lg);
   background: rgba(207, 169, 86, 0.02);
-  border: 1px solid rgba(207, 169, 86, 0.08);
-  background: color-mix(in srgb, var(--accent) 2%, transparent);
-  border: 1px solid color-mix(in srgb, var(--accent) 8%, transparent);
+  border: 1px solid rgba(207, 169, 86, 0.07);
 }
 
 .audienceTitle {
@@ -211,7 +247,7 @@
 .strengthsCard {
   padding: 36px 32px;
   background: var(--card-bg);
-  border-radius: 16px;
+  border-radius: var(--radius-lg);
   border: 1px solid var(--card-border);
 }
 
