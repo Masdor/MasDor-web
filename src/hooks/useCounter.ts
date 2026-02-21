@@ -8,23 +8,22 @@ export function useCounter(end: number, duration = 2000, trigger = false) {
       setVal(0)
       return
     }
-    let start = 0
-    let active = true
-    const step = end / (duration / 16)
-    const timer = setInterval(() => {
-      if (!active) return
-      start += step
-      if (start >= end) {
-        setVal(end)
-        clearInterval(timer)
-      } else {
-        setVal(Math.floor(start))
+
+    let startTime: number | null = null
+    let rafId: number
+
+    const step = (timestamp: number) => {
+      if (startTime === null) startTime = timestamp
+      const elapsed = timestamp - startTime
+      const progress = Math.min(elapsed / duration, 1)
+      setVal(Math.floor(progress * end))
+      if (progress < 1) {
+        rafId = requestAnimationFrame(step)
       }
-    }, 16)
-    return () => {
-      active = false
-      clearInterval(timer)
     }
+
+    rafId = requestAnimationFrame(step)
+    return () => cancelAnimationFrame(rafId)
   }, [trigger, end, duration])
 
   return val

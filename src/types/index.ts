@@ -52,7 +52,7 @@ export interface ContactFormData {
 }
 
 export interface FormErrors {
-  name?: boolean
-  email?: boolean
-  nachricht?: boolean
+  name?: string
+  email?: string
+  nachricht?: string
 }

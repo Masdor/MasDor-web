@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useCallback } from 'react'
 import { Reveal } from '@/components/ui/Reveal'
 import { HoverCard } from '@/components/ui/HoverCard'
 import { SERVICES } from '@/data/services'
@@ -12,6 +12,21 @@ interface ServicesProps {
 export function Services({ scrollTo }: ServicesProps) {
   const [activeService, setActiveService] = useState(0)
   const svc = SERVICES[activeService]!
+  const tabsRef = useRef<(HTMLButtonElement | null)[]>([])
+
+  const handleTabKeyDown = useCallback((e: React.KeyboardEvent, index: number) => {
+    let next: number | null = null
+    if (e.key === 'ArrowRight') next = (index + 1) % SERVICES.length
+    else if (e.key === 'ArrowLeft') next = (index - 1 + SERVICES.length) % SERVICES.length
+    else if (e.key === 'Home') next = 0
+    else if (e.key === 'End') next = SERVICES.length - 1
+
+    if (next !== null) {
+      e.preventDefault()
+      setActiveService(next)
+      tabsRef.current[next]?.focus()
+    }
+  }, [])
 
   return (
     <section id="leistungen" className={styles.section}>
@@ -30,10 +45,14 @@ export function Services({ scrollTo }: ServicesProps) {
               <button
                 type="button"
                 key={s.key}
+                ref={el => { tabsRef.current[i] = el }}
+                id={`tab-${s.key}`}
                 role="tab"
                 aria-selected={activeService === i}
                 aria-controls={`service-panel-${s.key}`}
+                tabIndex={activeService === i ? 0 : -1}
                 onClick={() => setActiveService(i)}
+                onKeyDown={e => handleTabKeyDown(e, i)}
                 className={`${styles.tab} ${activeService === i ? styles.tabActive : ''}`}
                 style={{ '--accent': s.accent } as React.CSSProperties}
               >
@@ -48,6 +67,7 @@ export function Services({ scrollTo }: ServicesProps) {
           key={svc.key}
           id={`service-panel-${svc.key}`}
           role="tabpanel"
+          aria-labelledby={`tab-${svc.key}`}
           className={styles.fadeIn}
           style={{ '--accent': svc.accent, '--accent-text': svc.key === 'industrial' ? 'var(--dark)' : '#fff' } as React.CSSProperties}
         >
@@ -68,7 +88,7 @@ export function Services({ scrollTo }: ServicesProps) {
             <div className={styles.focusCards}>
               {svc.focus.map((f, i) => (
                 <HoverCard key={i} accentColor={svc.accent} className={styles.focusCard}>
-                  <div className={styles.focusIcon}>{f.icon}</div>
+                  <div className={styles.focusIcon} aria-hidden="true">{f.icon}</div>
                   <div>
                     <h4 className={styles.focusTitle}>{f.title}</h4>
                     <p className={styles.focusDesc}>{f.desc}</p>
@@ -83,7 +103,7 @@ export function Services({ scrollTo }: ServicesProps) {
               <h4 className={styles.audienceTitle}>Zielgruppe</h4>
               {svc.audience.map((a, i) => (
                 <div key={i} className={styles.audienceItem}>
-                  <span className={styles.audienceArrow}>→</span>
+                  <span className={styles.audienceArrow} aria-hidden="true">→</span>
                   <p className={styles.audienceText}>{a}</p>
                 </div>
               ))}
@@ -92,7 +112,7 @@ export function Services({ scrollTo }: ServicesProps) {
               <h4 className={`${styles.audienceTitle} ${styles.strengthsTitle}`}>Warum LAB-ROOT</h4>
               {svc.strengths.map((s, i) => (
                 <div key={i} className={styles.strengthItem}>
-                  <div className={styles.strengthBar} />
+                  <div className={styles.strengthBar} aria-hidden="true" />
                   <p className={styles.strengthText}>{s}</p>
                 </div>
               ))}

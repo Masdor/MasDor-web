@@ -63,9 +63,10 @@ export function useContactForm() {
 
   const validate = useCallback((): boolean => {
     const errors: FormErrors = {}
-    if (!state.data.name.trim()) errors.name = true
-    if (!state.data.email.trim() || !state.data.email.includes('@')) errors.email = true
-    if (!state.data.nachricht.trim()) errors.nachricht = true
+    if (!state.data.name.trim()) errors.name = 'Bitte geben Sie Ihren Namen ein.'
+    if (!state.data.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(state.data.email))
+      errors.email = 'Bitte geben Sie eine gültige E-Mail-Adresse ein.'
+    if (!state.data.nachricht.trim()) errors.nachricht = 'Bitte geben Sie eine Nachricht ein.'
     dispatch({ type: 'SET_ERRORS', errors })
     return !errors.name && !errors.email && !errors.nachricht
   }, [state.data])

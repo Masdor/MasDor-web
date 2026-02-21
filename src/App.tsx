@@ -26,36 +26,38 @@ export default function App() {
     setMenuOpen(false)
   }, [])
 
-  const handleLegalClick = useCallback((e: MouseEvent) => {
-    const target = e.target as HTMLAnchorElement
-    if (target.hash === '#impressum') {
-      e.preventDefault()
-      setLegalPage('impressum')
-    } else if (target.hash === '#datenschutz') {
-      e.preventDefault()
-      setLegalPage('datenschutz')
-    }
-  }, [])
-
   useEffect(() => {
-    document.addEventListener('click', handleLegalClick as EventListener)
-    return () => document.removeEventListener('click', handleLegalClick as EventListener)
-  }, [handleLegalClick])
+    const handler = (e: Event) => {
+      const target = e.target
+      if (!(target instanceof HTMLAnchorElement)) return
+      if (target.hash === '#impressum') {
+        e.preventDefault()
+        setLegalPage('impressum')
+      } else if (target.hash === '#datenschutz') {
+        e.preventDefault()
+        setLegalPage('datenschutz')
+      }
+    }
+    document.addEventListener('click', handler)
+    return () => document.removeEventListener('click', handler)
+  }, [])
 
   return (
     <div className={styles.app}>
       <Navbar scrollTo={scrollTo} menuOpen={menuOpen} setMenuOpen={setMenuOpen} scrolled={scrolled} activeSection={activeSection} />
-      <Hero scrollTo={scrollTo} />
-      <Suspense fallback={null}>
-        <Services scrollTo={scrollTo} />
-        <Process />
-        <TrustBar />
-        <About />
-        <Contact />
-        <Footer scrollTo={scrollTo} />
-        <CookieConsent />
-        <Legal page={legalPage} onClose={() => setLegalPage(null)} />
-      </Suspense>
+      <main>
+        <Hero scrollTo={scrollTo} />
+        <Suspense fallback={<div className={styles.loading} aria-busy="true" />}>
+          <Services scrollTo={scrollTo} />
+          <Process />
+          <TrustBar />
+          <About />
+          <Contact />
+          <Footer scrollTo={scrollTo} />
+          <CookieConsent />
+          <Legal page={legalPage} onClose={() => setLegalPage(null)} />
+        </Suspense>
+      </main>
       <BackToTop />
     </div>
   )

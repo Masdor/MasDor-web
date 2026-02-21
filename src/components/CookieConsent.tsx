@@ -24,7 +24,7 @@ export function CookieConsent() {
   if (!visible) return null
 
   return (
-    <div className={styles.banner}>
+    <div className={styles.banner} role="dialog" aria-label="Cookie-Einstellungen">
       <p className={styles.text}>
         Diese Website verwendet ausschließlich technisch notwendige Cookies. Keine Tracking- oder Analyse-Cookies.{' '}
         <a href="#datenschutz" className={styles.link}>Datenschutzerklärung</a>

@@ -76,6 +76,12 @@
   text-align: center;
 }
 
+.fieldError {
+  color: #ef4444;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
 /* ─── Info Cards ─── */
 
 .infoStack {

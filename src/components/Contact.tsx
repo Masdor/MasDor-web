@@ -40,7 +40,9 @@ export function Contact() {
                       placeholder="Vollständiger Name"
                       aria-required="true"
                       aria-invalid={!!formErrors.name || undefined}
+                      aria-describedby={formErrors.name ? 'error-name' : undefined}
                     />
+                    {formErrors.name && <p id="error-name" className={styles.fieldError} role="alert">{formErrors.name}</p>}
                   </div>
                   <div>
                     <label htmlFor="contact-email" className={shared.label}>E-Mail *</label>
@@ -53,7 +55,9 @@ export function Contact() {
                       placeholder="ihre@email.de"
                       aria-required="true"
                       aria-invalid={!!formErrors.email || undefined}
+                      aria-describedby={formErrors.email ? 'error-email' : undefined}
                     />
+                    {formErrors.email && <p id="error-email" className={styles.fieldError} role="alert">{formErrors.email}</p>}
                   </div>
                 </div>
                 <div className={styles.formRow}>
@@ -94,7 +98,9 @@ export function Contact() {
                     placeholder="Beschreiben Sie kurz Ihr Anliegen..."
                     aria-required="true"
                     aria-invalid={!!formErrors.nachricht || undefined}
+                    aria-describedby={formErrors.nachricht ? 'error-nachricht' : undefined}
                   />
+                  {formErrors.nachricht && <p id="error-nachricht" className={styles.fieldError} role="alert">{formErrors.nachricht}</p>}
                 </div>
                 <button type="submit" className={`${shared.btnPrimary} ${shared.btnFull}`}>
                   Nachricht senden

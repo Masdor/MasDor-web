@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { NAV_LINKS } from '@/data/navigation'
 import styles from './Navbar.module.css'
 
@@ -10,6 +11,15 @@ interface NavbarProps {
 }
 
 export function Navbar({ scrollTo, menuOpen, setMenuOpen, scrolled, activeSection }: NavbarProps) {
+  useEffect(() => {
+    if (!menuOpen) return
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMenuOpen(false)
+    }
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [menuOpen, setMenuOpen])
+
   return (
     <nav className={`${styles.nav} ${scrolled ? styles.navScrolled : ''}`}>
       <div className={styles.inner}>
@@ -39,6 +49,7 @@ export function Navbar({ scrollTo, menuOpen, setMenuOpen, scrolled, activeSectio
           className={styles.mobileToggle}
           aria-label={menuOpen ? 'Menü schließen' : 'Menü öffnen'}
           aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
           onClick={() => setMenuOpen(!menuOpen)}
         >
           <span
@@ -52,7 +63,7 @@ export function Navbar({ scrollTo, menuOpen, setMenuOpen, scrolled, activeSectio
       </div>
 
       {menuOpen && (
-        <div className={styles.mobileMenu}>
+        <div id="mobile-menu" className={styles.mobileMenu} role="navigation" aria-label="Mobile Navigation">
           {NAV_LINKS.map((link, i) => (
             <button
               type="button"

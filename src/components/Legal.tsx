@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import { COMPANY_INFO } from '@/data/team'
 import styles from './Legal.module.css'
 
@@ -7,16 +8,71 @@ interface LegalProps {
 }
 
 export function Legal({ page, onClose }: LegalProps) {
+  const modalRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!page) return
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose()
+        return
+      }
+      if (e.key === 'Tab') {
+        const modal = modalRef.current
+        if (!modal) return
+        const focusable = modal.querySelectorAll<HTMLElement>(
+          'a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        )
+        const first = focusable[0]
+        const last = focusable[focusable.length - 1]
+        if (e.shiftKey) {
+          if (document.activeElement === first) {
+            e.preventDefault()
+            last?.focus()
+          }
+        } else {
+          if (document.activeElement === last) {
+            e.preventDefault()
+            first?.focus()
+          }
+        }
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+
+    const closeBtn = modalRef.current?.querySelector<HTMLElement>('button')
+    closeBtn?.focus()
+
+    const prevOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown)
+      document.body.style.overflow = prevOverflow
+    }
+  }, [page, onClose])
+
   if (!page) return null
+
+  const titleId = `legal-title-${page}`
 
   return (
     <div className={styles.overlay} onClick={onClose}>
-      <div className={styles.modal} onClick={e => e.stopPropagation()}>
+      <div
+        ref={modalRef}
+        className={styles.modal}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={titleId}
+        onClick={e => e.stopPropagation()}
+      >
         <button type="button" className={styles.close} onClick={onClose} aria-label="Schließen">×</button>
 
         {page === 'impressum' ? (
           <>
-            <h2 className={styles.title}>Impressum</h2>
+            <h2 id={titleId} className={styles.title}>Impressum</h2>
             <div className={styles.content}>
               <h3>Angaben gemäß § 5 TMG</h3>
               <p>
@@ -52,7 +108,7 @@ export function Legal({ page, onClose }: LegalProps) {
           </>
         ) : (
           <>
-            <h2 className={styles.title}>Datenschutzerklärung</h2>
+            <h2 id={titleId} className={styles.title}>Datenschutzerklärung</h2>
             <div className={styles.content}>
               <h3>1. Verantwortlicher</h3>
               <p>
