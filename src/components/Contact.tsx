@@ -39,7 +39,7 @@ export function Contact() {
                       className={`${shared.input} ${formErrors.name ? shared.inputError : ''}`}
                       placeholder="Vollständiger Name"
                       aria-required="true"
-                      aria-invalid={formErrors.name || undefined}
+                      aria-invalid={!!formErrors.name || undefined}
                     />
                   </div>
                   <div>
@@ -52,7 +52,7 @@ export function Contact() {
                       className={`${shared.input} ${formErrors.email ? shared.inputError : ''}`}
                       placeholder="ihre@email.de"
                       aria-required="true"
-                      aria-invalid={formErrors.email || undefined}
+                      aria-invalid={!!formErrors.email || undefined}
                     />
                   </div>
                 </div>
@@ -93,7 +93,7 @@ export function Contact() {
                     className={`${shared.input} ${styles.textarea} ${formErrors.nachricht ? shared.inputError : ''}`}
                     placeholder="Beschreiben Sie kurz Ihr Anliegen..."
                     aria-required="true"
-                    aria-invalid={formErrors.nachricht || undefined}
+                    aria-invalid={!!formErrors.nachricht || undefined}
                   />
                 </div>
                 <button type="submit" className={`${shared.btnPrimary} ${shared.btnFull}`}>
