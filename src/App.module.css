@@ -1,0 +1,8 @@
+.app {
+  min-height: 100vh;
+  background: var(--dark);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
