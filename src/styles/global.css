@@ -1,0 +1,75 @@
+:root {
+  --gold: #CFA956;
+  --dark: #0b0f15;
+  --darker: #070a0f;
+  --card-bg: rgba(255, 255, 255, 0.02);
+  --card-border: rgba(255, 255, 255, 0.06);
+  --text-primary: #e6edf3;
+  --text-secondary: #8b949e;
+  --text-body: #c0c8d2;
+  --font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
+  --font-sans: 'DM Sans Variable', 'DM Sans', sans-serif;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(207, 169, 86, 0.27);
+  color: #fff;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: rgba(207, 169, 86, 0.53) !important;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(207, 169, 86, 0.08);
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeTab {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

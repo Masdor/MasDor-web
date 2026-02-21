@@ -1,0 +1,10 @@
+.section {
+  padding: 120px 0 100px;
+  background: var(--darker);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
