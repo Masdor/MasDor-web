@@ -1,11 +1,9 @@
+import { useNavigation } from '@/context/NavigationContext'
 import { NAV_LINKS } from '@/data/navigation'
 import styles from './Footer.module.css'
 
-interface FooterProps {
-  scrollTo: (id: string) => void
-}
-
-export function Footer({ scrollTo }: FooterProps) {
+export function Footer() {
+  const { scrollTo } = useNavigation()
   return (
     <footer className={styles.footer}>
       <div className={styles.inner}>

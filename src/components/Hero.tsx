@@ -1,3 +1,4 @@
+import { useNavigation } from '@/context/NavigationContext'
 import { Reveal } from '@/components/ui/Reveal'
 import { ParticleField } from '@/components/ui/ParticleField'
 import { Counter } from '@/components/ui/Counter'
@@ -5,11 +6,8 @@ import { useInView } from '@/hooks/useInView'
 import shared from '@/styles/shared.module.css'
 import styles from './Hero.module.css'
 
-interface HeroProps {
-  scrollTo: (id: string) => void
-}
-
-export function Hero({ scrollTo }: HeroProps) {
+export function Hero() {
+  const { scrollTo } = useNavigation()
   const [statsRef, statsVisible] = useInView(0.3)
 
   return (

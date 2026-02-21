@@ -1,5 +1,4 @@
 import type { ServiceData } from '@/types'
-import { GOLD } from '@/styles/tokens'
 
 export const SERVICES: ServiceData[] = [
   {
@@ -56,7 +55,7 @@ export const SERVICES: ServiceData[] = [
     key: 'industrial',
     tag: 'INDUSTRIAL_AUTO',
     title: 'Industrial Systems',
-    accent: GOLD,
+    accent: '#CFA956',
     shortDesc:
       'Analyse, Stabilisierung und Engineering-Unterstützung für SPS-Systeme, Antriebstechnik und industrielle Steuerungen.',
     subtitle: 'Praxisnahe Engineering-Unterstützung für industrielle Systeme',

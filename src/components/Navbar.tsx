@@ -1,16 +1,11 @@
 import { useEffect } from 'react'
+import { useNavigation } from '@/context/NavigationContext'
 import { NAV_LINKS } from '@/data/navigation'
 import styles from './Navbar.module.css'
 
-interface NavbarProps {
-  scrollTo: (id: string) => void
-  menuOpen: boolean
-  setMenuOpen: (open: boolean) => void
-  scrolled: boolean
-  activeSection: string
-}
+export function Navbar() {
+  const { scrollTo, menuOpen, setMenuOpen, scrolled, activeSection } = useNavigation()
 
-export function Navbar({ scrollTo, menuOpen, setMenuOpen, scrolled, activeSection }: NavbarProps) {
   useEffect(() => {
     if (!menuOpen) return
     const handleKeyDown = (e: KeyboardEvent) => {

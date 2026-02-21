@@ -1,7 +1,6 @@
 import { Reveal } from '@/components/ui/Reveal'
+import { TRUST_TAGS } from '@/data/trust-tags'
 import styles from './TrustBar.module.css'
-
-const TRUST_TAGS = ['ISO 13485-nah', 'IEC 62353', 'MPBetreibV', 'Technische Compliance', 'GMP-orientiert', 'TIA Portal', 'Docker', 'Zabbix']
 
 export function TrustBar() {
   return (

@@ -1,15 +1,13 @@
 import { useState, useRef, useCallback } from 'react'
+import { useNavigation } from '@/context/NavigationContext'
 import { Reveal } from '@/components/ui/Reveal'
 import { HoverCard } from '@/components/ui/HoverCard'
 import { SERVICES } from '@/data/services'
 import shared from '@/styles/shared.module.css'
 import styles from './Services.module.css'
 
-interface ServicesProps {
-  scrollTo: (id: string) => void
-}
-
-export function Services({ scrollTo }: ServicesProps) {
+export function Services() {
+  const { scrollTo } = useNavigation()
   const [activeService, setActiveService] = useState(0)
   const svc = SERVICES[activeService]!
   const tabsRef = useRef<(HTMLButtonElement | null)[]>([])
