@@ -20,22 +20,22 @@ export function Services({ scrollTo }: ServicesProps) {
           <div className={shared.sectionHeader}>
             <span className={shared.tagBadge}>LEISTUNGEN</span>
             <h2 className={shared.sectionTitle}>Drei Bereiche. Ein Anspruch.</h2>
-            <p className={shared.subtitle} style={{ maxWidth: 560, margin: '16px auto 0' }}>Technische Exzellenz, strukturiertes Vorgehen und nachvollziehbare Ergebnisse.</p>
+            <p className={shared.subtitleCentered}>Technische Exzellenz, strukturiertes Vorgehen und nachvollziehbare Ergebnisse.</p>
           </div>
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div className={styles.tabs}>
+          <div className={styles.tabs} role="tablist">
             {SERVICES.map((s, i) => (
               <button
+                type="button"
                 key={s.key}
+                role="tab"
+                aria-selected={activeService === i}
+                aria-controls={`service-panel-${s.key}`}
                 onClick={() => setActiveService(i)}
                 className={`${styles.tab} ${activeService === i ? styles.tabActive : ''}`}
-                style={{
-                  background: activeService === i ? `${s.accent}18` : undefined,
-                  borderColor: activeService === i ? s.accent + '44' : undefined,
-                  color: activeService === i ? s.accent : undefined,
-                }}
+                style={{ '--accent': s.accent } as React.CSSProperties}
               >
                 <div className={styles.tabTag}>{s.tag}</div>
                 {s.title}
@@ -44,11 +44,17 @@ export function Services({ scrollTo }: ServicesProps) {
           </div>
         </Reveal>
 
-        <div key={svc.key} className={styles.fadeIn}>
+        <div
+          key={svc.key}
+          id={`service-panel-${svc.key}`}
+          role="tabpanel"
+          className={styles.fadeIn}
+          style={{ '--accent': svc.accent, '--accent-text': svc.key === 'industrial' ? 'var(--dark)' : '#fff' } as React.CSSProperties}
+        >
           <div className={styles.contentGrid}>
             <div>
               <div className={styles.contentHeader}>
-                <div className={styles.accentBar} style={{ background: svc.accent }} />
+                <div className={styles.accentBar} />
                 <h3 className={styles.contentTitle}>{svc.title}</h3>
               </div>
               <p className={styles.contentSubtitle}>{svc.subtitle}</p>
@@ -62,7 +68,7 @@ export function Services({ scrollTo }: ServicesProps) {
             <div className={styles.focusCards}>
               {svc.focus.map((f, i) => (
                 <HoverCard key={i} accentColor={svc.accent} className={styles.focusCard}>
-                  <div className={styles.focusIcon} style={{ background: `${svc.accent}10` }}>{f.icon}</div>
+                  <div className={styles.focusIcon}>{f.icon}</div>
                   <div>
                     <h4 className={styles.focusTitle}>{f.title}</h4>
                     <p className={styles.focusDesc}>{f.desc}</p>
@@ -73,17 +79,17 @@ export function Services({ scrollTo }: ServicesProps) {
           </div>
 
           <div className={styles.bottomGrid}>
-            <div className={styles.audienceCard} style={{ background: `${svc.accent}06`, border: `1px solid ${svc.accent}15` }}>
-              <h4 className={styles.audienceTitle} style={{ color: svc.accent }}>Zielgruppe</h4>
+            <div className={styles.audienceCard}>
+              <h4 className={styles.audienceTitle}>Zielgruppe</h4>
               {svc.audience.map((a, i) => (
                 <div key={i} className={styles.audienceItem}>
-                  <span className={styles.audienceArrow} style={{ color: svc.accent }}>→</span>
+                  <span className={styles.audienceArrow}>→</span>
                   <p className={styles.audienceText}>{a}</p>
                 </div>
               ))}
             </div>
             <div className={styles.strengthsCard}>
-              <h4 className={styles.audienceTitle} style={{ color: 'var(--gold)' }}>Warum LAB-ROOT</h4>
+              <h4 className={`${styles.audienceTitle} ${styles.strengthsTitle}`}>Warum LAB-ROOT</h4>
               {svc.strengths.map((s, i) => (
                 <div key={i} className={styles.strengthItem}>
                   <div className={styles.strengthBar} />
@@ -95,9 +101,9 @@ export function Services({ scrollTo }: ServicesProps) {
 
           <div className={styles.cta}>
             <button
+              type="button"
               onClick={() => scrollTo('kontakt')}
-              className={shared.btnPrimary}
-              style={{ background: svc.accent, color: svc.key === 'industrial' ? 'var(--dark)' : '#fff' }}
+              className={`${shared.btn} ${styles.ctaBtn}`}
             >
               {svc.title}-Anfrage senden
             </button>

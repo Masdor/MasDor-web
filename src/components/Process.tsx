@@ -8,10 +8,10 @@ export function Process() {
     <section id="methode" className={shared.sectionDark}>
       <div className={shared.containerNarrow}>
         <Reveal>
-          <div className={shared.sectionHeader} style={{ marginBottom: 64 }}>
+          <div className={shared.sectionHeaderLg}>
             <span className={shared.tagBadge}>METHODE</span>
             <h2 className={shared.sectionTitle}>Strukturiert statt reaktiv</h2>
-            <p className={shared.subtitle} style={{ maxWidth: 520, margin: '16px auto 0' }}>Unser Vorgehen ist in allen Bereichen gleich: methodisch, dokumentiert und ursachenorientiert.</p>
+            <p className={shared.subtitleCentered}>Unser Vorgehen ist in allen Bereichen gleich: methodisch, dokumentiert und ursachenorientiert.</p>
           </div>
         </Reveal>
 

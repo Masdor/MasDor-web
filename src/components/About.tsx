@@ -16,7 +16,7 @@ export function About() {
       <div className={shared.containerNarrow}>
         <Reveal>
           <span className={shared.tagBadge}>ÜBER UNS</span>
-          <h2 className={shared.sectionTitle} style={{ marginBottom: 20 }}>Engineering mit Verantwortung</h2>
+          <h2 className={shared.sectionTitleSpaced}>Engineering mit Verantwortung</h2>
           <p className={`${shared.subtitle} ${styles.intro}`}>
             LAB-ROOT ist ein technisches Dienstleistungsunternehmen mit Sitz in Cham, Deutschland.
             Gegründet von Ingenieuren mit dem Anspruch, technische Probleme nachhaltig und dokumentiert zu lösen.

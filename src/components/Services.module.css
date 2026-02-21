@@ -35,6 +35,9 @@
 
 .tabActive {
   font-weight: 600;
+  background: color-mix(in srgb, var(--accent) 9%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 27%, transparent);
+  color: var(--accent);
 }
 
 .tabTag {
@@ -63,6 +66,7 @@
   width: 4px;
   height: 32px;
   border-radius: 2px;
+  background: var(--accent);
 }
 
 .contentHeader {
@@ -132,6 +136,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 10px;
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
 }
 
 .focusTitle {
@@ -157,6 +162,8 @@
 .audienceCard {
   padding: 36px 32px;
   border-radius: 16px;
+  background: color-mix(in srgb, var(--accent) 2%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 8%, transparent);
 }
 
 .audienceTitle {
@@ -165,6 +172,7 @@
   letter-spacing: 2px;
   margin-bottom: 24px;
   text-transform: uppercase;
+  color: var(--accent);
 }
 
 .audienceItem {
@@ -182,12 +190,17 @@
   font-size: 16px;
   margin-top: 1px;
   flex-shrink: 0;
+  color: var(--accent);
 }
 
 .audienceText {
   font-size: 14px;
   color: var(--text-body);
   line-height: 1.65;
+}
+
+.strengthsTitle {
+  color: var(--gold);
 }
 
 .strengthsCard {
@@ -222,9 +235,21 @@
   line-height: 1.65;
 }
 
+.ctaBtn {
+  background: var(--accent);
+  color: var(--accent-text, #fff);
+}
+
 .cta {
   margin-top: 48px;
   text-align: center;
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .contentGrid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
 }
 
 @media (max-width: 768px) {

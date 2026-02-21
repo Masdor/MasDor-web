@@ -11,6 +11,7 @@ export function BackToTop() {
   if (!show) return null
   return (
     <button
+      type="button"
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       aria-label="Nach oben"
       className={styles.button}

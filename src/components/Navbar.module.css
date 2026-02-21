@@ -140,6 +140,10 @@
   transition: all 0.3s ease;
 }
 
+.hamburgerMiddle {
+  margin-top: 6px;
+}
+
 .hamburgerOpen {
   position: absolute;
 }
@@ -173,7 +177,13 @@
   font-size: 16px;
   font-weight: 500;
   font-family: var(--font-sans);
+  color: var(--text-secondary);
   animation: slideIn 0.3s ease both;
+  animation-delay: var(--delay, 0s);
+}
+
+.mobileLinkActive {
+  color: var(--gold);
 }
 
 .mobileLinkBorder {

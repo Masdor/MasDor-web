@@ -44,8 +44,8 @@ export function Hero({ scrollTo }: HeroProps) {
 
         <Reveal delay={0.24}>
           <div className={styles.actions}>
-            <button onClick={() => scrollTo('kontakt')} className={shared.btnPrimary}>Projekt anfragen</button>
-            <button onClick={() => scrollTo('leistungen')} className={shared.btnOutline}>Leistungen entdecken</button>
+            <button type="button" onClick={() => scrollTo('kontakt')} className={shared.btnPrimary}>Projekt anfragen</button>
+            <button type="button" onClick={() => scrollTo('leistungen')} className={shared.btnOutline}>Leistungen entdecken</button>
           </div>
         </Reveal>
 

@@ -15,7 +15,7 @@ export function Footer({ scrollTo }: FooterProps) {
         </div>
         <div className={styles.nav}>
           {NAV_LINKS.map(l => (
-            <button key={l.id} onClick={() => scrollTo(l.id)} className={styles.navBtn}>{l.label}</button>
+            <button type="button" key={l.id} onClick={() => scrollTo(l.id)} className={styles.navBtn}>{l.label}</button>
           ))}
         </div>
         <p className={styles.legal}>

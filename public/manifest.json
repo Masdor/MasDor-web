@@ -1,0 +1,17 @@
+{
+  "name": "LAB-ROOT — Engineering für Medical, Industrial & IT",
+  "short_name": "LAB-ROOT",
+  "description": "Spezialisierte technische Dienstleistungen für Medical Systems, Industrial Automation und IT-Infrastruktur.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b0f15",
+  "theme_color": "#0b0f15",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "lang": "de"
+}

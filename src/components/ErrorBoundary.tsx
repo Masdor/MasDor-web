@@ -16,6 +16,10 @@ export class ErrorBoundary extends Component<Props, State> {
     return { hasError: true }
   }
 
+  componentDidCatch(error: Error, info: React.ErrorInfo) {
+    console.error('[ErrorBoundary]', error, info.componentStack)
+  }
+
   render() {
     if (this.state.hasError) {
       return (
@@ -26,7 +30,7 @@ export class ErrorBoundary extends Component<Props, State> {
             <p className={styles.message}>
               Ein unerwarteter Fehler ist aufgetreten. Bitte laden Sie die Seite neu.
             </p>
-            <button onClick={() => window.location.reload()} className={styles.reload}>
+            <button type="button" onClick={() => window.location.reload()} className={styles.reload}>
               Seite neu laden
             </button>
           </div>

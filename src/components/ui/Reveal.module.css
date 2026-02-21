@@ -4,6 +4,7 @@
   transition:
     opacity 0.65s var(--ease-out),
     transform 0.65s var(--ease-out);
+  transition-delay: var(--delay, 0s);
 }
 
 .visible {

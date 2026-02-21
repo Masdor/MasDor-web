@@ -10,6 +10,9 @@
   --font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
   --font-sans: 'DM Sans Variable', 'DM Sans', sans-serif;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --color-medical: #22c55e;
+  --color-industrial: var(--gold);
+  --color-it: #3b82f6;
 }
 
 *,

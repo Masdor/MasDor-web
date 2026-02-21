@@ -30,8 +30,8 @@ export function CookieConsent() {
         <a href="#datenschutz" className={styles.link}>Datenschutzerklärung</a>
       </p>
       <div className={styles.actions}>
-        <button onClick={accept} className={styles.accept}>Akzeptieren</button>
-        <button onClick={reject} className={styles.reject}>Ablehnen</button>
+        <button type="button" onClick={accept} className={styles.accept}>Akzeptieren</button>
+        <button type="button" onClick={reject} className={styles.reject}>Ablehnen</button>
       </div>
     </div>
   )

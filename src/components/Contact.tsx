@@ -8,13 +8,13 @@ export function Contact() {
   const { formData, formErrors, formSent, updateField, handleSubmit } = useContactForm()
 
   return (
-    <section id="kontakt" className={shared.sectionDark} style={{ paddingBottom: 80 }}>
+    <section id="kontakt" className={`${shared.sectionDark} ${styles.sectionKontakt}`}>
       <div className={shared.containerNarrow}>
         <Reveal>
           <div className={shared.sectionHeader}>
             <span className={shared.tagBadge}>KONTAKT</span>
             <h2 className={shared.sectionTitle}>Sprechen Sie mit uns</h2>
-            <p className={shared.subtitle} style={{ maxWidth: 500, margin: '16px auto 0' }}>Ob technische Anfrage, Projektbesprechung oder allgemeine Frage – wir melden uns zeitnah.</p>
+            <p className={shared.subtitleCentered}>Ob technische Anfrage, Projektbesprechung oder allgemeine Frage – wir melden uns zeitnah.</p>
           </div>
         </Reveal>
 
@@ -27,35 +27,55 @@ export function Contact() {
                 <p className={styles.successText}>Wir melden uns in der Regel innerhalb von 24 Stunden.</p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className={styles.form}>
+              <form onSubmit={handleSubmit} className={styles.form} noValidate>
                 <div className={styles.formRow}>
                   <div>
-                    <label className={shared.label}>Name *</label>
-                    <input type="text" value={formData.name}
+                    <label htmlFor="contact-name" className={shared.label}>Name *</label>
+                    <input
+                      id="contact-name"
+                      type="text"
+                      value={formData.name}
                       onChange={e => updateField('name', e.target.value)}
                       className={`${shared.input} ${formErrors.name ? shared.inputError : ''}`}
-                      placeholder="Vollständiger Name" />
+                      placeholder="Vollständiger Name"
+                      aria-required="true"
+                      aria-invalid={formErrors.name || undefined}
+                    />
                   </div>
                   <div>
-                    <label className={shared.label}>E-Mail *</label>
-                    <input type="email" value={formData.email}
+                    <label htmlFor="contact-email" className={shared.label}>E-Mail *</label>
+                    <input
+                      id="contact-email"
+                      type="email"
+                      value={formData.email}
                       onChange={e => updateField('email', e.target.value)}
                       className={`${shared.input} ${formErrors.email ? shared.inputError : ''}`}
-                      placeholder="ihre@email.de" />
+                      placeholder="ihre@email.de"
+                      aria-required="true"
+                      aria-invalid={formErrors.email || undefined}
+                    />
                   </div>
                 </div>
                 <div className={styles.formRow}>
                   <div>
-                    <label className={shared.label}>Telefon (optional)</label>
-                    <input type="tel" value={formData.telefon}
+                    <label htmlFor="contact-telefon" className={shared.label}>Telefon (optional)</label>
+                    <input
+                      id="contact-telefon"
+                      type="tel"
+                      value={formData.telefon}
                       onChange={e => updateField('telefon', e.target.value)}
-                      className={shared.input} placeholder="+49 ..." />
+                      className={shared.input}
+                      placeholder="+49 ..."
+                    />
                   </div>
                   <div>
-                    <label className={shared.label}>Betreff</label>
-                    <select value={formData.betreff}
+                    <label htmlFor="contact-betreff" className={shared.label}>Betreff</label>
+                    <select
+                      id="contact-betreff"
+                      value={formData.betreff}
                       onChange={e => updateField('betreff', e.target.value)}
-                      className={shared.input}>
+                      className={shared.input}
+                    >
                       <option>Allgemeine Anfrage</option>
                       <option>Medical Systems</option>
                       <option>Industrial Systems</option>
@@ -65,17 +85,22 @@ export function Contact() {
                   </div>
                 </div>
                 <div className={styles.messageField}>
-                  <label className={shared.label}>Nachricht *</label>
-                  <textarea value={formData.nachricht}
+                  <label htmlFor="contact-nachricht" className={shared.label}>Nachricht *</label>
+                  <textarea
+                    id="contact-nachricht"
+                    value={formData.nachricht}
                     onChange={e => updateField('nachricht', e.target.value)}
                     className={`${shared.input} ${styles.textarea} ${formErrors.nachricht ? shared.inputError : ''}`}
-                    placeholder="Beschreiben Sie kurz Ihr Anliegen..." />
+                    placeholder="Beschreiben Sie kurz Ihr Anliegen..."
+                    aria-required="true"
+                    aria-invalid={formErrors.nachricht || undefined}
+                  />
                 </div>
                 <button type="submit" className={`${shared.btnPrimary} ${shared.btnFull}`}>
                   Nachricht senden
                 </button>
                 {Object.values(formErrors).some(Boolean) && (
-                  <p className={styles.formError}>Bitte füllen Sie alle Pflichtfelder korrekt aus.</p>
+                  <p className={styles.formError} role="alert">Bitte füllen Sie alle Pflichtfelder korrekt aus.</p>
                 )}
               </form>
             )}
@@ -86,7 +111,7 @@ export function Contact() {
               <div className={styles.infoCard}>
                 <h4 className={styles.infoTitle}>Direkter Kontakt</h4>
                 {CONTACT_PERSONS.map((c, i) => (
-                  <div key={i} style={{ marginBottom: i < CONTACT_PERSONS.length - 1 ? 14 : 0 }}>
+                  <div key={i} className={styles.contactPerson}>
                     <p className={styles.contactName}>{c.name} — {c.role}</p>
                     <a href={`tel:${c.tel.replace(/\s/g, '')}`} className={styles.contactTel}>{c.tel}</a>
                   </div>

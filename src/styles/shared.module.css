@@ -60,6 +60,22 @@
   line-height: 1.7;
 }
 
+.subtitleCentered {
+  composes: subtitle;
+  max-width: 560px;
+  margin: 16px auto 0;
+}
+
+.sectionHeaderLg {
+  composes: sectionHeader;
+  margin-bottom: 64px;
+}
+
+.sectionTitleSpaced {
+  composes: sectionTitle;
+  margin-bottom: 20px;
+}
+
 /* ─── Buttons ─── */
 
 .btn {

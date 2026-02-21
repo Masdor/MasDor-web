@@ -1,3 +1,14 @@
 .card {
   transition: all 0.35s var(--ease-out);
+  border-color: var(--card-border);
+  transform: translateY(0);
+}
+
+.card:hover {
+  border-color: color-mix(in srgb, var(--accent, var(--gold)) 27%, transparent);
+  transform: translateY(-4px);
+}
+
+.cardGlow:hover {
+  box-shadow: 0 8px 40px color-mix(in srgb, var(--accent, var(--gold)) 7%, transparent);
 }

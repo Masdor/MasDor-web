@@ -13,7 +13,7 @@ export function Navbar({ scrollTo, menuOpen, setMenuOpen, scrolled, activeSectio
   return (
     <nav className={`${styles.nav} ${scrolled ? styles.navScrolled : ''}`}>
       <div className={styles.inner}>
-        <button onClick={() => scrollTo('home')} className={styles.logo}>
+        <button type="button" onClick={() => scrollTo('home')} className={styles.logo}>
           <div className={styles.logoBox}>LR</div>
           <span className={styles.logoText}>LAB-ROOT</span>
         </button>
@@ -21,6 +21,7 @@ export function Navbar({ scrollTo, menuOpen, setMenuOpen, scrolled, activeSectio
         <div className={styles.desktopNav}>
           {NAV_LINKS.map((link) => (
             <button
+              type="button"
               key={link.id}
               onClick={() => scrollTo(link.id)}
               className={`${styles.navLink} ${activeSection === link.id ? styles.navLinkActive : ''}`}
@@ -28,12 +29,13 @@ export function Navbar({ scrollTo, menuOpen, setMenuOpen, scrolled, activeSectio
               {link.label}
             </button>
           ))}
-          <button onClick={() => scrollTo('kontakt')} className={styles.ctaBtn}>
+          <button type="button" onClick={() => scrollTo('kontakt')} className={styles.ctaBtn}>
             Anfrage senden
           </button>
         </div>
 
         <button
+          type="button"
           className={styles.mobileToggle}
           aria-label={menuOpen ? 'Menü schließen' : 'Menü öffnen'}
           aria-expanded={menuOpen}
@@ -42,7 +44,7 @@ export function Navbar({ scrollTo, menuOpen, setMenuOpen, scrolled, activeSectio
           <span
             className={`${styles.hamburgerLine} ${menuOpen ? `${styles.hamburgerOpen} ${styles.hamburgerOpenTop}` : ''}`}
           />
-          {!menuOpen && <span className={styles.hamburgerLine} style={{ marginTop: 6 }} />}
+          {!menuOpen && <span className={`${styles.hamburgerLine} ${styles.hamburgerMiddle}`} />}
           <span
             className={`${styles.hamburgerLine} ${menuOpen ? `${styles.hamburgerOpen} ${styles.hamburgerOpenBottom}` : ''}`}
           />
@@ -53,13 +55,11 @@ export function Navbar({ scrollTo, menuOpen, setMenuOpen, scrolled, activeSectio
         <div className={styles.mobileMenu}>
           {NAV_LINKS.map((link, i) => (
             <button
+              type="button"
               key={link.id}
               onClick={() => scrollTo(link.id)}
-              className={`${styles.mobileLink} ${i < NAV_LINKS.length - 1 ? styles.mobileLinkBorder : ''}`}
-              style={{
-                color: activeSection === link.id ? 'var(--gold)' : 'var(--text-secondary)',
-                animationDelay: `${i * 0.05}s`,
-              }}
+              className={`${styles.mobileLink} ${i < NAV_LINKS.length - 1 ? styles.mobileLinkBorder : ''} ${activeSection === link.id ? styles.mobileLinkActive : ''}`}
+              style={{ '--delay': `${i * 0.05}s` } as React.CSSProperties}
             >
               {link.label}
             </button>
