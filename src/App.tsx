@@ -12,8 +12,8 @@ const CARD_BORDER = "rgba(255,255,255,0.06)";
 const TEXT_PRIMARY = "#e6edf3";
 const TEXT_SECONDARY = "#8b949e";
 const TEXT_BODY = "#c0c8d2";
-const MONO = "'JetBrains Mono', monospace";
-const SANS = "'DM Sans', sans-serif";
+const MONO = "'JetBrains Mono Variable', 'JetBrains Mono', monospace";
+const SANS = "'DM Sans Variable', 'DM Sans', sans-serif";
 
 const NAV_LINKS = [
   { id: "home", label: "Start" },
@@ -358,7 +358,6 @@ export default function App() {
   return (
     <div style={{ background: DARK, color: TEXT_PRIMARY, fontFamily: SANS, minHeight: "100vh", overflowX: "hidden" }}>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500;600&display=swap');
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; scroll-padding-top: 80px; }
         body { overflow-x: hidden; }
