@@ -41,6 +41,25 @@
 .successText {
   color: var(--text-secondary);
   font-size: 15px;
+  margin-bottom: 24px;
+}
+
+.resetBtn {
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: var(--font-sans);
+  color: var(--gold);
+  background: transparent;
+  border: 1px solid rgba(207, 169, 86, 0.2);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.25s var(--ease-out);
+}
+
+.resetBtn:hover {
+  background: rgba(207, 169, 86, 0.08);
+  border-color: rgba(207, 169, 86, 0.35);
 }
 
 /* ─── Form ─── */

@@ -41,13 +41,27 @@ describe('Contact', () => {
     expect(errorEl).toHaveTextContent(/Name/)
   })
 
-  it('clears error when field is filled', async () => {
+  it('validates on blur', async () => {
     const user = userEvent.setup()
     render(<Contact />)
-    await user.click(screen.getByText('Nachricht senden'))
+
+    const nameInput = screen.getByLabelText(/Name/)
+    await user.click(nameInput)
+    await user.tab() // blur
+
+    expect(screen.getByText(/Bitte geben Sie Ihren Namen ein/)).toBeInTheDocument()
+  })
+
+  it('clears error when field is filled after blur', async () => {
+    const user = userEvent.setup()
+    render(<Contact />)
+
+    const nameInput = screen.getByLabelText(/Name/)
+    await user.click(nameInput)
+    await user.tab()
     expect(screen.getByText(/Bitte geben Sie Ihren Namen ein/)).toBeInTheDocument()
 
-    await user.type(screen.getByLabelText(/Name/), 'Max')
+    await user.type(nameInput, 'Max')
     expect(screen.queryByText(/Bitte geben Sie Ihren Namen ein/)).not.toBeInTheDocument()
   })
 
@@ -71,6 +85,22 @@ describe('Contact', () => {
     await user.click(screen.getByText('Nachricht senden'))
 
     expect(screen.getByText('Nachricht gesendet')).toBeInTheDocument()
+  })
+
+  it('shows reset button after success', async () => {
+    const user = userEvent.setup()
+    render(<Contact />)
+    await user.type(screen.getByLabelText(/Name/), 'Max Muster')
+    await user.type(screen.getByLabelText(/E-Mail/), 'max@example.de')
+    await user.type(screen.getByLabelText(/Nachricht/), 'Testanfrage')
+    await user.click(screen.getByText('Nachricht senden'))
+
+    const resetBtn = screen.getByText('Neue Nachricht senden')
+    expect(resetBtn).toBeInTheDocument()
+
+    await user.click(resetBtn)
+    expect(screen.getByText('Nachricht senden')).toBeInTheDocument()
+    expect(screen.getByLabelText(/Name/)).toHaveValue('')
   })
 
   it('has required fields marked with aria-required', () => {

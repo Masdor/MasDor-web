@@ -5,7 +5,10 @@ import shared from '@/styles/shared.module.css'
 import styles from './Contact.module.css'
 
 export function Contact() {
-  const { formData, formErrors, formSent, updateField, handleSubmit } = useContactForm()
+  const {
+    formData, formErrors, formSent, formSubmitting, submitError,
+    updateField, touchField, handleSubmit, reset,
+  } = useContactForm()
 
   return (
     <section id="kontakt" className={`${shared.sectionDark} ${styles.sectionKontakt}`}>
@@ -25,6 +28,9 @@ export function Contact() {
                 <div className={styles.successIcon}>✓</div>
                 <h3 className={styles.successTitle}>Nachricht gesendet</h3>
                 <p className={styles.successText}>Wir melden uns in der Regel innerhalb von 24 Stunden.</p>
+                <button type="button" onClick={reset} className={styles.resetBtn}>
+                  Neue Nachricht senden
+                </button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className={styles.form} noValidate>
@@ -36,11 +42,13 @@ export function Contact() {
                       type="text"
                       value={formData.name}
                       onChange={e => updateField('name', e.target.value)}
+                      onBlur={() => touchField('name')}
                       className={`${shared.input} ${formErrors.name ? shared.inputError : ''}`}
                       placeholder="Vollständiger Name"
                       aria-required="true"
                       aria-invalid={!!formErrors.name || undefined}
                       aria-describedby={formErrors.name ? 'error-name' : undefined}
+                      disabled={formSubmitting}
                     />
                     {formErrors.name && <p id="error-name" className={styles.fieldError} role="alert">{formErrors.name}</p>}
                   </div>
@@ -51,11 +59,13 @@ export function Contact() {
                       type="email"
                       value={formData.email}
                       onChange={e => updateField('email', e.target.value)}
+                      onBlur={() => touchField('email')}
                       className={`${shared.input} ${formErrors.email ? shared.inputError : ''}`}
                       placeholder="ihre@email.de"
                       aria-required="true"
                       aria-invalid={!!formErrors.email || undefined}
                       aria-describedby={formErrors.email ? 'error-email' : undefined}
+                      disabled={formSubmitting}
                     />
                     {formErrors.email && <p id="error-email" className={styles.fieldError} role="alert">{formErrors.email}</p>}
                   </div>
@@ -70,6 +80,7 @@ export function Contact() {
                       onChange={e => updateField('telefon', e.target.value)}
                       className={shared.input}
                       placeholder="+49 ..."
+                      disabled={formSubmitting}
                     />
                   </div>
                   <div>
@@ -79,6 +90,7 @@ export function Contact() {
                       value={formData.betreff}
                       onChange={e => updateField('betreff', e.target.value)}
                       className={shared.input}
+                      disabled={formSubmitting}
                     >
                       <option>Allgemeine Anfrage</option>
                       <option>Medical Systems</option>
@@ -94,18 +106,28 @@ export function Contact() {
                     id="contact-nachricht"
                     value={formData.nachricht}
                     onChange={e => updateField('nachricht', e.target.value)}
+                    onBlur={() => touchField('nachricht')}
                     className={`${shared.input} ${styles.textarea} ${formErrors.nachricht ? shared.inputError : ''}`}
                     placeholder="Beschreiben Sie kurz Ihr Anliegen..."
                     aria-required="true"
                     aria-invalid={!!formErrors.nachricht || undefined}
                     aria-describedby={formErrors.nachricht ? 'error-nachricht' : undefined}
+                    disabled={formSubmitting}
                   />
                   {formErrors.nachricht && <p id="error-nachricht" className={styles.fieldError} role="alert">{formErrors.nachricht}</p>}
                 </div>
-                <button type="submit" className={`${shared.btnPrimary} ${shared.btnFull}`}>
-                  Nachricht senden
+                <button
+                  type="submit"
+                  className={`${shared.btnPrimary} ${shared.btnFull}`}
+                  disabled={formSubmitting}
+                  aria-busy={formSubmitting || undefined}
+                >
+                  {formSubmitting ? 'Wird gesendet…' : 'Nachricht senden'}
                 </button>
-                {Object.values(formErrors).some(Boolean) && (
+                {submitError && (
+                  <p className={styles.formError} role="alert">{submitError}</p>
+                )}
+                {!submitError && Object.values(formErrors).some(Boolean) && (
                   <p className={styles.formError} role="alert">Bitte füllen Sie alle Pflichtfelder korrekt aus.</p>
                 )}
               </form>
