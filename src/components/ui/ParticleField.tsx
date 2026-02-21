@@ -13,6 +13,7 @@ export function ParticleField() {
     if (!ctx) return
 
     let raf: number
+    let resizeTimer: ReturnType<typeof setTimeout>
     const isMobile = window.innerWidth < 768
     const particleCount = isMobile ? 18 : 35
     const connectionDist = isMobile ? 90 : 110
@@ -24,7 +25,12 @@ export function ParticleField() {
       ctx.scale(dpr, dpr)
     }
     resize()
-    window.addEventListener('resize', resize)
+
+    const debouncedResize = () => {
+      clearTimeout(resizeTimer)
+      resizeTimer = setTimeout(resize, 150)
+    }
+    window.addEventListener('resize', debouncedResize)
 
     const w = () => c.offsetWidth
     const h = () => c.offsetHeight
@@ -81,7 +87,8 @@ export function ParticleField() {
 
     return () => {
       cancelAnimationFrame(raf)
-      window.removeEventListener('resize', resize)
+      clearTimeout(resizeTimer)
+      window.removeEventListener('resize', debouncedResize)
     }
   }, [])
 
