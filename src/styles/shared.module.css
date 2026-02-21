@@ -1,0 +1,178 @@
+/* ─── Shared Section Patterns ─── */
+
+.section {
+  padding: 120px 0 100px;
+}
+
+.sectionDark {
+  composes: section;
+  background: var(--dark);
+}
+
+.sectionDarker {
+  composes: section;
+  background: var(--darker);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.containerNarrow {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ─── Section Header ─── */
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.tagBadge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  text-transform: uppercase;
+  background: rgba(207, 169, 86, 0.04);
+  padding: 6px 16px;
+  border-radius: 6px;
+  border: 1px solid rgba(207, 169, 86, 0.09);
+}
+
+.sectionTitle {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  margin-top: 16px;
+}
+
+.subtitle {
+  font-size: clamp(1rem, 1.4vw, 1.1rem);
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* ─── Buttons ─── */
+
+.btn {
+  display: inline-block;
+  font-weight: 600;
+  border-radius: 11px;
+  font-family: var(--font-sans);
+  letter-spacing: 0.01em;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+  font-size: 15px;
+  padding: 16px 36px;
+}
+
+.btn:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+.btnPrimary {
+  composes: btn;
+  background: var(--gold);
+  color: var(--dark);
+}
+
+.btnOutline {
+  composes: btn;
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.btnOutline:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.btnSmall {
+  padding: 10px 24px;
+  font-size: 13px;
+}
+
+.btnFull {
+  width: 100%;
+  text-align: center;
+  padding: 16px 0;
+}
+
+/* ─── Cards ─── */
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+}
+
+.cardDark {
+  background: var(--dark);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+}
+
+/* ─── Form Elements ─── */
+
+.label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.input {
+  width: 100%;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: var(--text-primary);
+  font-size: 15px;
+  font-family: var(--font-sans);
+  transition: border-color 0.3s ease;
+}
+
+.inputError {
+  border-color: #ef4444;
+}
+
+/* ─── Mono Tag ─── */
+
+.monoTag {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* ─── Grids ─── */
+
+.gridRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 80px 0 60px;
+  }
+
+  .gridRow {
+    grid-template-columns: 1fr;
+  }
+}

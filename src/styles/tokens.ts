@@ -1,10 +1,1 @@
 export const GOLD = '#CFA956'
-export const DARK = '#0b0f15'
-export const DARKER = '#070a0f'
-export const CARD_BG = 'rgba(255,255,255,0.02)'
-export const CARD_BORDER = 'rgba(255,255,255,0.06)'
-export const TEXT_PRIMARY = '#e6edf3'
-export const TEXT_SECONDARY = '#8b949e'
-export const TEXT_BODY = '#c0c8d2'
-export const MONO = "'JetBrains Mono Variable', 'JetBrains Mono', monospace"
-export const SANS = "'DM Sans Variable', 'DM Sans', sans-serif"

@@ -1,0 +1,52 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--dark);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  padding: 24px;
+  text-align: center;
+}
+
+.inner {
+  max-width: 480px;
+}
+
+.icon {
+  font-family: var(--font-mono);
+  font-size: 48px;
+  color: var(--gold);
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.message {
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+.reload {
+  background: var(--gold);
+  color: var(--dark);
+  border: none;
+  border-radius: 11px;
+  padding: 14px 36px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  transition: opacity 0.2s ease;
+}
+
+.reload:hover {
+  opacity: 0.9;
+}

@@ -1,0 +1,67 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+
+.step {
+  padding: 32px 20px;
+  background: var(--card-bg);
+  border-radius: 16px;
+  border: 1px solid var(--card-border);
+  text-align: center;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.stepNum {
+  position: absolute;
+  top: -12px;
+  right: -8px;
+  font-family: var(--font-mono);
+  font-size: 72px;
+  font-weight: 700;
+  color: rgba(207, 169, 86, 0.024);
+  line-height: 1;
+}
+
+.stepIcon {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 20px;
+  background: rgba(207, 169, 86, 0.03);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: var(--gold);
+}
+
+.stepLabel {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.stepTitle {
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.stepDesc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}

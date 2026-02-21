@@ -1,0 +1,91 @@
+.intro {
+  max-width: 680px;
+}
+
+.valueGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 56px;
+}
+
+.valueCard {
+  padding: 40px 28px;
+  height: 100%;
+}
+
+.valueTitle {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--gold);
+}
+
+.valueText {
+  font-size: 15px;
+  color: var(--text-body);
+  line-height: 1.8;
+}
+
+.teamSection {
+  margin-top: 72px;
+}
+
+.teamTitle {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 32px;
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.teamCard {
+  display: flex;
+  gap: 20px;
+  padding: 28px 24px;
+  align-items: center;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+  background: rgba(207, 169, 86, 0.06);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--gold);
+}
+
+.memberName {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+
+.memberRole {
+  font-size: 13px;
+  color: var(--gold);
+  font-family: var(--font-mono);
+  margin-bottom: 6px;
+}
+
+.memberFocus {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+  .valueGrid,
+  .teamGrid {
+    grid-template-columns: 1fr;
+  }
+}

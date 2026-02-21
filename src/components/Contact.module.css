@@ -1,0 +1,157 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 48px;
+}
+
+/* ─── Success State ─── */
+
+.success {
+  padding: 56px;
+  background: rgba(34, 197, 94, 0.06);
+  border: 1px solid rgba(34, 197, 94, 0.15);
+  border-radius: 20px;
+  text-align: center;
+}
+
+.successIcon {
+  font-size: 48px;
+  margin-bottom: 20px;
+  color: #22c55e;
+}
+
+.successTitle {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.successText {
+  color: var(--text-secondary);
+  font-size: 15px;
+}
+
+/* ─── Form ─── */
+
+.form {
+  padding: 40px 36px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.messageField {
+  margin-bottom: 24px;
+}
+
+.textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+.formError {
+  color: #ef4444;
+  font-size: 13px;
+  margin-top: 12px;
+  text-align: center;
+}
+
+/* ─── Info Cards ─── */
+
+.infoStack {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.infoCard {
+  padding: 24px 20px;
+  background: var(--card-bg);
+  border-radius: 14px;
+  border: 1px solid var(--card-border);
+}
+
+.infoTitle {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--gold);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.contactName {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 3px;
+}
+
+.contactTel {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.contactTel:hover {
+  color: var(--gold);
+}
+
+.locationText {
+  color: var(--text-body);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.emailLink {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.emailLink:hover {
+  color: var(--gold);
+}
+
+.emailNote {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 8px;
+}
+
+.taxInfo {
+  padding: 16px 20px;
+  background: rgba(207, 169, 86, 0.016);
+  border-radius: 12px;
+  border: 1px solid rgba(207, 169, 86, 0.06);
+}
+
+.taxText {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+
+  .form {
+    padding: 28px 20px;
+  }
+}

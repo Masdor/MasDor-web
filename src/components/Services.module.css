@@ -8,3 +8,248 @@
   margin: 0 auto;
   padding: 0 24px;
 }
+
+/* ─── Tabs ─── */
+
+.tabs {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 56px;
+}
+
+.tab {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 16px 28px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 15px;
+  flex: 1 1 0;
+  max-width: 280px;
+}
+
+.tabActive {
+  font-weight: 600;
+}
+
+.tabTag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+  opacity: 0.7;
+}
+
+/* ─── Content ─── */
+
+.fadeIn {
+  animation: fadeTab 0.4s ease;
+}
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 56px;
+  align-items: start;
+}
+
+.accentBar {
+  width: 4px;
+  height: 32px;
+  border-radius: 2px;
+}
+
+.contentHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.contentTitle {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 700;
+}
+
+.contentSubtitle {
+  color: var(--text-secondary);
+  font-size: 17px;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.contentIntro {
+  color: var(--text-body);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.principles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 28px;
+}
+
+.principle {
+  padding: 8px 16px;
+  font-size: 13px;
+  color: var(--text-body);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 100px;
+}
+
+/* ─── Focus Cards ─── */
+
+.focusCards {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.focusCard {
+  display: flex;
+  gap: 16px;
+  padding: 20px 18px;
+  background: var(--card-bg);
+  border-radius: 14px;
+  border: 1px solid var(--card-border);
+}
+
+.focusIcon {
+  font-size: 22px;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+.focusTitle {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.focusDesc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ─── Bottom Grid ─── */
+
+.bottomGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.audienceCard {
+  padding: 36px 32px;
+  border-radius: 16px;
+}
+
+.audienceTitle {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 2px;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+
+.audienceItem {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.audienceItem + .audienceItem {
+  margin-top: 16px;
+}
+
+.audienceArrow {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  margin-top: 1px;
+  flex-shrink: 0;
+}
+
+.audienceText {
+  font-size: 14px;
+  color: var(--text-body);
+  line-height: 1.65;
+}
+
+.strengthsCard {
+  padding: 36px 32px;
+  background: var(--card-bg);
+  border-radius: 16px;
+  border: 1px solid var(--card-border);
+}
+
+.strengthItem {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.strengthItem + .strengthItem {
+  margin-top: 16px;
+}
+
+.strengthBar {
+  width: 3px;
+  height: 20px;
+  background: var(--gold);
+  border-radius: 2px;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.strengthText {
+  font-size: 14px;
+  color: var(--text-body);
+  line-height: 1.65;
+}
+
+.cta {
+  margin-top: 48px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 80px 0 60px;
+  }
+
+  .tabs {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 8px;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+  }
+
+  .tab {
+    scroll-snap-align: center;
+    min-width: 200px;
+    flex: 0 0 auto;
+  }
+
+  .contentGrid,
+  .bottomGrid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
