@@ -1,5 +1,5 @@
 import { useState, useRef, useCallback } from 'react'
-import { useNavigation } from '@/context/NavigationContext'
+import { useNavigation } from '@/context/useNavigation'
 import { Reveal } from '@/components/ui/Reveal'
 import { HoverCard } from '@/components/ui/HoverCard'
 import { SERVICES } from '@/data/services'

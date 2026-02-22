@@ -11,6 +11,7 @@ class MockIntersectionObserver implements IntersectionObserver {
 
   constructor(cb: IntersectionObserverCallback, public options?: IntersectionObserverInit) {
     intersectionCallback = cb
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
     intersectionInstance = this
   }
 

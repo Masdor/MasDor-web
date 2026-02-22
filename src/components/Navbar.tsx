@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useNavigation } from '@/context/NavigationContext'
+import { useNavigation } from '@/context/useNavigation'
 import { NAV_LINKS } from '@/data/navigation'
 import styles from './Navbar.module.css'
 

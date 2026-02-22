@@ -1,4 +1,4 @@
-import { useNavigation } from '@/context/NavigationContext'
+import { useNavigation } from '@/context/useNavigation'
 import { Reveal } from '@/components/ui/Reveal'
 import { ParticleField } from '@/components/ui/ParticleField'
 import { Counter } from '@/components/ui/Counter'

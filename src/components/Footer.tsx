@@ -1,4 +1,4 @@
-import { useNavigation } from '@/context/NavigationContext'
+import { useNavigation } from '@/context/useNavigation'
 import { NAV_LINKS } from '@/data/navigation'
 import styles from './Footer.module.css'
 

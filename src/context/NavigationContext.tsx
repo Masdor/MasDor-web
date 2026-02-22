@@ -1,4 +1,4 @@
-import { createContext, useContext, useCallback, useState, type ReactNode } from 'react'
+import { createContext, useCallback, useState, type ReactNode } from 'react'
 import { useScrolled } from '@/hooks/useScrolled'
 import { useActiveSection } from '@/hooks/useActiveSection'
 
@@ -10,7 +10,8 @@ interface NavigationContextType {
   activeSection: string
 }
 
-const NavigationContext = createContext<NavigationContextType | null>(null)
+// eslint-disable-next-line react-refresh/only-export-components
+export const NavigationContext = createContext<NavigationContextType | null>(null)
 
 export function NavigationProvider({ children }: { children: ReactNode }) {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -27,10 +28,4 @@ export function NavigationProvider({ children }: { children: ReactNode }) {
       {children}
     </NavigationContext.Provider>
   )
-}
-
-export function useNavigation() {
-  const ctx = useContext(NavigationContext)
-  if (!ctx) throw new Error('useNavigation must be used within NavigationProvider')
-  return ctx
 }
