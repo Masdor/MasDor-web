@@ -3,26 +3,26 @@
 .section {
   padding: 120px 0 100px;
   position: relative;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 800px;
 }
 
 .sectionDark {
-  composes: section;
   background: var(--dark);
 }
 
 .sectionDarker {
-  composes: section;
   background: var(--darker);
 }
 
 .container {
-  max-width: 1200px;
+  max-width: var(--container-max);
   margin: 0 auto;
   padding: 0 24px;
 }
 
 .containerNarrow {
-  max-width: 1100px;
+  max-width: var(--container-narrow);
   margin: 0 auto;
   padding: 0 24px;
 }
@@ -62,18 +62,15 @@
 }
 
 .subtitleCentered {
-  composes: subtitle;
   max-width: 560px;
   margin: 16px auto 0;
 }
 
 .sectionHeaderLg {
-  composes: sectionHeader;
   margin-bottom: 64px;
 }
 
 .sectionTitleSpaced {
-  composes: sectionTitle;
   margin-bottom: 20px;
 }
 
@@ -106,12 +103,14 @@
   background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
 }
 
-.btn:hover::after {
-  opacity: 1;
-}
+@media (hover: hover) {
+  .btn:hover::after {
+    opacity: 1;
+  }
 
-.btn:hover {
-  transform: translateY(-2px);
+  .btn:hover {
+    transform: translateY(-2px);
+  }
 }
 
 .btn:active {
@@ -120,29 +119,29 @@
 }
 
 .btnPrimary {
-  composes: btn;
   background: var(--gold);
   color: var(--dark);
   box-shadow: 0 4px 24px rgba(207, 169, 86, 0.15);
 }
 
-.btnPrimary:hover {
-  box-shadow: 0 8px 32px rgba(207, 169, 86, 0.25);
-  background: var(--gold-light);
-}
-
 .btnOutline {
-  composes: btn;
   background: rgba(255, 255, 255, 0.04);
   color: var(--text-primary);
   border: 1px solid rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(8px);
 }
 
-.btnOutline:hover {
-  border-color: rgba(207, 169, 86, 0.3);
-  background: rgba(207, 169, 86, 0.06);
-  color: var(--gold-light);
+@media (hover: hover) {
+  .btnPrimary:hover {
+    box-shadow: 0 8px 32px rgba(207, 169, 86, 0.25);
+    background: var(--gold-light);
+  }
+
+  .btnOutline:hover {
+    border-color: rgba(207, 169, 86, 0.3);
+    background: rgba(207, 169, 86, 0.06);
+    color: var(--gold-light);
+  }
 }
 
 .btnSmall {

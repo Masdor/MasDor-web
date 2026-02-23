@@ -48,7 +48,7 @@
 /* ─── Content ─── */
 
 .content {
-  max-width: 1200px;
+  max-width: var(--container-max);
   margin: 0 auto;
   padding: 160px 24px 100px;
   position: relative;
@@ -131,10 +131,6 @@
   transition: background 0.3s ease;
 }
 
-.statCell:hover {
-  background: rgba(207, 169, 86, 0.015);
-}
-
 .statValue {
   font-family: var(--font-mono);
   font-size: 32px;
@@ -195,5 +191,13 @@
   .tagline {
     font-size: 10px;
     letter-spacing: 2px;
+  }
+
+  .titleAccent {
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: var(--gold);
+    background-clip: unset;
+    color: var(--gold);
   }
 }

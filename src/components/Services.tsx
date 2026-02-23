@@ -9,8 +9,18 @@ import styles from './Services.module.css'
 export function Services() {
   const { scrollTo } = useNavigation()
   const [activeService, setActiveService] = useState(0)
+  const [panelVisible, setPanelVisible] = useState(true)
   const svc = SERVICES[activeService]!
   const tabsRef = useRef<(HTMLButtonElement | null)[]>([])
+
+  const switchTab = useCallback((index: number) => {
+    if (index === activeService) return
+    setPanelVisible(false)
+    setTimeout(() => {
+      setActiveService(index)
+      setPanelVisible(true)
+    }, 180)
+  }, [activeService])
 
   const handleTabKeyDown = useCallback((e: React.KeyboardEvent, index: number) => {
     let next: number | null = null
@@ -21,10 +31,10 @@ export function Services() {
 
     if (next !== null) {
       e.preventDefault()
-      setActiveService(next)
+      switchTab(next)
       tabsRef.current[next]?.focus()
     }
-  }, [])
+  }, [switchTab])
 
   return (
     <section id="leistungen" className={styles.section}>
@@ -33,7 +43,7 @@ export function Services() {
           <div className={shared.sectionHeader}>
             <span className={shared.tagBadge}>LEISTUNGEN</span>
             <h2 className={shared.sectionTitle}>Drei Bereiche. Ein Anspruch.</h2>
-            <p className={shared.subtitleCentered}>Technische Exzellenz, strukturiertes Vorgehen und nachvollziehbare Ergebnisse.</p>
+            <p className={`${shared.subtitle} ${shared.subtitleCentered}`}>Technische Exzellenz, strukturiertes Vorgehen und nachvollziehbare Ergebnisse.</p>
           </div>
         </Reveal>
 
@@ -49,7 +59,7 @@ export function Services() {
                 aria-selected={activeService === i}
                 aria-controls={`service-panel-${s.key}`}
                 tabIndex={activeService === i ? 0 : -1}
-                onClick={() => setActiveService(i)}
+                onClick={() => switchTab(i)}
                 onKeyDown={e => handleTabKeyDown(e, i)}
                 className={`${styles.tab} ${activeService === i ? styles.tabActive : ''}`}
                 style={{ '--accent': s.accent } as React.CSSProperties}
@@ -62,12 +72,11 @@ export function Services() {
         </Reveal>
 
         <div
-          key={svc.key}
           id={`service-panel-${svc.key}`}
           role="tabpanel"
           aria-labelledby={`tab-${svc.key}`}
-          className={styles.fadeIn}
-          style={{ '--accent': svc.accent, '--accent-text': svc.key === 'industrial' ? 'var(--dark)' : '#fff' } as React.CSSProperties}
+          className={`${styles.panel} ${panelVisible ? styles.panelVisible : ''}`}
+          style={{ '--accent': svc.accent, '--accent-text': svc.accentText } as React.CSSProperties}
         >
           <div className={styles.contentGrid}>
             <div>
@@ -78,14 +87,14 @@ export function Services() {
               <p className={styles.contentSubtitle}>{svc.subtitle}</p>
               <p className={styles.contentIntro}>{svc.intro}</p>
               <div className={styles.principles}>
-                {svc.principles.map((p, i) => (
-                  <span key={i} className={styles.principle}>{p}</span>
+                {svc.principles.map((p) => (
+                  <span key={p} className={styles.principle}>{p}</span>
                 ))}
               </div>
             </div>
             <div className={styles.focusCards}>
-              {svc.focus.map((f, i) => (
-                <HoverCard key={i} accentColor={svc.accent} className={styles.focusCard}>
+              {svc.focus.map((f) => (
+                <HoverCard key={f.title} accentColor={svc.accent} className={styles.focusCard}>
                   <div className={styles.focusIcon} aria-hidden="true">{f.icon}</div>
                   <div>
                     <h4 className={styles.focusTitle}>{f.title}</h4>
@@ -99,8 +108,8 @@ export function Services() {
           <div className={styles.bottomGrid}>
             <div className={styles.audienceCard}>
               <h4 className={styles.audienceTitle}>Zielgruppe</h4>
-              {svc.audience.map((a, i) => (
-                <div key={i} className={styles.audienceItem}>
+              {svc.audience.map((a) => (
+                <div key={a} className={styles.audienceItem}>
                   <span className={styles.audienceArrow} aria-hidden="true">→</span>
                   <p className={styles.audienceText}>{a}</p>
                 </div>
@@ -108,8 +117,8 @@ export function Services() {
             </div>
             <div className={styles.strengthsCard}>
               <h4 className={`${styles.audienceTitle} ${styles.strengthsTitle}`}>Warum LAB-ROOT</h4>
-              {svc.strengths.map((s, i) => (
-                <div key={i} className={styles.strengthItem}>
+              {svc.strengths.map((s) => (
+                <div key={s} className={styles.strengthItem}>
                   <div className={styles.strengthBar} aria-hidden="true" />
                   <p className={styles.strengthText}>{s}</p>
                 </div>

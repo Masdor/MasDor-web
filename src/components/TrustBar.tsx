@@ -7,8 +7,8 @@ export function TrustBar() {
     <Reveal>
       <div className={styles.wrapper}>
         <div className={styles.bar}>
-          {TRUST_TAGS.map((t, i) => (
-            <span key={i} className={styles.tag}>{t}</span>
+          {TRUST_TAGS.map((t) => (
+            <span key={t} className={styles.tag}>{t}</span>
           ))}
         </div>
       </div>

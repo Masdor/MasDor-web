@@ -29,7 +29,7 @@ export class ErrorBoundary extends Component<Props, State> {
             <p className={styles.sectionMessage}>
               Inhalte konnten nicht geladen werden.
             </p>
-            <button type="button" onClick={() => window.location.reload()} className={styles.sectionReload}>
+            <button type="button" onClick={() => window.location.reload()} className={`${styles.reload} ${styles.sectionReload}`}>
               Seite neu laden
             </button>
           </div>

@@ -6,6 +6,7 @@ export const SERVICES: ServiceData[] = [
     tag: 'MEDICAL_SYS',
     title: 'Medical Systems',
     accent: '#22c55e',
+    accentText: '#fff',
     shortDesc:
       'Technische Betreuung medizinischer und medizinnaher Systeme – Laboranalytik, bildgebende Systeme, Steuerungseinheiten.',
     subtitle: 'Technische Unterstützung für stabile medizinische Betriebsumgebungen',
@@ -56,6 +57,7 @@ export const SERVICES: ServiceData[] = [
     tag: 'INDUSTRIAL_AUTO',
     title: 'Industrial Systems',
     accent: '#CFA956',
+    accentText: 'var(--dark)',
     shortDesc:
       'Analyse, Stabilisierung und Engineering-Unterstützung für SPS-Systeme, Antriebstechnik und industrielle Steuerungen.',
     subtitle: 'Praxisnahe Engineering-Unterstützung für industrielle Systeme',
@@ -106,6 +108,7 @@ export const SERVICES: ServiceData[] = [
     tag: 'IT_INFRA',
     title: 'IT Infrastructure',
     accent: '#3b82f6',
+    accentText: '#fff',
     shortDesc:
       'Server, Netzwerke, Virtualisierung, Monitoring und Automatisierung – stabil, übersichtlich und wartbar.',
     subtitle: 'Stabile IT-Infrastruktur für einen verlässlichen Betrieb',

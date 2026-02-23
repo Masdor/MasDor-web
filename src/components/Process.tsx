@@ -5,19 +5,19 @@ import styles from './Process.module.css'
 
 export function Process() {
   return (
-    <section id="methode" className={shared.sectionDark}>
+    <section id="methode" className={`${shared.section} ${shared.sectionDark}`}>
       <div className={shared.containerNarrow}>
         <Reveal>
-          <div className={shared.sectionHeaderLg}>
+          <div className={`${shared.sectionHeader} ${shared.sectionHeaderLg}`}>
             <span className={shared.tagBadge}>METHODE</span>
             <h2 className={shared.sectionTitle}>Strukturiert statt reaktiv</h2>
-            <p className={shared.subtitleCentered}>Unser Vorgehen ist in allen Bereichen gleich: methodisch, dokumentiert und ursachenorientiert.</p>
+            <p className={`${shared.subtitle} ${shared.subtitleCentered}`}>Unser Vorgehen ist in allen Bereichen gleich: methodisch, dokumentiert und ursachenorientiert.</p>
           </div>
         </Reveal>
 
         <div className={styles.grid}>
           {PROCESS_STEPS.map((step, i) => (
-            <Reveal key={i} delay={i * 0.08}>
+            <Reveal key={step.num} delay={i * 0.08}>
               <div className={styles.step}>
                 <div className={styles.stepNum}>{step.num}</div>
                 <div className={styles.stepIcon}>{step.icon}</div>

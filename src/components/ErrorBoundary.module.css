@@ -67,7 +67,6 @@
 }
 
 .sectionReload {
-  composes: reload;
   padding: 10px 24px;
   font-size: 13px;
 }

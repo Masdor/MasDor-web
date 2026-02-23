@@ -4,13 +4,19 @@
   transform: translateY(0);
 }
 
-.card:hover {
-  border-color: rgba(207, 169, 86, 0.2);
-  transform: translateY(-4px);
+@media (hover: hover) {
+  .card:hover {
+    border-color: rgba(207, 169, 86, 0.2);
+    transform: translateY(-4px);
+  }
+
+  .cardGlow:hover {
+    box-shadow:
+      0 8px 40px rgba(207, 169, 86, 0.06),
+      0 0 0 1px rgba(207, 169, 86, 0.08);
+  }
 }
 
-.cardGlow:hover {
-  box-shadow:
-    0 8px 40px rgba(207, 169, 86, 0.06),
-    0 0 0 1px rgba(207, 169, 86, 0.08);
+.card:active {
+  border-color: rgba(207, 169, 86, 0.15);
 }
