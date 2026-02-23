@@ -14,6 +14,7 @@ export interface ServiceData {
   tag: string
   title: string
   accent: string
+  accentText: string
   shortDesc: string
   subtitle: string
   intro: string

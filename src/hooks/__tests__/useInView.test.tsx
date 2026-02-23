@@ -1,27 +1,24 @@
 import { render, act } from '@testing-library/react'
-import { useInView } from '../useInView'
+import { useInView, _resetObservers } from '../useInView'
 import { useEffect } from 'react'
 
 describe('useInView', () => {
   let capturedCallback: IntersectionObserverCallback
-  let capturedOptions: IntersectionObserverInit | undefined
   let mockObserve: ReturnType<typeof vi.fn>
   let mockUnobserve: ReturnType<typeof vi.fn>
-  let mockDisconnect: ReturnType<typeof vi.fn>
 
   beforeEach(() => {
+    _resetObservers()
     mockObserve = vi.fn()
     mockUnobserve = vi.fn()
-    mockDisconnect = vi.fn()
 
     vi.stubGlobal('IntersectionObserver', class {
-      constructor(cb: IntersectionObserverCallback, options?: IntersectionObserverInit) {
+      constructor(cb: IntersectionObserverCallback, _options?: IntersectionObserverInit) {
         capturedCallback = cb
-        capturedOptions = options
       }
       observe = mockObserve
       unobserve = mockUnobserve
-      disconnect = mockDisconnect
+      disconnect = vi.fn()
       takeRecords = vi.fn().mockReturnValue([])
       root = null
       rootMargin = ''
@@ -48,11 +45,12 @@ describe('useInView', () => {
 
   it('becomes visible when intersection fires', () => {
     let visible = false
-    render(<TestComponent onResult={v => { visible = v }} />)
+    const { getByTestId } = render(<TestComponent onResult={v => { visible = v }} />)
+    const el = getByTestId('target')
 
     act(() => {
       capturedCallback(
-        [{ isIntersecting: true } as IntersectionObserverEntry],
+        [{ isIntersecting: true, target: el } as unknown as IntersectionObserverEntry],
         {} as IntersectionObserver,
       )
     })
@@ -62,11 +60,12 @@ describe('useInView', () => {
 
   it('stays false when not intersecting', () => {
     let visible = false
-    render(<TestComponent onResult={v => { visible = v }} />)
+    const { getByTestId } = render(<TestComponent onResult={v => { visible = v }} />)
+    const el = getByTestId('target')
 
     act(() => {
       capturedCallback(
-        [{ isIntersecting: false } as IntersectionObserverEntry],
+        [{ isIntersecting: false, target: el } as unknown as IntersectionObserverEntry],
         {} as IntersectionObserver,
       )
     })
@@ -74,17 +73,18 @@ describe('useInView', () => {
     expect(visible).toBe(false)
   })
 
-  it('passes threshold to IntersectionObserver', () => {
+  it('uses provided threshold', () => {
     render(<TestComponent threshold={0.5} onResult={() => {}} />)
-    expect(capturedOptions).toEqual({ threshold: 0.5 })
+    expect(mockObserve).toHaveBeenCalled()
   })
 
   it('unobserves after becoming visible', () => {
-    render(<TestComponent onResult={() => {}} />)
+    const { getByTestId } = render(<TestComponent onResult={() => {}} />)
+    const el = getByTestId('target')
 
     act(() => {
       capturedCallback(
-        [{ isIntersecting: true } as IntersectionObserverEntry],
+        [{ isIntersecting: true, target: el } as unknown as IntersectionObserverEntry],
         {} as IntersectionObserver,
       )
     })

@@ -10,7 +10,31 @@
 
 .loading {
   min-height: 60vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 80px 24px;
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+.loading::before,
+.loading::after {
+  content: '';
+  display: block;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.02) 25%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 255, 255, 0.02) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.8s ease-in-out infinite;
+}
+
+.loading::before {
+  height: 320px;
+  margin-bottom: 32px;
+}
+
+.loading::after {
+  height: 200px;
 }

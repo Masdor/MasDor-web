@@ -42,8 +42,8 @@ export function Hero() {
 
         <Reveal delay={0.24}>
           <div className={styles.actions}>
-            <button type="button" onClick={() => scrollTo('kontakt')} className={shared.btnPrimary}>Projekt anfragen</button>
-            <button type="button" onClick={() => scrollTo('leistungen')} className={shared.btnOutline}>Leistungen entdecken</button>
+            <button type="button" onClick={() => scrollTo('kontakt')} className={`${shared.btn} ${shared.btnPrimary}`}>Projekt anfragen</button>
+            <button type="button" onClick={() => scrollTo('leistungen')} className={`${shared.btn} ${shared.btnOutline}`}>Leistungen entdecken</button>
           </div>
         </Reveal>
 
@@ -54,8 +54,8 @@ export function Hero() {
               { end: 100, suffix: '%', label: 'Dokumentiert' },
               { label: 'Reaktionszeit', static: '<24h' },
               { label: 'Standort', static: 'DE' },
-            ].map((s, i) => (
-              <div key={i} className={styles.statCell}>
+            ].map((s) => (
+              <div key={s.label} className={styles.statCell}>
                 <div className={styles.statValue}>
                   {s.static ?? <Counter end={s.end!} suffix={s.suffix ?? ''} trigger={statsVisible} />}
                 </div>

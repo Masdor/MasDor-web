@@ -12,13 +12,13 @@ export function Contact() {
   } = useContactForm()
 
   return (
-    <section id="kontakt" className={`${shared.sectionDark} ${styles.sectionKontakt}`}>
+    <section id="kontakt" className={`${shared.section} ${shared.sectionDark} ${styles.sectionKontakt}`}>
       <div className={shared.containerNarrow}>
         <Reveal>
           <div className={shared.sectionHeader}>
             <span className={shared.tagBadge}>KONTAKT</span>
             <h2 className={shared.sectionTitle}>Sprechen Sie mit uns</h2>
-            <p className={shared.subtitleCentered}>Ob technische Anfrage, Projektbesprechung oder allgemeine Frage – wir melden uns zeitnah.</p>
+            <p className={`${shared.subtitle} ${shared.subtitleCentered}`}>Ob technische Anfrage, Projektbesprechung oder allgemeine Frage – wir melden uns zeitnah.</p>
           </div>
         </Reveal>
 
@@ -131,14 +131,19 @@ export function Contact() {
                 </div>
                 <button
                   type="submit"
-                  className={`${shared.btnPrimary} ${shared.btnFull}`}
+                  className={`${shared.btn} ${shared.btnPrimary} ${shared.btnFull}`}
                   disabled={formSubmitting}
                   aria-busy={formSubmitting || undefined}
                 >
-                  {formSubmitting ? 'Wird gesendet…' : 'Nachricht senden'}
+                  {formSubmitting ? <><span className={styles.spinner} aria-hidden="true" />Wird gesendet…</> : 'Nachricht senden'}
                 </button>
                 {submitError && (
-                  <p className={styles.formError} role="alert">{submitError}</p>
+                  <p className={styles.formError} role="alert">
+                    {submitError.includes('info@lab-root.com')
+                      ? <>Kontaktformular ist derzeit nicht verfügbar. Bitte kontaktieren Sie uns direkt per E-Mail an{' '}
+                          <a href={`mailto:${COMPANY_INFO.email}?subject=${encodeURIComponent(formData.betreff)}`} className={styles.errorLink}>{COMPANY_INFO.email}</a>.</>
+                      : submitError}
+                  </p>
                 )}
                 {!submitError && Object.values(formErrors).some(Boolean) && (
                   <p className={styles.formError} role="alert">Bitte füllen Sie alle Pflichtfelder korrekt aus.</p>
@@ -151,11 +156,11 @@ export function Contact() {
             <div className={styles.infoStack}>
               <div className={styles.infoCard}>
                 <h4 className={styles.infoTitle}>Direkter Kontakt</h4>
-                {CONTACT_PERSONS.map((c, i) => {
+                {CONTACT_PERSONS.map((c) => {
                   const telDisplay = c.tel.join(' ')
                   const telHref = c.tel.join('')
                   return (
-                    <div key={i} className={styles.contactPerson}>
+                    <div key={c.name} className={styles.contactPerson}>
                       <p className={styles.contactName}>{c.name} — {c.role}</p>
                       <a href={`tel:${telHref}`} className={styles.contactTel}>{telDisplay}</a>
                     </div>

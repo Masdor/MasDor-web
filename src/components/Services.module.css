@@ -2,6 +2,8 @@
   padding: 120px 0 100px;
   background: var(--darker);
   position: relative;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 800px;
 }
 
 .section::before {
@@ -15,7 +17,7 @@
 }
 
 .container {
-  max-width: 1200px;
+  max-width: var(--container-max);
   margin: 0 auto;
   padding: 0 24px;
 }
@@ -58,11 +60,6 @@
   transition: transform 0.3s var(--ease-out);
 }
 
-.tab:hover {
-  border-color: rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.04);
-}
-
 .tabActive {
   font-weight: 600;
   color: var(--accent);
@@ -84,8 +81,15 @@
 
 /* ─── Content ─── */
 
-.fadeIn {
-  animation: fadeTab 0.4s var(--ease-out);
+.panel {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.25s var(--ease-out), transform 0.25s var(--ease-out);
+}
+
+.panelVisible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .contentGrid {
@@ -146,9 +150,16 @@
   transition: all 0.25s ease;
 }
 
-.principle:hover {
-  border-color: rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.045);
+@media (hover: hover) {
+  .tab:hover {
+    border-color: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .principle:hover {
+    border-color: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.045);
+  }
 }
 
 /* ─── Focus Cards ─── */
@@ -305,6 +316,8 @@
     padding-bottom: 8px;
     justify-content: flex-start;
     flex-wrap: nowrap;
+    mask-image: linear-gradient(to right, black 85%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
   }
 
   .tab {

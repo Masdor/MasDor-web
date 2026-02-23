@@ -16,12 +16,6 @@
   transition: all 0.35s var(--ease-out);
 }
 
-.step:hover {
-  border-color: rgba(207, 169, 86, 0.15);
-  background: var(--card-bg-hover);
-  transform: translateY(-4px);
-}
-
 .stepNum {
   position: absolute;
   top: -12px;
@@ -34,9 +28,6 @@
   transition: color 0.35s ease;
 }
 
-.step:hover .stepNum {
-  color: rgba(207, 169, 86, 0.06);
-}
 
 .stepIcon {
   width: 52px;
@@ -53,11 +44,6 @@
   border: 1px solid rgba(207, 169, 86, 0.06);
 }
 
-.step:hover .stepIcon {
-  background: rgba(207, 169, 86, 0.07);
-  border-color: rgba(207, 169, 86, 0.12);
-  transform: scale(1.05);
-}
 
 .stepLabel {
   font-family: var(--font-mono);
@@ -79,6 +65,24 @@
   line-height: 1.65;
 }
 
+@media (hover: hover) {
+  .step:hover {
+    border-color: rgba(207, 169, 86, 0.15);
+    background: var(--card-bg-hover);
+    transform: translateY(-4px);
+  }
+
+  .step:hover .stepNum {
+    color: rgba(207, 169, 86, 0.06);
+  }
+
+  .step:hover .stepIcon {
+    background: rgba(207, 169, 86, 0.07);
+    border-color: rgba(207, 169, 86, 0.12);
+    transform: scale(1.05);
+  }
+}
+
 @media (max-width: 1024px) and (min-width: 769px) {
   .grid {
     grid-template-columns: repeat(3, 1fr);
@@ -88,7 +92,8 @@
 @media (max-width: 768px) {
   .grid {
     grid-template-columns: 1fr;
-    gap: 12px;
+    gap: 0;
+    position: relative;
   }
 
   .step {
@@ -98,6 +103,27 @@
     column-gap: 16px;
     text-align: left;
     padding: 24px 20px;
+    position: relative;
+  }
+
+  .step::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 44px;
+    width: 1px;
+    height: 16px;
+    background: rgba(207, 169, 86, 0.15);
+    transform: translateY(100%);
+    z-index: 1;
+  }
+
+  .step:last-child::after {
+    display: none;
+  }
+
+  .step + .step {
+    margin-top: 16px;
   }
 
   .stepIcon {

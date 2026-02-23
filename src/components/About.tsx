@@ -12,11 +12,11 @@ const VALUE_CARDS = [
 
 export function About() {
   return (
-    <section id="about" className={shared.sectionDarker}>
+    <section id="about" className={`${shared.section} ${shared.sectionDarker}`}>
       <div className={shared.containerNarrow}>
         <Reveal>
           <span className={shared.tagBadge}>ÜBER UNS</span>
-          <h2 className={shared.sectionTitleSpaced}>Engineering mit Verantwortung</h2>
+          <h2 className={`${shared.sectionTitle} ${shared.sectionTitleSpaced}`}>Engineering mit Verantwortung</h2>
           <p className={`${shared.subtitle} ${styles.intro}`}>
             LAB-ROOT ist ein technisches Dienstleistungsunternehmen mit Sitz in Cham, Deutschland.
             Gegründet von Ingenieuren mit dem Anspruch, technische Probleme nachhaltig und dokumentiert zu lösen.
@@ -25,7 +25,7 @@ export function About() {
 
         <div className={styles.valueGrid}>
           {VALUE_CARDS.map((card, i) => (
-            <Reveal key={i} delay={i * 0.1}>
+            <Reveal key={card.title} delay={i * 0.1}>
               <HoverCard glowOnHover className={`${shared.cardDark} ${styles.valueCard}`}>
                 <h3 className={styles.valueTitle}>{card.title}</h3>
                 <p className={styles.valueText}>{card.text}</p>
@@ -38,8 +38,8 @@ export function About() {
           <div className={styles.teamSection}>
             <h3 className={styles.teamTitle}>Team</h3>
             <div className={styles.teamGrid}>
-              {TEAM_MEMBERS.map((m, i) => (
-                <HoverCard key={i} glowOnHover className={`${shared.cardDark} ${styles.teamCard}`}>
+              {TEAM_MEMBERS.map((m) => (
+                <HoverCard key={m.initials} glowOnHover className={`${shared.cardDark} ${styles.teamCard}`}>
                   <div className={styles.avatar}>{m.initials}</div>
                   <div>
                     <h4 className={styles.memberName}>{m.name}</h4>

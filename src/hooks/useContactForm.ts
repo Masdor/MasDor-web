@@ -146,7 +146,7 @@ export function useContactForm() {
       } catch (err) {
         const message =
           err instanceof Error && err.message === 'NO_ENDPOINT'
-            ? 'Kontaktformular ist derzeit nicht verfügbar. Bitte kontaktieren Sie uns direkt per E-Mail.'
+            ? 'Kontaktformular ist derzeit nicht verfügbar. Bitte kontaktieren Sie uns direkt per E-Mail an info@lab-root.com.'
             : 'Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es erneut.'
         dispatch({ type: 'SUBMIT_ERROR', error: message })
       }

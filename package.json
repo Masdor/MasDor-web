@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:report": "tsc -b && vite build && node scripts/bundle-report.mjs",
     "preview": "vite preview",
     "lint": "eslint .",
     "test": "vitest run"
