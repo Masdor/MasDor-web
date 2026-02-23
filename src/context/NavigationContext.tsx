@@ -1,4 +1,4 @@
-import { createContext, useCallback, useState, useEffect, useRef, type ReactNode } from 'react'
+import { createContext, useCallback, useState, useEffect, useRef, useMemo, type ReactNode } from 'react'
 import { NAV_LINKS } from '@/data/navigation'
 
 interface NavigationContextType {
@@ -13,6 +13,8 @@ interface NavigationContextType {
 // eslint-disable-next-line react-refresh/only-export-components
 export const NavigationContext = createContext<NavigationContextType | null>(null)
 
+const SECTION_IDS = NAV_LINKS.map((l) => l.id)
+
 export function NavigationProvider({ children }: { children: ReactNode }) {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
@@ -21,12 +23,27 @@ export function NavigationProvider({ children }: { children: ReactNode }) {
   const rafRef = useRef(0)
 
   useEffect(() => {
+    const observers: IntersectionObserver[] = []
+    const visibleSections = new Map<string, boolean>()
+
+    for (const id of SECTION_IDS) {
+      const el = document.getElementById(id)
+      if (!el) continue
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry) visibleSections.set(id, entry.isIntersecting)
+        },
+        { rootMargin: '-80px 0px -40% 0px', threshold: 0 },
+      )
+      observer.observe(el)
+      observers.push(observer)
+    }
+
     const handler = () => {
       if (rafRef.current) return
       rafRef.current = requestAnimationFrame(() => {
         rafRef.current = 0
         const y = window.scrollY
-
         setScrolled(y > 50)
         setShowBackToTop(y > 600)
 
@@ -34,22 +51,21 @@ export function NavigationProvider({ children }: { children: ReactNode }) {
           setActiveSection('home')
           return
         }
-        const ids = NAV_LINKS.map((l) => l.id)
-        for (let i = ids.length - 1; i >= 0; i--) {
-          const id = ids[i]
-          if (!id) continue
-          const el = document.getElementById(id)
-          if (el && el.getBoundingClientRect().top <= 120) {
+        for (let i = SECTION_IDS.length - 1; i >= 0; i--) {
+          const id = SECTION_IDS[i]
+          if (id && visibleSections.get(id)) {
             setActiveSection(id)
-            break
+            return
           }
         }
       })
     }
     window.addEventListener('scroll', handler, { passive: true })
+
     return () => {
       window.removeEventListener('scroll', handler)
       if (rafRef.current) cancelAnimationFrame(rafRef.current)
+      for (const o of observers) o.disconnect()
     }
   }, [])
 
@@ -58,8 +74,13 @@ export function NavigationProvider({ children }: { children: ReactNode }) {
     setMenuOpen(false)
   }, [])
 
+  const value = useMemo(
+    () => ({ scrollTo, menuOpen, setMenuOpen, scrolled, activeSection, showBackToTop }),
+    [scrollTo, menuOpen, scrolled, activeSection, showBackToTop],
+  )
+
   return (
-    <NavigationContext.Provider value={{ scrollTo, menuOpen, setMenuOpen, scrolled, activeSection, showBackToTop }}>
+    <NavigationContext.Provider value={value}>
       {children}
     </NavigationContext.Provider>
   )

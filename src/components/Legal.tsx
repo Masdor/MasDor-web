@@ -9,6 +9,7 @@ interface LegalProps {
 
 export function Legal({ page, onClose }: LegalProps) {
   const modalRef = useRef<HTMLDivElement>(null)
+  const mouseDownTargetRef = useRef<EventTarget | null>(null)
 
   useEffect(() => {
     if (!page) return
@@ -58,14 +59,17 @@ export function Legal({ page, onClose }: LegalProps) {
   const titleId = `legal-title-${page}`
 
   return (
-    <div className={styles.overlay} onClick={onClose}>
+    <div
+      className={styles.overlay}
+      onMouseDown={e => { mouseDownTargetRef.current = e.target }}
+      onClick={e => { if (e.target === e.currentTarget && mouseDownTargetRef.current === e.currentTarget) onClose() }}
+    >
       <div
         ref={modalRef}
         className={styles.modal}
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        onClick={e => e.stopPropagation()}
       >
         <button type="button" className={styles.close} onClick={onClose} aria-label="Schließen">×</button>
 

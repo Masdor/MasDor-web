@@ -49,9 +49,11 @@ describe('Legal', () => {
 
   it('closes on overlay click', () => {
     render(<Legal page="impressum" onClose={onClose} />)
-    // The overlay is the parent of the dialog
+    // The overlay is the parent of the dialog — mouseDown + click required (P3 drag-close fix)
     const dialog = screen.getByRole('dialog')
-    fireEvent.click(dialog.parentElement!)
+    const overlay = dialog.parentElement!
+    fireEvent.mouseDown(overlay)
+    fireEvent.click(overlay)
     expect(onClose).toHaveBeenCalledTimes(1)
   })
 

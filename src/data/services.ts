@@ -7,8 +7,6 @@ export const SERVICES: ServiceData[] = [
     title: 'Medical Systems',
     accent: '#22c55e',
     accentText: '#fff',
-    shortDesc:
-      'Technische Betreuung medizinischer und medizinnaher Systeme – Laboranalytik, bildgebende Systeme, Steuerungseinheiten.',
     subtitle: 'Technische Unterstützung für stabile medizinische Betriebsumgebungen',
     intro:
       'In sensiblen Umgebungen zählt nicht nur, dass ein System wieder läuft – sondern dass die Lösung sauber, dokumentiert und betriebssicher umgesetzt wird. LAB-ROOT arbeitet mit dem Verständnis für regulatorische Anforderungen und hohe Verfügbarkeit.',
@@ -58,8 +56,6 @@ export const SERVICES: ServiceData[] = [
     title: 'Industrial Systems',
     accent: '#CFA956',
     accentText: 'var(--dark)',
-    shortDesc:
-      'Analyse, Stabilisierung und Engineering-Unterstützung für SPS-Systeme, Antriebstechnik und industrielle Steuerungen.',
     subtitle: 'Praxisnahe Engineering-Unterstützung für industrielle Systeme',
     intro:
       'Wenn Produktions- oder Prozessumgebungen betroffen sind, braucht es mehr als einen schnellen Fix. LAB-ROOT bringt technische Klarheit und saubere Umsetzung – mit Fokus auf Verfügbarkeit im realen Betrieb.',
@@ -109,8 +105,6 @@ export const SERVICES: ServiceData[] = [
     title: 'IT Infrastructure',
     accent: '#3b82f6',
     accentText: '#fff',
-    shortDesc:
-      'Server, Netzwerke, Virtualisierung, Monitoring und Automatisierung – stabil, übersichtlich und wartbar.',
     subtitle: 'Stabile IT-Infrastruktur für einen verlässlichen Betrieb',
     intro:
       'Von Servern und Netzwerken bis zu Monitoring, Backup und Automatisierung. Wir helfen dabei, IT-Umgebungen betriebsfähig, übersichtlich und belastbar zu halten – mit Fokus auf Struktur statt Komplexität.',
