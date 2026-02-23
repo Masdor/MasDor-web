@@ -2,20 +2,29 @@ import { useState, useEffect } from 'react'
 
 export function useCounter(end: number, duration = 2000, trigger = false) {
   const [val, setVal] = useState(0)
+
   useEffect(() => {
-    if (!trigger) return
-    let start = 0
-    const step = end / (duration / 16)
-    const timer = setInterval(() => {
-      start += step
-      if (start >= end) {
-        setVal(end)
-        clearInterval(timer)
-      } else {
-        setVal(Math.floor(start))
+    if (!trigger) {
+      setVal(0)
+      return
+    }
+
+    let startTime: number | null = null
+    let rafId: number
+
+    const step = (timestamp: number) => {
+      if (startTime === null) startTime = timestamp
+      const elapsed = timestamp - startTime
+      const progress = Math.min(elapsed / duration, 1)
+      setVal(Math.floor(progress * end))
+      if (progress < 1) {
+        rafId = requestAnimationFrame(step)
       }
-    }, 16)
-    return () => clearInterval(timer)
+    }
+
+    rafId = requestAnimationFrame(step)
+    return () => cancelAnimationFrame(rafId)
   }, [trigger, end, duration])
+
   return val
 }

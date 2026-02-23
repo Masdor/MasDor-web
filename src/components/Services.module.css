@@ -1,10 +1,321 @@
 .section {
   padding: 120px 0 100px;
   background: var(--darker);
+  position: relative;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(207, 169, 86, 0.1), transparent);
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
+}
+
+/* ─── Tabs ─── */
+
+.tabs {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 56px;
+}
+
+.tab {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  padding: 18px 28px;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-out);
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 15px;
+  flex: 1 1 0;
+  max-width: 280px;
+  position: relative;
+  overflow: hidden;
+}
+
+.tab::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent, var(--gold));
+  transform: scaleX(0);
+  transition: transform 0.3s var(--ease-out);
+}
+
+.tab:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.tabActive {
+  font-weight: 600;
+  color: var(--accent);
+  background: rgba(207, 169, 86, 0.06);
+  border-color: rgba(207, 169, 86, 0.18);
+}
+
+.tabActive::before {
+  transform: scaleX(1);
+}
+
+.tabTag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+  opacity: 0.6;
+}
+
+/* ─── Content ─── */
+
+.fadeIn {
+  animation: fadeTab 0.4s var(--ease-out);
+}
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 56px;
+  align-items: start;
+}
+
+.accentBar {
+  width: 4px;
+  height: 32px;
+  border-radius: 2px;
+  background: var(--accent);
+}
+
+.contentHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.contentTitle {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.contentSubtitle {
+  color: var(--text-secondary);
+  font-size: 17px;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.contentIntro {
+  color: var(--text-body);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.principles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 28px;
+}
+
+.principle {
+  padding: 8px 16px;
+  font-size: 13px;
+  color: var(--text-body);
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 100px;
+  transition: all 0.25s ease;
+}
+
+.principle:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.045);
+}
+
+/* ─── Focus Cards ─── */
+
+.focusCards {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.focusCard {
+  display: flex;
+  gap: 16px;
+  padding: 22px 20px;
+  background: var(--card-bg);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--card-border);
+}
+
+.focusIcon {
+  font-size: 22px;
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: rgba(207, 169, 86, 0.05);
+}
+
+.focusTitle {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.focusDesc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ─── Bottom Grid ─── */
+
+.bottomGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.audienceCard {
+  padding: 36px 32px;
+  border-radius: var(--radius-lg);
+  background: rgba(207, 169, 86, 0.02);
+  border: 1px solid rgba(207, 169, 86, 0.07);
+}
+
+.audienceTitle {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 2px;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.audienceItem {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.audienceItem + .audienceItem {
+  margin-top: 16px;
+}
+
+.audienceArrow {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  margin-top: 1px;
+  flex-shrink: 0;
+  color: var(--accent);
+}
+
+.audienceText {
+  font-size: 14px;
+  color: var(--text-body);
+  line-height: 1.65;
+}
+
+.strengthsTitle {
+  color: var(--gold);
+}
+
+.strengthsCard {
+  padding: 36px 32px;
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--card-border);
+}
+
+.strengthItem {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.strengthItem + .strengthItem {
+  margin-top: 16px;
+}
+
+.strengthBar {
+  width: 3px;
+  height: 20px;
+  background: var(--gold);
+  border-radius: 2px;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.strengthText {
+  font-size: 14px;
+  color: var(--text-body);
+  line-height: 1.65;
+}
+
+.ctaBtn {
+  background: var(--accent);
+  color: var(--accent-text, #fff);
+}
+
+.cta {
+  margin-top: 48px;
+  text-align: center;
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .contentGrid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 80px 0 60px;
+  }
+
+  .tabs {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 8px;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+  }
+
+  .tab {
+    scroll-snap-align: center;
+    min-width: 200px;
+    flex: 0 0 auto;
+  }
+
+  .contentGrid,
+  .bottomGrid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
 }
