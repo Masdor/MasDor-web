@@ -36,8 +36,10 @@
   transition: opacity 0.2s ease;
 }
 
-.logo:hover {
-  opacity: 0.85;
+@media (hover: hover) {
+  .logo:hover {
+    opacity: 0.85;
+  }
 }
 
 .logoBox {
@@ -83,9 +85,11 @@
   color: var(--text-secondary);
 }
 
-.navLink:hover {
-  color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.04);
+@media (hover: hover) {
+  .navLink:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.04);
+  }
 }
 
 .navLinkActive {
@@ -105,9 +109,11 @@
   border-radius: 1px;
 }
 
-.navLink:hover::after {
-  width: 50%;
-  left: 25%;
+@media (hover: hover) {
+  .navLink:hover::after {
+    width: 50%;
+    left: 25%;
+  }
 }
 
 .navLinkActive::after {
@@ -133,10 +139,12 @@
   box-shadow: 0 2px 12px rgba(207, 169, 86, 0.15);
 }
 
-.ctaBtn:hover {
-  background: var(--gold-light);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 20px rgba(207, 169, 86, 0.25);
+@media (hover: hover) {
+  .ctaBtn:hover {
+    background: var(--gold-light);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px rgba(207, 169, 86, 0.25);
+  }
 }
 
 .ctaBtn:active {
@@ -160,8 +168,10 @@
   transition: background 0.2s ease;
 }
 
-.mobileToggle:hover {
-  background: rgba(255, 255, 255, 0.05);
+@media (hover: hover) {
+  .mobileToggle:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }
 }
 
 .hamburgerLine {
@@ -223,8 +233,10 @@
   transition: color 0.2s ease;
 }
 
-.mobileLink:hover {
-  color: var(--text-primary);
+@media (hover: hover) {
+  .mobileLink:hover {
+    color: var(--text-primary);
+  }
 }
 
 .mobileLinkActive {

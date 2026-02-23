@@ -6,6 +6,28 @@ import { fileURLToPath } from 'url'
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url))
 
+/** Injects <link rel="preload"> tags for .woff2 font assets discovered during the build. */
+function fontPreloadPlugin(): Plugin {
+  return {
+    name: 'font-preload',
+    apply: 'build',
+    enforce: 'post',
+    transformIndexHtml: {
+      order: 'post',
+      handler(_html, ctx) {
+        if (!ctx.bundle) return []
+        return Object.keys(ctx.bundle)
+          .filter(name => name.endsWith('.woff2'))
+          .map(name => ({
+            tag: 'link' as const,
+            attrs: { rel: 'preload', as: 'font', type: 'font/woff2', crossorigin: '', href: `/${name}` },
+            injectTo: 'head-prepend' as const,
+          }))
+      },
+    },
+  }
+}
+
 /** Injects a Content-Security-Policy meta tag into index.html during production builds only. */
 function cspPlugin(): Plugin {
   const csp = [
@@ -30,7 +52,7 @@ function cspPlugin(): Plugin {
 }
 
 export default defineConfig({
-  plugins: [react(), cspPlugin()],
+  plugins: [react(), fontPreloadPlugin(), cspPlugin()],
   resolve: {
     alias: {
       '@': resolve(__dirname, './src'),

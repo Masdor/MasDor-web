@@ -68,8 +68,10 @@
   transition: color 0.2s ease;
 }
 
-.navBtn:hover {
-  color: var(--gold);
+@media (hover: hover) {
+  .navBtn:hover {
+    color: var(--gold);
+  }
 }
 
 .legal {
@@ -88,8 +90,10 @@
   transition: color 0.2s ease;
 }
 
-.legalLink:hover {
-  color: var(--gold);
+@media (hover: hover) {
+  .legalLink:hover {
+    color: var(--gold);
+  }
 }
 
 @media (max-width: 768px) {

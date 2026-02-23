@@ -95,9 +95,11 @@
   transition: all 0.35s var(--ease-out);
 }
 
-.teamCard:hover .avatar {
-  border-color: rgba(207, 169, 86, 0.3);
-  background: linear-gradient(135deg, rgba(207, 169, 86, 0.18), rgba(207, 169, 86, 0.06));
+@media (hover: hover) {
+  .teamCard:hover .avatar {
+    border-color: rgba(207, 169, 86, 0.3);
+    background: linear-gradient(135deg, rgba(207, 169, 86, 0.18), rgba(207, 169, 86, 0.06));
+  }
 }
 
 .memberName {

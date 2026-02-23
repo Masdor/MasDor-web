@@ -29,7 +29,9 @@
   cursor: default;
 }
 
-.tag:hover {
-  opacity: 1;
-  color: var(--gold);
+@media (hover: hover) {
+  .tag:hover {
+    opacity: 1;
+    color: var(--gold);
+  }
 }

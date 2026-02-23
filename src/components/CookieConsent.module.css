@@ -47,9 +47,11 @@
   transition: all 0.25s var(--ease-out);
 }
 
-.accept:hover {
-  background: var(--gold-light);
-  transform: translateY(-1px);
+@media (hover: hover) {
+  .accept:hover {
+    background: var(--gold-light);
+    transform: translateY(-1px);
+  }
 }
 
 .reject {
@@ -64,9 +66,11 @@
   transition: all 0.25s var(--ease-out);
 }
 
-.reject:hover {
-  border-color: var(--text-secondary);
-  color: var(--text-primary);
+@media (hover: hover) {
+  .reject:hover {
+    border-color: var(--text-secondary);
+    color: var(--text-primary);
+  }
 }
 
 @media (max-width: 768px) {
