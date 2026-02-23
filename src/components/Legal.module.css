@@ -20,6 +20,7 @@
   width: 100%;
   max-height: 85vh;
   overflow-y: auto;
+  scroll-behavior: smooth;
   padding: 48px 40px;
   position: relative;
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
@@ -43,9 +44,11 @@
   transition: all 0.2s ease;
 }
 
-.close:hover {
-  color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.05);
+@media (hover: hover) {
+  .close:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.05);
+  }
 }
 
 .title {

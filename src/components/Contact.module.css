@@ -57,9 +57,11 @@
   transition: all 0.25s var(--ease-out);
 }
 
-.resetBtn:hover {
-  background: rgba(207, 169, 86, 0.08);
-  border-color: rgba(207, 169, 86, 0.35);
+@media (hover: hover) {
+  .resetBtn:hover {
+    background: rgba(207, 169, 86, 0.08);
+    border-color: rgba(207, 169, 86, 0.35);
+  }
 }
 
 /* ─── Form ─── */
@@ -154,9 +156,11 @@
   transition: all 0.3s var(--ease-out);
 }
 
-.infoCard:hover {
-  border-color: var(--card-border-hover);
-  background: rgba(255, 255, 255, 0.035);
+@media (hover: hover) {
+  .infoCard:hover {
+    border-color: var(--card-border-hover);
+    background: rgba(255, 255, 255, 0.035);
+  }
 }
 
 .infoTitle {
@@ -186,8 +190,10 @@
   transition: color 0.2s ease;
 }
 
-.contactTel:hover {
-  color: var(--gold);
+@media (hover: hover) {
+  .contactTel:hover {
+    color: var(--gold);
+  }
 }
 
 .locationText {
@@ -204,8 +210,10 @@
   transition: color 0.2s ease;
 }
 
-.emailLink:hover {
-  color: var(--gold);
+@media (hover: hover) {
+  .emailLink:hover {
+    color: var(--gold);
+  }
 }
 
 .emailNote {

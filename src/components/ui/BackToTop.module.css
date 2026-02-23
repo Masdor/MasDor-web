@@ -31,11 +31,13 @@
   transform: translateY(0);
 }
 
-.button:hover {
-  background: rgba(207, 169, 86, 0.12);
-  border-color: rgba(207, 169, 86, 0.3);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+@media (hover: hover) {
+  .button:hover {
+    background: rgba(207, 169, 86, 0.12);
+    border-color: rgba(207, 169, 86, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  }
 }
 
 .button:active {
