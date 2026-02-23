@@ -50,14 +50,14 @@ export function Hero() {
         <Reveal delay={0.4}>
           <div ref={statsRef} className={styles.statsGrid}>
             {[
-              { end: 3, label: 'Fachbereiche', static: '3' },
+              { label: 'Fachbereiche', static: '3' },
               { end: 100, suffix: '%', label: 'Dokumentiert' },
-              { end: 0, label: 'Reaktionszeit', static: '<24h' },
-              { end: 0, label: 'Standort', static: 'DE' },
+              { label: 'Reaktionszeit', static: '<24h' },
+              { label: 'Standort', static: 'DE' },
             ].map((s, i) => (
               <div key={i} className={styles.statCell}>
                 <div className={styles.statValue}>
-                  {s.static ? s.static : <Counter end={s.end} suffix={s.suffix || ''} trigger={statsVisible} />}
+                  {s.static ?? <Counter end={s.end!} suffix={s.suffix ?? ''} trigger={statsVisible} />}
                 </div>
                 <div className={styles.statLabel}>{s.label}</div>
               </div>

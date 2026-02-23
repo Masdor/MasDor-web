@@ -2,6 +2,8 @@ import { useNavigation } from '@/context/useNavigation'
 import { NAV_LINKS } from '@/data/navigation'
 import styles from './Footer.module.css'
 
+const YEAR = new Date().getFullYear()
+
 export function Footer() {
   const { scrollTo } = useNavigation()
   return (
@@ -17,7 +19,7 @@ export function Footer() {
           ))}
         </div>
         <p className={styles.legal}>
-          © {new Date().getFullYear()} LAB-ROOT. Alle Rechte vorbehalten. ·{' '}
+          © {YEAR} LAB-ROOT. Alle Rechte vorbehalten. ·{' '}
           <a href="#impressum" className={styles.legalLink}>Impressum</a> ·{' '}
           <a href="#datenschutz" className={styles.legalLink}>Datenschutz</a>
         </p>

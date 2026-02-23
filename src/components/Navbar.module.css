@@ -190,6 +190,13 @@
 
 /* ─── Mobile Menu ─── */
 
+.mobileOverlay {
+  position: fixed;
+  inset: 72px 0 0 0;
+  z-index: -1;
+  background: rgba(0, 0, 0, 0.5);
+}
+
 .mobileMenu {
   background: rgba(7, 10, 15, 0.97);
   backdrop-filter: blur(32px);

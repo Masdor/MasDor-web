@@ -3,21 +3,36 @@ import styles from './CookieConsent.module.css'
 
 const STORAGE_KEY = 'lab-root-cookie-consent'
 
+function safeGetItem(key: string): string | null {
+  try {
+    return localStorage.getItem(key)
+  } catch {
+    return null
+  }
+}
+
+function safeSetItem(key: string, value: string): void {
+  try {
+    localStorage.setItem(key, value)
+  } catch {
+    // Storage unavailable (private mode, quota exceeded) — silently ignore
+  }
+}
+
 export function CookieConsent() {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
-    const stored = localStorage.getItem(STORAGE_KEY)
-    if (!stored) setVisible(true)
+    if (!safeGetItem(STORAGE_KEY)) setVisible(true)
   }, [])
 
   function accept() {
-    localStorage.setItem(STORAGE_KEY, 'accepted')
+    safeSetItem(STORAGE_KEY, 'accepted')
     setVisible(false)
   }
 
   function reject() {
-    localStorage.setItem(STORAGE_KEY, 'rejected')
+    safeSetItem(STORAGE_KEY, 'rejected')
     setVisible(false)
   }
 

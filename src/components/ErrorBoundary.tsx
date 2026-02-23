@@ -3,6 +3,7 @@ import styles from './ErrorBoundary.module.css'
 
 interface Props {
   children: ReactNode
+  variant?: 'page' | 'section'
 }
 
 interface State {
@@ -22,6 +23,18 @@ export class ErrorBoundary extends Component<Props, State> {
 
   render() {
     if (this.state.hasError) {
+      if (this.props.variant === 'section') {
+        return (
+          <div className={styles.sectionError}>
+            <p className={styles.sectionMessage}>
+              Inhalte konnten nicht geladen werden.
+            </p>
+            <button type="button" onClick={() => window.location.reload()} className={styles.sectionReload}>
+              Seite neu laden
+            </button>
+          </div>
+        )
+      }
       return (
         <div className={styles.container}>
           <div className={styles.inner}>

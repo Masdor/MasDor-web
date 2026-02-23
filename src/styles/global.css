@@ -40,6 +40,10 @@ body {
   overflow-x: hidden;
 }
 
+body.modal-open {
+  overflow: hidden;
+}
+
 /* ─── Custom Scrollbar ─── */
 
 ::-webkit-scrollbar {

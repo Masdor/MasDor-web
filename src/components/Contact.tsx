@@ -7,6 +7,7 @@ import styles from './Contact.module.css'
 export function Contact() {
   const {
     formData, formErrors, formSent, formSubmitting, submitError,
+    honeypot, setHoneypot,
     updateField, touchField, handleSubmit, reset,
   } = useContactForm()
 
@@ -34,6 +35,18 @@ export function Contact() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className={styles.form} noValidate>
+                <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', opacity: 0, height: 0, overflow: 'hidden' }}>
+                  <label htmlFor="contact-website">Website</label>
+                  <input
+                    id="contact-website"
+                    type="text"
+                    name="website"
+                    value={honeypot}
+                    onChange={e => setHoneypot(e.target.value)}
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </div>
                 <div className={styles.formRow}>
                   <div>
                     <label htmlFor="contact-name" className={shared.label}>Name *</label>
@@ -46,7 +59,7 @@ export function Contact() {
                       className={`${shared.input} ${formErrors.name ? shared.inputError : ''}`}
                       placeholder="Vollständiger Name"
                       aria-required="true"
-                      aria-invalid={!!formErrors.name || undefined}
+                      aria-invalid={!!formErrors.name}
                       aria-describedby={formErrors.name ? 'error-name' : undefined}
                       disabled={formSubmitting}
                     />
@@ -63,7 +76,7 @@ export function Contact() {
                       className={`${shared.input} ${formErrors.email ? shared.inputError : ''}`}
                       placeholder="ihre@email.de"
                       aria-required="true"
-                      aria-invalid={!!formErrors.email || undefined}
+                      aria-invalid={!!formErrors.email}
                       aria-describedby={formErrors.email ? 'error-email' : undefined}
                       disabled={formSubmitting}
                     />
@@ -110,7 +123,7 @@ export function Contact() {
                     className={`${shared.input} ${styles.textarea} ${formErrors.nachricht ? shared.inputError : ''}`}
                     placeholder="Beschreiben Sie kurz Ihr Anliegen..."
                     aria-required="true"
-                    aria-invalid={!!formErrors.nachricht || undefined}
+                    aria-invalid={!!formErrors.nachricht}
                     aria-describedby={formErrors.nachricht ? 'error-nachricht' : undefined}
                     disabled={formSubmitting}
                   />
@@ -138,12 +151,16 @@ export function Contact() {
             <div className={styles.infoStack}>
               <div className={styles.infoCard}>
                 <h4 className={styles.infoTitle}>Direkter Kontakt</h4>
-                {CONTACT_PERSONS.map((c, i) => (
-                  <div key={i} className={styles.contactPerson}>
-                    <p className={styles.contactName}>{c.name} — {c.role}</p>
-                    <a href={`tel:${c.tel.replace(/\s/g, '')}`} className={styles.contactTel}>{c.tel}</a>
-                  </div>
-                ))}
+                {CONTACT_PERSONS.map((c, i) => {
+                  const telDisplay = c.tel.join(' ')
+                  const telHref = c.tel.join('')
+                  return (
+                    <div key={i} className={styles.contactPerson}>
+                      <p className={styles.contactName}>{c.name} — {c.role}</p>
+                      <a href={`tel:${telHref}`} className={styles.contactTel}>{telDisplay}</a>
+                    </div>
+                  )
+                })}
               </div>
               <div className={styles.infoCard}>
                 <h4 className={styles.infoTitle}>Standort</h4>

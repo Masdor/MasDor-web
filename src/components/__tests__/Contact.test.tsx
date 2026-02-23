@@ -76,7 +76,7 @@ describe('Contact', () => {
     expect(screen.getByText(/gültige E-Mail/)).toBeInTheDocument()
   })
 
-  it('shows success message after valid submission', async () => {
+  it('shows error message when no API is configured', async () => {
     const user = userEvent.setup()
     render(<Contact />)
     await user.type(screen.getByLabelText(/Name/), 'Max Muster')
@@ -84,10 +84,10 @@ describe('Contact', () => {
     await user.type(screen.getByLabelText(/Nachricht/), 'Testanfrage')
     await user.click(screen.getByText('Nachricht senden'))
 
-    expect(screen.getByText('Nachricht gesendet')).toBeInTheDocument()
+    expect(screen.getByText(/Kontaktformular ist derzeit nicht verfügbar/)).toBeInTheDocument()
   })
 
-  it('shows reset button after success', async () => {
+  it('keeps form visible after submission error', async () => {
     const user = userEvent.setup()
     render(<Contact />)
     await user.type(screen.getByLabelText(/Name/), 'Max Muster')
@@ -95,12 +95,8 @@ describe('Contact', () => {
     await user.type(screen.getByLabelText(/Nachricht/), 'Testanfrage')
     await user.click(screen.getByText('Nachricht senden'))
 
-    const resetBtn = screen.getByText('Neue Nachricht senden')
-    expect(resetBtn).toBeInTheDocument()
-
-    await user.click(resetBtn)
     expect(screen.getByText('Nachricht senden')).toBeInTheDocument()
-    expect(screen.getByLabelText(/Name/)).toHaveValue('')
+    expect(screen.getByLabelText(/Name/)).toHaveValue('Max Muster')
   })
 
   it('has required fields marked with aria-required', () => {

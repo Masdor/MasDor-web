@@ -1,4 +1,4 @@
-import { useState, useEffect, lazy, Suspense } from 'react'
+import { useState, useEffect, useCallback, lazy, Suspense } from 'react'
 import { NavigationProvider } from '@/context/NavigationContext'
 import { Navbar } from '@/components/Navbar'
 import { Hero } from '@/components/Hero'
@@ -15,23 +15,47 @@ const Footer = lazy(() => import('@/components/Footer').then(m => ({ default: m.
 const Legal = lazy(() => import('@/components/Legal').then(m => ({ default: m.Legal })))
 const CookieConsent = lazy(() => import('@/components/CookieConsent').then(m => ({ default: m.CookieConsent })))
 
+function parseLegalHash(hash: string): 'impressum' | 'datenschutz' | null {
+  if (hash === '#impressum') return 'impressum'
+  if (hash === '#datenschutz') return 'datenschutz'
+  return null
+}
+
 export default function App() {
-  const [legalPage, setLegalPage] = useState<'impressum' | 'datenschutz' | null>(null)
+  const [legalPage, setLegalPage] = useState<'impressum' | 'datenschutz' | null>(() =>
+    parseLegalHash(window.location.hash),
+  )
+
+  const openLegal = useCallback((page: 'impressum' | 'datenschutz') => {
+    setLegalPage(page)
+    window.history.pushState(null, '', `#${page}`)
+  }, [])
+
+  const closeLegal = useCallback(() => {
+    setLegalPage(null)
+    window.history.pushState(null, '', window.location.pathname)
+  }, [])
 
   useEffect(() => {
     const handler = (e: Event) => {
       const target = e.target
       if (!(target instanceof HTMLAnchorElement)) return
-      if (target.hash === '#impressum') {
+      const page = parseLegalHash(target.hash)
+      if (page) {
         e.preventDefault()
-        setLegalPage('impressum')
-      } else if (target.hash === '#datenschutz') {
-        e.preventDefault()
-        setLegalPage('datenschutz')
+        openLegal(page)
       }
     }
     document.addEventListener('click', handler)
     return () => document.removeEventListener('click', handler)
+  }, [openLegal])
+
+  useEffect(() => {
+    const onPopState = () => {
+      setLegalPage(parseLegalHash(window.location.hash))
+    }
+    window.addEventListener('popstate', onPopState)
+    return () => window.removeEventListener('popstate', onPopState)
   }, [])
 
   return (
@@ -40,18 +64,22 @@ export default function App() {
         <Navbar />
         <main>
           <Hero />
-          <ErrorBoundary>
+          <ErrorBoundary variant="section">
             <Suspense fallback={<div className={styles.loading} aria-busy="true" />}>
               <Services />
               <Process />
+            </Suspense>
+            <Suspense fallback={<div className={styles.loading} aria-busy="true" />}>
               <TrustBar />
               <About />
               <Contact />
               <Footer />
-              <CookieConsent />
-              <Legal page={legalPage} onClose={() => setLegalPage(null)} />
             </Suspense>
           </ErrorBoundary>
+          <Suspense fallback={null}>
+            <CookieConsent />
+            <Legal page={legalPage} onClose={closeLegal} />
+          </Suspense>
         </main>
         <BackToTop />
       </div>
