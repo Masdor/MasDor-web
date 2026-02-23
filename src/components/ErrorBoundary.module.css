@@ -51,3 +51,23 @@
   background: var(--gold-light);
   transform: translateY(-1px);
 }
+
+.sectionError {
+  padding: 64px 24px;
+  text-align: center;
+  background: var(--dark);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+}
+
+.sectionMessage {
+  color: var(--text-secondary);
+  font-size: 15px;
+  margin-bottom: 16px;
+}
+
+.sectionReload {
+  composes: reload;
+  padding: 10px 24px;
+  font-size: 13px;
+}

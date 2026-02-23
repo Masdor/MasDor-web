@@ -17,12 +17,31 @@ export function ParticleField() {
     const isMobile = window.innerWidth < 768
     const particleCount = isMobile ? 18 : 35
     const connectionDist = isMobile ? 90 : 110
+    const connectionDistSq = connectionDist * connectionDist
+
+    let prevW = c.offsetWidth
+    let prevH = c.offsetHeight
 
     const resize = () => {
       const dpr = Math.min(window.devicePixelRatio || 1, 2)
-      c.width = c.offsetWidth * dpr
-      c.height = c.offsetHeight * dpr
+      const newW = c.offsetWidth
+      const newH = c.offsetHeight
+
+      if (prevW > 0 && prevH > 0) {
+        const scaleX = newW / prevW
+        const scaleY = newH / prevH
+        for (const p of particles) {
+          p.x *= scaleX
+          p.y *= scaleY
+        }
+      }
+
+      c.width = newW * dpr
+      c.height = newH * dpr
       ctx.scale(dpr, dpr)
+
+      prevW = newW
+      prevH = newH
     }
     resize()
 
@@ -63,18 +82,19 @@ export function ParticleField() {
       }
 
       for (let i = 0; i < particles.length; i++) {
+        const pi = particles[i]!
         for (let j = i + 1; j < particles.length; j++) {
-          const pi = particles[i]!
           const pj = particles[j]!
           const dx = pi.x - pj.x
+          if (dx > connectionDist || dx < -connectionDist) continue
           const dy = pi.y - pj.y
+          if (dy > connectionDist || dy < -connectionDist) continue
           const distSq = dx * dx + dy * dy
-          if (distSq < connectionDist * connectionDist) {
-            const dist = Math.sqrt(distSq)
+          if (distSq < connectionDistSq) {
             ctx.beginPath()
             ctx.moveTo(pi.x, pi.y)
             ctx.lineTo(pj.x, pj.y)
-            ctx.strokeStyle = `rgba(207,169,86,${0.035 * (1 - dist / connectionDist)})`
+            ctx.strokeStyle = `rgba(207,169,86,${0.035 * (1 - distSq / connectionDistSq)})`
             ctx.lineWidth = 0.5
             ctx.stroke()
           }

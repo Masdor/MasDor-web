@@ -10,6 +10,10 @@ export function useActiveSection() {
       if (rafRef.current) return
       rafRef.current = requestAnimationFrame(() => {
         rafRef.current = 0
+        if (window.scrollY < 120) {
+          setActive('home')
+          return
+        }
         const ids = NAV_LINKS.map((l) => l.id)
         for (let i = ids.length - 1; i >= 0; i--) {
           const id = ids[i]

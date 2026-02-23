@@ -40,7 +40,7 @@ export interface TeamMember {
 export interface ContactInfo {
   name: string
   role: string
-  tel: string
+  tel: string[]
 }
 
 export interface ContactFormData {

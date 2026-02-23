@@ -1,4 +1,4 @@
-import { useReducer, useCallback } from 'react'
+import { useReducer, useCallback, useState } from 'react'
 import type { ContactFormData, FormErrors } from '@/types'
 
 interface FormState {
@@ -87,9 +87,14 @@ function formReducer(state: FormState, action: FormAction): FormState {
 }
 
 const CONTACT_API = import.meta.env.VITE_CONTACT_API as string | undefined
+const isValidEndpoint =
+  typeof CONTACT_API === 'string' &&
+  CONTACT_API.length > 0 &&
+  (CONTACT_API.startsWith('http://') || CONTACT_API.startsWith('https://'))
 
 export function useContactForm() {
   const [state, dispatch] = useReducer(formReducer, initialState)
+  const [honeypot, setHoneypot] = useState('')
 
   const updateField = useCallback((field: keyof ContactFormData, value: string) => {
     dispatch({ type: 'UPDATE_FIELD', field, value })
@@ -120,26 +125,33 @@ export function useContactForm() {
       e.preventDefault()
       if (!validate()) return
 
+      if (honeypot) {
+        dispatch({ type: 'SUBMIT_SUCCESS' })
+        return
+      }
+
       dispatch({ type: 'SUBMIT_START' })
 
       try {
-        if (CONTACT_API) {
-          const res = await fetch(CONTACT_API, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-            body: JSON.stringify(state.data),
-          })
-          if (!res.ok) throw new Error(`HTTP ${res.status}`)
+        if (!isValidEndpoint) {
+          throw new Error('NO_ENDPOINT')
         }
-        dispatch({ type: 'SUBMIT_SUCCESS' })
-      } catch {
-        dispatch({
-          type: 'SUBMIT_ERROR',
-          error: 'Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es erneut.',
+        const res = await fetch(CONTACT_API!, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(state.data),
         })
+        if (!res.ok) throw new Error(`HTTP ${res.status}`)
+        dispatch({ type: 'SUBMIT_SUCCESS' })
+      } catch (err) {
+        const message =
+          err instanceof Error && err.message === 'NO_ENDPOINT'
+            ? 'Kontaktformular ist derzeit nicht verfügbar. Bitte kontaktieren Sie uns direkt per E-Mail.'
+            : 'Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es erneut.'
+        dispatch({ type: 'SUBMIT_ERROR', error: message })
       }
     },
-    [validate, state.data],
+    [validate, state.data, honeypot],
   )
 
   const reset = useCallback(() => {
@@ -152,6 +164,8 @@ export function useContactForm() {
     formSent: state.sent,
     formSubmitting: state.submitting,
     submitError: state.submitError,
+    honeypot,
+    setHoneypot,
     updateField,
     touchField,
     handleSubmit,

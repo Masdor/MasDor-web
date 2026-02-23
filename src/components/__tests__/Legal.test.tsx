@@ -6,7 +6,7 @@ describe('Legal', () => {
 
   afterEach(() => {
     vi.clearAllMocks()
-    document.body.style.overflow = ''
+    document.body.classList.remove('modal-open')
   })
 
   it('renders nothing when page is null', () => {
@@ -64,7 +64,7 @@ describe('Legal', () => {
 
   it('locks body scroll when open', () => {
     render(<Legal page="impressum" onClose={onClose} />)
-    expect(document.body.style.overflow).toBe('hidden')
+    expect(document.body.classList.contains('modal-open')).toBe(true)
   })
 
   it('has close button with aria-label', () => {

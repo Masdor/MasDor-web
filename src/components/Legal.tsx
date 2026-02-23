@@ -45,12 +45,11 @@ export function Legal({ page, onClose }: LegalProps) {
     const closeBtn = modalRef.current?.querySelector<HTMLElement>('button')
     closeBtn?.focus()
 
-    const prevOverflow = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
+    document.body.classList.add('modal-open')
 
     return () => {
       document.removeEventListener('keydown', handleKeyDown)
-      document.body.style.overflow = prevOverflow
+      document.body.classList.remove('modal-open')
     }
   }, [page, onClose])
 

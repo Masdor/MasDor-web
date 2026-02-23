@@ -16,8 +16,8 @@ export const TEAM_MEMBERS: TeamMember[] = [
 ]
 
 export const CONTACT_PERSONS: ContactInfo[] = [
-  { name: 'Mahmoud Baddour, M.Eng.', role: 'Founder', tel: '+49 177 538 9347' },
-  { name: 'Moustafa Almasri', role: 'CTO', tel: '+49 163 137 1376' },
+  { name: 'Mahmoud Baddour, M.Eng.', role: 'Founder', tel: ['+49', '177', '538', '9347'] },
+  { name: 'Moustafa Almasri', role: 'CTO', tel: ['+49', '163', '137', '1376'] },
 ]
 
 export const COMPANY_INFO = {

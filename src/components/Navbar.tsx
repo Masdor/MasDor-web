@@ -1,18 +1,54 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { useNavigation } from '@/context/useNavigation'
 import { NAV_LINKS } from '@/data/navigation'
 import styles from './Navbar.module.css'
 
 export function Navbar() {
   const { scrollTo, menuOpen, setMenuOpen, scrolled, activeSection } = useNavigation()
+  const toggleRef = useRef<HTMLButtonElement>(null)
+  const menuRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     if (!menuOpen) return
+
+    document.body.classList.add('modal-open')
+
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setMenuOpen(false)
+      if (e.key === 'Escape') {
+        setMenuOpen(false)
+        toggleRef.current?.focus()
+        return
+      }
+      if (e.key === 'Tab') {
+        const focusable: HTMLElement[] = []
+        if (toggleRef.current) focusable.push(toggleRef.current)
+        if (menuRef.current) {
+          focusable.push(
+            ...menuRef.current.querySelectorAll<HTMLElement>('button, a[href], [tabindex]:not([tabindex="-1"])'),
+          )
+        }
+        if (focusable.length === 0) return
+        const first = focusable[0]!
+        const last = focusable[focusable.length - 1]!
+        if (e.shiftKey) {
+          if (document.activeElement === first) {
+            e.preventDefault()
+            last.focus()
+          }
+        } else {
+          if (document.activeElement === last) {
+            e.preventDefault()
+            first.focus()
+          }
+        }
+      }
     }
+
     document.addEventListener('keydown', handleKeyDown)
-    return () => document.removeEventListener('keydown', handleKeyDown)
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown)
+      document.body.classList.remove('modal-open')
+    }
   }, [menuOpen, setMenuOpen])
 
   return (
@@ -40,6 +76,7 @@ export function Navbar() {
         </div>
 
         <button
+          ref={toggleRef}
           type="button"
           className={styles.mobileToggle}
           aria-label={menuOpen ? 'Menü schließen' : 'Menü öffnen'}
@@ -58,19 +95,22 @@ export function Navbar() {
       </div>
 
       {menuOpen && (
-        <div id="mobile-menu" className={styles.mobileMenu} role="navigation" aria-label="Mobile Navigation">
-          {NAV_LINKS.map((link, i) => (
-            <button
-              type="button"
-              key={link.id}
-              onClick={() => scrollTo(link.id)}
-              className={`${styles.mobileLink} ${i < NAV_LINKS.length - 1 ? styles.mobileLinkBorder : ''} ${activeSection === link.id ? styles.mobileLinkActive : ''}`}
-              style={{ '--delay': `${i * 0.05}s` } as React.CSSProperties}
-            >
-              {link.label}
-            </button>
-          ))}
-        </div>
+        <>
+          <div className={styles.mobileOverlay} onClick={() => setMenuOpen(false)} aria-hidden="true" />
+          <div ref={menuRef} id="mobile-menu" className={styles.mobileMenu} role="navigation" aria-label="Mobile Navigation">
+            {NAV_LINKS.map((link, i) => (
+              <button
+                type="button"
+                key={link.id}
+                onClick={() => scrollTo(link.id)}
+                className={`${styles.mobileLink} ${i < NAV_LINKS.length - 1 ? styles.mobileLinkBorder : ''} ${activeSection === link.id ? styles.mobileLinkActive : ''}`}
+                style={{ '--delay': `${i * 0.05}s` } as React.CSSProperties}
+              >
+                {link.label}
+              </button>
+            ))}
+          </div>
+        </>
       )}
     </nav>
   )

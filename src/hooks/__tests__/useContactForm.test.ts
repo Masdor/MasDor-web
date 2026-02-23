@@ -58,7 +58,7 @@ describe('useContactForm', () => {
     expect(result.current.formErrors.nachricht).toBeUndefined()
   })
 
-  it('succeeds with valid data (no API configured)', async () => {
+  it('shows error with valid data when no API is configured', async () => {
     const { result } = renderHook(() => useContactForm())
     act(() => result.current.updateField('name', 'Max'))
     act(() => result.current.updateField('email', 'max@example.de'))
@@ -67,23 +67,22 @@ describe('useContactForm', () => {
       await result.current.handleSubmit({ preventDefault: () => {} } as React.FormEvent)
     })
     expect(result.current.formErrors).toEqual({})
-    expect(result.current.formSent).toBe(true)
+    expect(result.current.formSent).toBe(false)
+    expect(result.current.submitError).toBeTruthy()
     expect(result.current.formSubmitting).toBe(false)
   })
 
-  it('resets form via reset()', async () => {
+  it('resets form via reset()', () => {
     const { result } = renderHook(() => useContactForm())
     act(() => result.current.updateField('name', 'Max'))
     act(() => result.current.updateField('email', 'max@example.de'))
     act(() => result.current.updateField('nachricht', 'Hello'))
-    await act(async () => {
-      await result.current.handleSubmit({ preventDefault: () => {} } as React.FormEvent)
-    })
-    expect(result.current.formSent).toBe(true)
 
     act(() => result.current.reset())
     expect(result.current.formSent).toBe(false)
     expect(result.current.formData.name).toBe('')
+    expect(result.current.formData.email).toBe('')
+    expect(result.current.formData.nachricht).toBe('')
   })
 
   it('provides string error messages', async () => {
