@@ -11,7 +11,7 @@ export function Navbar() {
   useEffect(() => {
     if (!menuOpen) return
 
-    document.body.classList.add('modal-open')
+    document.body.classList.add('menu-open')
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
@@ -47,7 +47,7 @@ export function Navbar() {
     document.addEventListener('keydown', handleKeyDown)
     return () => {
       document.removeEventListener('keydown', handleKeyDown)
-      document.body.classList.remove('modal-open')
+      document.body.classList.remove('menu-open')
     }
   }, [menuOpen, setMenuOpen])
 
