@@ -1,4 +1,5 @@
 :root {
+  color-scheme: dark;
   --gold: #CFA956;
   --gold-light: #e0c47a;
   --dark: #0b0f15;
@@ -17,6 +18,8 @@
   --color-medical: #22c55e;
   --color-industrial: var(--gold);
   --color-it: #3b82f6;
+  --color-success: #22c55e;
+  --color-error: #ef4444;
   --radius-sm: 8px;
   --radius-md: 14px;
   --radius-lg: 20px;

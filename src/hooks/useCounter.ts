@@ -16,7 +16,8 @@ export function useCounter(end: number, duration = 2000, trigger = false) {
       if (startTime === null) startTime = timestamp
       const elapsed = timestamp - startTime
       const progress = Math.min(elapsed / duration, 1)
-      setVal(Math.floor(progress * end))
+      const eased = progress * (2 - progress)
+      setVal(Math.floor(eased * end))
       if (progress < 1) {
         rafId = requestAnimationFrame(step)
       }

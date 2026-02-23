@@ -15,7 +15,6 @@ export interface ServiceData {
   title: string
   accent: string
   accentText: string
-  shortDesc: string
   subtitle: string
   intro: string
   focus: ServiceFocus[]

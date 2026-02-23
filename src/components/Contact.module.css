@@ -21,7 +21,7 @@
 .successIcon {
   font-size: 48px;
   margin-bottom: 20px;
-  color: #22c55e;
+  color: var(--color-success);
   width: 80px;
   height: 80px;
   display: inline-flex;
@@ -54,7 +54,7 @@
   border: 1px solid rgba(207, 169, 86, 0.2);
   border-radius: var(--radius-md);
   cursor: pointer;
-  transition: all 0.25s var(--ease-out);
+  transition: background 0.25s var(--ease-out), border-color 0.25s var(--ease-out);
 }
 
 @media (hover: hover) {
@@ -104,14 +104,14 @@
 }
 
 .formError {
-  color: #ef4444;
+  color: var(--color-error);
   font-size: 13px;
   margin-top: 12px;
   text-align: center;
 }
 
 .fieldError {
-  color: #ef4444;
+  color: var(--color-error);
   font-size: 12px;
   margin-top: 4px;
 }
@@ -153,7 +153,7 @@
   background: rgba(255, 255, 255, 0.02);
   border-radius: var(--radius-md);
   border: 1px solid var(--card-border);
-  transition: all 0.3s var(--ease-out);
+  transition: border-color 0.3s var(--ease-out), background 0.3s var(--ease-out);
 }
 
 @media (hover: hover) {

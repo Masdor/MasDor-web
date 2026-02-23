@@ -51,12 +51,9 @@ export function ParticleField() {
     }
     window.addEventListener('resize', debouncedResize)
 
-    const w = () => c.offsetWidth
-    const h = () => c.offsetHeight
-
     const particles = Array.from({ length: particleCount }, () => ({
-      x: Math.random() * w(),
-      y: Math.random() * h(),
+      x: Math.random() * prevW,
+      y: Math.random() * prevH,
       r: Math.random() * 1.4 + 0.3,
       dx: (Math.random() - 0.5) * 0.25,
       dy: (Math.random() - 0.5) * 0.18,
@@ -64,8 +61,8 @@ export function ParticleField() {
     }))
 
     const draw = () => {
-      const lw = w()
-      const lh = h()
+      const lw = prevW
+      const lh = prevH
       ctx.clearRect(0, 0, lw, lh)
 
       for (const p of particles) {
