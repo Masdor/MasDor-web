@@ -138,6 +138,7 @@
   color: var(--gold);
   margin-bottom: var(--sp-2);
   letter-spacing: -0.02em;
+  transition: transform 0.3s var(--ease-spring);
 }
 
 .statLabel {
@@ -168,6 +169,16 @@
   color: var(--gold);
   opacity: 0.7;
   animation: scrollHint 2.5s ease infinite;
+}
+
+@media (hover: hover) {
+  .statCell:hover {
+    background: var(--gold-2);
+  }
+
+  .statCell:hover .statValue {
+    transform: scale(1.05);
+  }
 }
 
 @media (max-width: 768px) {

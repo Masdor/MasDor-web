@@ -39,7 +39,8 @@
   height: 2px;
   background: var(--accent, var(--gold));
   transform: scaleX(0);
-  transition: transform var(--tr-mid);
+  transform-origin: center;
+  transition: transform 0.35s var(--ease-spring);
 }
 
 .tabActive {
@@ -65,13 +66,15 @@
 
 .panel {
   opacity: 0;
-  transform: translateY(10px);
-  transition: opacity var(--tr-base), transform var(--tr-base);
+  transform: translateY(12px) scale(0.99);
+  transition:
+    opacity 0.2s var(--ease-out),
+    transform 0.3s var(--ease-out);
 }
 
 .panelVisible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
 
 .contentGrid {
@@ -87,6 +90,7 @@
   height: var(--sp-8);
   border-radius: 2px;
   background: var(--accent);
+  transform-origin: top;
 }
 
 .contentHeader {
@@ -142,6 +146,12 @@
     border-color: var(--white-12);
     background: rgba(255, 255, 255, 0.045);
   }
+
+  .focusCard:hover .focusIcon {
+    background: var(--gold-8);
+    transform: scale(1.08);
+    transition: background 0.3s var(--ease-out), transform 0.35s var(--ease-spring);
+  }
 }
 
 /* ─── Focus Cards ─── */
@@ -171,6 +181,7 @@
   justify-content: center;
   border-radius: 12px;
   background: rgba(207, 169, 86, 0.05);
+  transition: background 0.3s var(--ease-out), transform 0.3s var(--ease-out);
 }
 
 .focusTitle {
@@ -277,6 +288,42 @@
 .cta {
   margin-top: var(--sp-10);
   text-align: center;
+}
+
+/* ─── Staggered Panel Animations ─── */
+
+.panelVisible .focusCard {
+  animation: cardStagger 0.4s var(--ease-out) both;
+}
+
+.panelVisible .focusCard:nth-child(1) { animation-delay: 0.05s; }
+.panelVisible .focusCard:nth-child(2) { animation-delay: 0.1s; }
+.panelVisible .focusCard:nth-child(3) { animation-delay: 0.15s; }
+.panelVisible .focusCard:nth-child(4) { animation-delay: 0.2s; }
+
+.panelVisible .audienceCard {
+  animation: cardStagger 0.4s var(--ease-out) both;
+  animation-delay: 0.25s;
+}
+
+.panelVisible .strengthsCard {
+  animation: cardStagger 0.4s var(--ease-out) both;
+  animation-delay: 0.3s;
+}
+
+.panelVisible .accentBar {
+  animation: accentGrow 0.5s var(--ease-spring) 0.1s both;
+}
+
+@keyframes accentGrow {
+  from {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleY(1);
+    opacity: 1;
+  }
 }
 
 @media (max-width: 1024px) and (min-width: 769px) {

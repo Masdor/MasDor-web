@@ -1,6 +1,5 @@
 .wrapper {
   opacity: 0;
-  transform: translateY(28px);
   transition:
     opacity 0.7s var(--ease-out),
     transform 0.7s var(--ease-out);
@@ -8,8 +7,30 @@
   will-change: opacity, transform;
 }
 
+/* === Direction variants === */
+
+.dir-up {
+  transform: translateY(28px);
+}
+
+.dir-down {
+  transform: translateY(-28px);
+}
+
+.dir-left {
+  transform: translateX(-40px);
+}
+
+.dir-right {
+  transform: translateX(40px);
+}
+
+.dir-none {
+  transform: none;
+}
+
 .visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) translateX(0);
   will-change: auto;
 }

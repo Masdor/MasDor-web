@@ -237,10 +237,10 @@ select:focus {
 
 @keyframes shimmer {
   0% {
-    background-position: -200% 0;
+    background-position: 300% 0;
   }
   100% {
-    background-position: 200% 0;
+    background-position: -300% 0;
   }
 }
 
@@ -252,6 +252,17 @@ select:focus {
   50% {
     opacity: 1;
     filter: blur(80px);
+  }
+}
+
+@keyframes cardStagger {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 

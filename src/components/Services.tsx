@@ -18,10 +18,15 @@ export function Services() {
   const switchTab = useCallback((index: number) => {
     if (index === activeService) return
     setPanelVisible(false)
-    setTimeout(() => {
+    const timeout = setTimeout(() => {
       setActiveService(index)
-      setPanelVisible(true)
-    }, 180)
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setPanelVisible(true)
+        })
+      })
+    }, 200)
+    return () => clearTimeout(timeout)
   }, [activeService])
 
   const handleTabKeyDown = useCallback((e: React.KeyboardEvent, index: number) => {

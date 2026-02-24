@@ -4,6 +4,7 @@ import { Navbar } from '@/components/Navbar'
 import { Hero } from '@/components/Hero'
 import { ErrorBoundary } from '@/components/ErrorBoundary'
 import { BackToTop } from '@/components/ui/BackToTop'
+import { ScrollProgress } from '@/components/ui/ScrollProgress'
 import styles from './App.module.css'
 
 const Services = lazy(() => import('@/components/Services').then(m => ({ default: m.Services })))
@@ -61,6 +62,7 @@ export default function App() {
   return (
     <NavigationProvider>
       <div className={styles.app}>
+        <ScrollProgress />
         <Navbar />
         <main>
           <Hero />
