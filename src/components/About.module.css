@@ -29,11 +29,11 @@
 }
 
 .valueCard:nth-child(2) {
-  --card-accent: #22c55e;
+  --card-accent: var(--color-medical);
 }
 
 .valueCard:nth-child(3) {
-  --card-accent: #3b82f6;
+  --card-accent: var(--color-it);
 }
 
 @media (hover: hover) {

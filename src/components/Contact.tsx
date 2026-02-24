@@ -102,7 +102,7 @@ export function Contact() {
                       id="contact-betreff"
                       value={formData.betreff}
                       onChange={e => updateField('betreff', e.target.value)}
-                      className={shared.input}
+                      className={`${shared.input} ${shared.select}`}
                       disabled={formSubmitting}
                     >
                       <option>Allgemeine Anfrage</option>
