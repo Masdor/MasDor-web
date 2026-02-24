@@ -4,8 +4,8 @@
  * Exits with code 1 if total JS exceeds the budget (default 250 KB gzipped estimate).
  */
 
-import { readdirSync, statSync } from 'fs'
-import { join } from 'path'
+import { readdirSync, statSync, appendFileSync } from 'node:fs'
+import { join } from 'node:path'
 
 const DIST = 'dist/assets'
 const JS_BUDGET_KB = 250
@@ -53,6 +53,24 @@ try {
   } else {
     console.log(`\n✓ JS within budget (${fmt(totalJs)} / ${JS_BUDGET_KB} KB)`)
   }
+
+  // GitHub Actions Job Summary
+  if (process.env.GITHUB_STEP_SUMMARY) {
+    const summary = [
+      '## Bundle Report',
+      '',
+      '| File | Size |',
+      '|------|------|',
+      ...jsFiles.map((f) => `| \`${f.name}\` | ${fmt(f.size)} |`),
+      ...cssFiles.map((f) => `| \`${f.name}\` | ${fmt(f.size)} |`),
+      '',
+      `**Total JS:** ${fmt(totalJs)} / ${JS_BUDGET_KB} KB budget`,
+      `**Total CSS:** ${fmt(totalCss)}`,
+      `**Total:** ${fmt(totalJs + totalCss)}`,
+    ].join('\n')
+    appendFileSync(process.env.GITHUB_STEP_SUMMARY, summary)
+  }
+
   console.log('')
 } catch {
   console.error('Could not read dist/assets/. Run `npm run build` first.')

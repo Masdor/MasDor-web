@@ -1,9 +1,41 @@
+# Dependencies
 node_modules
+
+# Build output
 dist
+coverage
+
+# Version control
 .git
 .github
+.gitignore
+
+# IDE & Editor
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# Documentation
 *.md
 !README.md
+docs/
+
+# Environment
 .env*
-.vscode
-coverage
+
+# Test files (not needed in Docker build)
+**/__tests__/
+**/*.test.ts
+**/*.test.tsx
+**/*.spec.ts
+**/*.spec.tsx
+
+# Development tools
+scripts/
+eslint.config.*
+
+# OS artifacts
+.DS_Store
+Thumbs.db
