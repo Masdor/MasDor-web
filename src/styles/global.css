@@ -193,7 +193,7 @@ textarea:focus-visible,
 select:focus-visible {
   border-color: var(--gold) !important;
   outline: none;
-  box-shadow: 0 0 0 3px rgba(207, 169, 86, 0.25);
+  box-shadow: 0 0 0 3px var(--gold-25);
 }
 
 /* ─── Skip to Content ─── */

@@ -12,9 +12,9 @@
   padding: var(--sp-12) var(--sp-12);
   background: linear-gradient(
     135deg,
-    rgba(207, 169, 86, 0.04) 0%,
-    rgba(207, 169, 86, 0.08) 50%,
-    rgba(207, 169, 86, 0.04) 100%
+    var(--gold-4) 0%,
+    var(--gold-8) 50%,
+    var(--gold-4) 100%
   );
   border: 1px solid var(--gold-10);
   border-radius: var(--radius-xl);
