@@ -92,13 +92,14 @@
   font-weight: 600;
   font-size: var(--fs-3xl);
   color: var(--gold);
-  transition: border-color var(--tr-slow), background var(--tr-slow);
+  transition: border-color var(--tr-slow), background var(--tr-slow), transform 0.35s var(--ease-spring);
 }
 
 @media (hover: hover) {
   .teamCard:hover .avatar {
     border-color: var(--gold-30);
     background: linear-gradient(135deg, var(--gold-18), var(--gold-6));
+    transform: scale(1.05);
   }
 }
 

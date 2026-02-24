@@ -19,14 +19,14 @@ export function Hero() {
       <div className={styles.glowGreen} />
 
       <div className={styles.content}>
-        <Reveal>
+        <Reveal direction="left">
           <div className={styles.tagline}>
             <span className={styles.statusDot} />
             ENGINEERING · DIAGNOSTICS · RELIABILITY
           </div>
         </Reveal>
 
-        <Reveal delay={0.08}>
+        <Reveal delay={0.08} direction="left">
           <h1 className={styles.title}>
             Precision Engineering.<br />
             <span className={styles.titleAccent}>Intelligente Lösungen.</span>
@@ -48,7 +48,7 @@ export function Hero() {
           </div>
         </Reveal>
 
-        <Reveal delay={0.4}>
+        <Reveal delay={0.4} direction="none">
           <div ref={statsRef} className={styles.statsGrid}>
             {[
               { label: 'Fachbereiche', static: '3' },

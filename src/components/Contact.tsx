@@ -24,7 +24,7 @@ export function Contact() {
         </Reveal>
 
         <div className={styles.grid}>
-          <Reveal delay={0.1}>
+          <Reveal delay={0.1} direction="left">
             {formSent ? (
               <div className={styles.success}>
                 <div className={styles.successIcon}>
@@ -155,7 +155,7 @@ export function Contact() {
             )}
           </Reveal>
 
-          <Reveal delay={0.2}>
+          <Reveal delay={0.2} direction="right">
             <div className={styles.infoStack}>
               <div className={styles.infoCard}>
                 <h4 className={styles.infoTitle}>Direkter Kontakt</h4>

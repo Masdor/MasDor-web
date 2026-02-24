@@ -25,7 +25,7 @@ export function About() {
 
         <div className={styles.valueGrid}>
           {VALUE_CARDS.map((card, i) => (
-            <Reveal key={card.title} delay={i * 0.1}>
+            <Reveal key={card.title} delay={i * 0.1} direction={i === 0 ? 'left' : i === 2 ? 'right' : 'up'}>
               <HoverCard glowOnHover className={`${shared.cardDark} ${styles.valueCard}`}>
                 <h3 className={styles.valueTitle}>{card.title}</h3>
                 <p className={styles.valueText}>{card.text}</p>
