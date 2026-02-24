@@ -12,6 +12,8 @@ const Process = lazy(() => import('@/components/Process').then(m => ({ default: 
 const TrustBar = lazy(() => import('@/components/TrustBar').then(m => ({ default: m.TrustBar })))
 const About = lazy(() => import('@/components/About').then(m => ({ default: m.About })))
 const Portfolio = lazy(() => import('@/components/Portfolio').then(m => ({ default: m.Portfolio })))
+const Faq = lazy(() => import('@/components/Faq').then(m => ({ default: m.Faq })))
+const CtaBanner = lazy(() => import('@/components/CtaBanner').then(m => ({ default: m.CtaBanner })))
 const Contact = lazy(() => import('@/components/Contact').then(m => ({ default: m.Contact })))
 const Footer = lazy(() => import('@/components/Footer').then(m => ({ default: m.Footer })))
 const Legal = lazy(() => import('@/components/Legal').then(m => ({ default: m.Legal })))
@@ -79,6 +81,8 @@ export default function App() {
               <TrustBar />
               <About />
               <Portfolio />
+              <Faq />
+              <CtaBanner />
               <Contact />
               <Footer />
             </Suspense>

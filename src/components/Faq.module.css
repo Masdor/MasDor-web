@@ -1,0 +1,118 @@
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.item {
+  border-bottom: 1px solid var(--card-border);
+}
+
+.item:first-child {
+  border-top: 1px solid var(--card-border);
+}
+
+.trigger {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--sp-4);
+  padding: var(--sp-6) var(--sp-2);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  transition: color var(--tr-mid);
+}
+
+@media (hover: hover) {
+  .trigger:hover {
+    color: var(--gold);
+  }
+}
+
+.question {
+  font-size: var(--fs-lg);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.chevron {
+  flex-shrink: 0;
+  color: var(--text-secondary);
+  transition: transform 0.3s var(--ease-out), color 0.3s var(--ease-out);
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+  color: var(--gold);
+}
+
+/* ─── Animated Content ─── */
+
+.content {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition:
+    max-height 0.35s var(--ease-out),
+    opacity 0.25s var(--ease-out);
+}
+
+.itemOpen .content {
+  max-height: var(--content-height, 300px);
+  opacity: 1;
+  transition:
+    max-height 0.4s var(--ease-out),
+    opacity 0.3s var(--ease-out) 0.05s;
+}
+
+.answer {
+  padding: 0 var(--sp-2) var(--sp-6);
+  font-size: var(--fs-md);
+  color: var(--text-body);
+  line-height: 1.8;
+}
+
+/* ─── Open State Accent ─── */
+
+.itemOpen {
+  border-color: var(--gold-12);
+}
+
+.itemOpen .trigger {
+  color: var(--text-primary);
+}
+
+/* ─── Responsive ─── */
+
+@media (max-width: 768px) {
+  .trigger {
+    padding: var(--sp-5) 0;
+  }
+
+  .question {
+    font-size: var(--fs-md);
+  }
+
+  .answer {
+    padding: 0 0 var(--sp-5);
+    font-size: var(--fs-base-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .question {
+    font-size: var(--fs-base-sm);
+  }
+
+  .answer {
+    font-size: var(--fs-sm);
+    line-height: 1.75;
+  }
+}

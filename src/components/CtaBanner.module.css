@@ -1,0 +1,106 @@
+.wrapper {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-10);
+  padding: var(--sp-12) var(--sp-12);
+  background: linear-gradient(
+    135deg,
+    rgba(207, 169, 86, 0.04) 0%,
+    rgba(207, 169, 86, 0.08) 50%,
+    rgba(207, 169, 86, 0.04) 100%
+  );
+  border: 1px solid var(--gold-10);
+  border-radius: var(--radius-xl);
+  position: relative;
+  overflow: hidden;
+}
+
+.banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-25), transparent);
+}
+
+.content {
+  flex: 1;
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: var(--sp-3);
+}
+
+.title {
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: var(--sp-2);
+  line-height: 1.3;
+}
+
+.subtitle {
+  font-size: var(--fs-md);
+  color: var(--text-body);
+  line-height: 1.6;
+  max-width: 520px;
+}
+
+.ctaBtn {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* ─── Responsive ─── */
+
+@media (max-width: 768px) {
+  .banner {
+    flex-direction: column;
+    text-align: center;
+    padding: var(--sp-10) var(--sp-8);
+    gap: var(--sp-7);
+  }
+
+  .subtitle {
+    max-width: none;
+  }
+
+  .ctaBtn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .wrapper {
+    padding: 0 16px;
+  }
+
+  .banner {
+    padding: var(--sp-8) var(--sp-6);
+    gap: var(--sp-6);
+  }
+
+  .title {
+    font-size: clamp(1.2rem, 5vw, 1.5rem);
+  }
+
+  .subtitle {
+    font-size: var(--fs-base-sm);
+  }
+}
