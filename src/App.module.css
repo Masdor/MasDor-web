@@ -8,36 +8,3 @@
   line-height: 1.6;
 }
 
-.loading {
-  min-height: 60vh;
-  padding: 80px 24px;
-  max-width: var(--container-max);
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.loading::before,
-.loading::after {
-  content: '';
-  display: block;
-  border-radius: var(--radius-lg);
-  background: linear-gradient(
-    90deg,
-    var(--white-4) 0%,
-    var(--white-8) 20%,
-    var(--white-4) 40%,
-    var(--white-4) 100%
-  );
-  background-size: 300% 100%;
-  animation: shimmer 2s ease-in-out infinite;
-}
-
-.loading::before {
-  height: 280px;
-}
-
-.loading::after {
-  height: 180px;
-}

@@ -1,0 +1,33 @@
+.skeleton {
+  padding: 80px 24px;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.row {
+  border-radius: var(--radius-lg);
+  background: linear-gradient(
+    90deg,
+    var(--white-4) 0%,
+    var(--white-8) 20%,
+    var(--white-4) 40%,
+    var(--white-4) 100%
+  );
+  background-size: 300% 100%;
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+@media (max-width: 768px) {
+  .skeleton {
+    padding: 60px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .skeleton {
+    padding: 48px 16px;
+  }
+}

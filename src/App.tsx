@@ -5,6 +5,7 @@ import { Hero } from '@/components/Hero'
 import { ErrorBoundary } from '@/components/ErrorBoundary'
 import { BackToTop } from '@/components/ui/BackToTop'
 import { ScrollProgress } from '@/components/ui/ScrollProgress'
+import { SectionSkeleton } from '@/components/ui/SectionSkeleton'
 import styles from './App.module.css'
 
 const Services = lazy(() => import('@/components/Services').then(m => ({ default: m.Services })))
@@ -73,16 +74,35 @@ export default function App() {
         <main>
           <Hero />
           <ErrorBoundary variant="section">
-            <Suspense fallback={<div className={styles.loading} aria-busy="true" />}>
+            {/* Gruppe 1 — Direkt nach Hero, höchste Lade-Priorität */}
+            <Suspense fallback={
+              <SectionSkeleton rows={[56, 320, 200]} aria-label="Leistungen werden geladen" />
+            }>
               <Services />
               <Process />
             </Suspense>
-            <Suspense fallback={<div className={styles.loading} aria-busy="true" />}>
+
+            {/* Gruppe 2 — Mittlerer Bereich */}
+            <Suspense fallback={
+              <SectionSkeleton rows={[80, 180, 180, 180]} aria-label="Über uns wird geladen" />
+            }>
               <TrustBar />
               <About />
+            </Suspense>
+
+            {/* Gruppe 3 — Inhaltslastig */}
+            <Suspense fallback={
+              <SectionSkeleton rows={[56, 240, 240, 160]} aria-label="Referenzen werden geladen" />
+            }>
               <Portfolio />
               <Faq />
               <CtaBanner />
+            </Suspense>
+
+            {/* Gruppe 4 — Seitenende */}
+            <Suspense fallback={
+              <SectionSkeleton rows={[56, 280, 80]} aria-label="Kontakt wird geladen" />
+            }>
               <Contact />
               <Footer />
             </Suspense>
