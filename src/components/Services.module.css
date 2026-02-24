@@ -162,7 +162,7 @@
 }
 
 .focusIcon {
-  font-size: var(--fs-4xl);
+  color: var(--gold);
   flex-shrink: 0;
   width: 46px;
   height: 46px;
@@ -220,11 +220,11 @@
 }
 
 .audienceArrow {
-  font-family: var(--font-mono);
-  font-size: var(--fs-lg);
-  margin-top: 1px;
-  flex-shrink: 0;
   color: var(--accent);
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-top: 1px;
 }
 
 .audienceText {

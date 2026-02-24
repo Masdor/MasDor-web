@@ -15,8 +15,6 @@
 }
 
 .icon {
-  font-family: var(--font-mono);
-  font-size: var(--fs-8xl);
   color: var(--gold);
   margin-bottom: var(--sp-6);
 }

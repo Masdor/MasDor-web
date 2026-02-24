@@ -9,7 +9,6 @@
   background: rgba(11, 15, 21, 0.85);
   border: 1px solid var(--gold-15);
   color: var(--gold);
-  font-size: var(--fs-2xl);
   cursor: pointer;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);

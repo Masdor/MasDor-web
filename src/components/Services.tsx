@@ -1,7 +1,9 @@
 import { useState, useRef, useCallback } from 'react'
+import { ArrowRight } from 'lucide-react'
 import { useNavigation } from '@/context/useNavigation'
 import { Reveal } from '@/components/ui/Reveal'
 import { HoverCard } from '@/components/ui/HoverCard'
+import { Icon } from '@/components/ui/Icon'
 import { SERVICES } from '@/data/services'
 import shared from '@/styles/shared.module.css'
 import styles from './Services.module.css'
@@ -95,7 +97,9 @@ export function Services() {
             <div className={styles.focusCards}>
               {svc.focus.map((f) => (
                 <HoverCard key={f.title} accentColor={svc.accent} className={styles.focusCard}>
-                  <div className={styles.focusIcon} aria-hidden="true">{f.icon}</div>
+                  <div className={styles.focusIcon} aria-hidden="true">
+                    <Icon icon={f.icon} size={22} />
+                  </div>
                   <div>
                     <h4 className={styles.focusTitle}>{f.title}</h4>
                     <p className={styles.focusDesc}>{f.desc}</p>
@@ -110,7 +114,9 @@ export function Services() {
               <h4 className={styles.audienceTitle}>Zielgruppe</h4>
               {svc.audience.map((a) => (
                 <div key={a} className={styles.audienceItem}>
-                  <span className={styles.audienceArrow} aria-hidden="true">→</span>
+                  <span className={styles.audienceArrow} aria-hidden="true">
+                    <ArrowRight size={16} strokeWidth={2} />
+                  </span>
                   <p className={styles.audienceText}>{a}</p>
                 </div>
               ))}

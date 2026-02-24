@@ -3,8 +3,10 @@ export interface NavLink {
   label: string
 }
 
+import type { LucideIcon } from 'lucide-react'
+
 export interface ServiceFocus {
-  icon: string
+  icon: LucideIcon
   title: string
   desc: string
 }
@@ -27,7 +29,7 @@ export interface ProcessStep {
   num: string
   title: string
   desc: string
-  icon: string
+  icon: LucideIcon
 }
 
 export interface TeamMember {

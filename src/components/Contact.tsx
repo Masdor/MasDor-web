@@ -1,3 +1,4 @@
+import { Check } from 'lucide-react'
 import { Reveal } from '@/components/ui/Reveal'
 import { useContactForm } from '@/hooks/useContactForm'
 import { CONTACT_PERSONS, COMPANY_INFO } from '@/data/team'
@@ -26,7 +27,9 @@ export function Contact() {
           <Reveal delay={0.1}>
             {formSent ? (
               <div className={styles.success}>
-                <div className={styles.successIcon}>✓</div>
+                <div className={styles.successIcon}>
+                  <Check size={36} strokeWidth={2.5} />
+                </div>
                 <h3 className={styles.successTitle}>Nachricht gesendet</h3>
                 <p className={styles.successText}>Wir melden uns in der Regel innerhalb von 24 Stunden.</p>
                 <button type="button" onClick={reset} className={styles.resetBtn}>

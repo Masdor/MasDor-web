@@ -1,3 +1,4 @@
+import { ArrowUp } from 'lucide-react'
 import { useNavigation } from '@/context/useNavigation'
 import styles from './BackToTop.module.css'
 
@@ -11,7 +12,7 @@ export function BackToTop() {
       aria-label="Nach oben"
       className={`${styles.button} ${showBackToTop ? styles.visible : ''}`}
     >
-      ↑
+      <ArrowUp size={20} strokeWidth={2} />
     </button>
   )
 }

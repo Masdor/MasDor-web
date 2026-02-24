@@ -19,7 +19,6 @@
 }
 
 .successIcon {
-  font-size: var(--fs-8xl);
   margin-bottom: var(--sp-5);
   color: var(--color-success);
   width: 80px;
