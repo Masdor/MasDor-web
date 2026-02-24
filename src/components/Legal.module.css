@@ -24,6 +24,7 @@
   padding: 48px 40px;
   position: relative;
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s var(--ease-out), opacity 0.3s var(--ease-out);
 }
 
 .close {
@@ -41,7 +42,7 @@
   align-items: center;
   justify-content: center;
   border-radius: var(--radius-sm);
-  transition: all 0.2s ease;
+  transition: color 0.2s ease, background 0.2s ease;
 }
 
 @media (hover: hover) {

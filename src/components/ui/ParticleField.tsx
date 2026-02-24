@@ -22,6 +22,15 @@ export function ParticleField() {
     let prevW = c.offsetWidth
     let prevH = c.offsetHeight
 
+    const particles = Array.from({ length: particleCount }, () => ({
+      x: Math.random() * prevW,
+      y: Math.random() * prevH,
+      r: Math.random() * 1.4 + 0.3,
+      dx: (Math.random() - 0.5) * 0.25,
+      dy: (Math.random() - 0.5) * 0.18,
+      a: Math.random() * 0.25 + 0.05,
+    }))
+
     const resize = () => {
       const dpr = Math.min(window.devicePixelRatio || 1, 2)
       const newW = c.offsetWidth
@@ -50,15 +59,6 @@ export function ParticleField() {
       resizeTimer = setTimeout(resize, 150)
     }
     window.addEventListener('resize', debouncedResize)
-
-    const particles = Array.from({ length: particleCount }, () => ({
-      x: Math.random() * prevW,
-      y: Math.random() * prevH,
-      r: Math.random() * 1.4 + 0.3,
-      dx: (Math.random() - 0.5) * 0.25,
-      dy: (Math.random() - 0.5) * 0.18,
-      a: Math.random() * 0.25 + 0.05,
-    }))
 
     const draw = () => {
       const lw = prevW
