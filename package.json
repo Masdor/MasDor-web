@@ -16,7 +16,8 @@
     "test:coverage": "vitest run --coverage",
     "typecheck": "tsc -b --noEmit",
     "check": "npm run typecheck && npm run lint && npm run test && npm run build",
-    "clean": "rm -rf dist node_modules/.vite"
+    "clean": "rm -rf dist node_modules/.vite",
+    "optimize:images": "node scripts/optimize-images.mjs"
   },
   "dependencies": {
     "@fontsource-variable/dm-sans": "^5.2.8",
