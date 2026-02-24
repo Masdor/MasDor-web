@@ -1,5 +1,6 @@
 import { Component, type ReactNode } from 'react'
 import { AlertTriangle } from 'lucide-react'
+import i18n from '@/i18n'
 import styles from './ErrorBoundary.module.css'
 
 interface Props {
@@ -23,15 +24,17 @@ export class ErrorBoundary extends Component<Props, State> {
   }
 
   render() {
+    const t = i18n.t.bind(i18n)
+
     if (this.state.hasError) {
       if (this.props.variant === 'section') {
         return (
           <div className={styles.sectionError}>
             <p className={styles.sectionMessage}>
-              Inhalte konnten nicht geladen werden.
+              {t('error.sectionMessage')}
             </p>
             <button type="button" onClick={() => window.location.reload()} className={`${styles.reload} ${styles.sectionReload}`}>
-              Seite neu laden
+              {t('error.reload')}
             </button>
           </div>
         )
@@ -42,12 +45,12 @@ export class ErrorBoundary extends Component<Props, State> {
             <div className={styles.icon}>
               <AlertTriangle size={48} strokeWidth={1.5} />
             </div>
-            <h1 className={styles.title}>Etwas ist schiefgelaufen</h1>
+            <h1 className={styles.title}>{t('error.title')}</h1>
             <p className={styles.message}>
-              Ein unerwarteter Fehler ist aufgetreten. Bitte laden Sie die Seite neu.
+              {t('error.message')}
             </p>
             <button type="button" onClick={() => window.location.reload()} className={styles.reload}>
-              Seite neu laden
+              {t('error.reload')}
             </button>
           </div>
         </div>

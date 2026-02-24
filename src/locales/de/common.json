@@ -1,0 +1,45 @@
+{
+  "nav": {
+    "home": "Start",
+    "services": "Leistungen",
+    "process": "Methode",
+    "portfolio": "Referenzen",
+    "about": "Über uns",
+    "contact": "Kontakt",
+    "cta": "Anfrage senden",
+    "menuOpen": "Menü öffnen",
+    "menuClose": "Menü schließen",
+    "mainNav": "Hauptnavigation",
+    "mobileNav": "Mobile Navigation"
+  },
+  "footer": {
+    "tagline": "LAB-ROOT — Engineering mit Verantwortung",
+    "copyright": "© {{year}} LAB-ROOT. Alle Rechte vorbehalten.",
+    "imprint": "Impressum",
+    "privacy": "Datenschutz",
+    "navLabel": "Footer Navigation"
+  },
+  "cookie": {
+    "text": "Diese Website verwendet ausschließlich technisch notwendige Cookies. Keine Tracking- oder Analyse-Cookies.",
+    "privacyLink": "Datenschutzerklärung",
+    "accept": "Akzeptieren",
+    "reject": "Ablehnen",
+    "ariaLabel": "Cookie-Einstellungen"
+  },
+  "error": {
+    "title": "Etwas ist schiefgelaufen",
+    "message": "Ein unerwarteter Fehler ist aufgetreten. Bitte laden Sie die Seite neu.",
+    "reload": "Seite neu laden",
+    "sectionMessage": "Inhalte konnten nicht geladen werden."
+  },
+  "language": {
+    "switchLabel": "Sprache wechseln"
+  },
+  "backToTop": "Nach oben",
+  "cta": {
+    "label": "Bereit für strukturierte Technik?",
+    "title": "Lassen Sie uns Ihr nächstes Projekt besprechen.",
+    "subtitle": "Ob Fehleranalyse, Systemoptimierung oder Neuaufbau — wir hören zu, analysieren und liefern.",
+    "button": "Projekt anfragen"
+  }
+}

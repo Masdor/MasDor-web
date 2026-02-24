@@ -1,18 +1,20 @@
 import { useState, useRef, useCallback } from 'react'
 import { ArrowRight } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import { useNavigation } from '@/context/useNavigation'
 import { Reveal } from '@/components/ui/Reveal'
 import { HoverCard } from '@/components/ui/HoverCard'
 import { Icon } from '@/components/ui/Icon'
-import { SERVICES } from '@/data/services'
+import { SERVICES_META } from '@/data/services'
 import shared from '@/styles/shared.module.css'
 import styles from './Services.module.css'
 
 export function Services() {
   const { scrollTo } = useNavigation()
+  const { t } = useTranslation('services')
   const [activeService, setActiveService] = useState(0)
   const [panelVisible, setPanelVisible] = useState(true)
-  const svc = SERVICES[activeService]!
+  const svc = SERVICES_META[activeService]!
   const tabsRef = useRef<(HTMLButtonElement | null)[]>([])
 
   const switchTab = useCallback((index: number) => {
@@ -31,10 +33,10 @@ export function Services() {
 
   const handleTabKeyDown = useCallback((e: React.KeyboardEvent, index: number) => {
     let next: number | null = null
-    if (e.key === 'ArrowRight') next = (index + 1) % SERVICES.length
-    else if (e.key === 'ArrowLeft') next = (index - 1 + SERVICES.length) % SERVICES.length
+    if (e.key === 'ArrowRight') next = (index + 1) % SERVICES_META.length
+    else if (e.key === 'ArrowLeft') next = (index - 1 + SERVICES_META.length) % SERVICES_META.length
     else if (e.key === 'Home') next = 0
-    else if (e.key === 'End') next = SERVICES.length - 1
+    else if (e.key === 'End') next = SERVICES_META.length - 1
 
     if (next !== null) {
       e.preventDefault()
@@ -43,20 +45,30 @@ export function Services() {
     }
   }, [switchTab])
 
+  const items = t('items', { returnObjects: true }) as Array<{
+    subtitle: string
+    intro: string
+    focus: Array<{ title: string; desc: string }>
+    principles: string[]
+    audience: string[]
+    strengths: string[]
+  }>
+  const svcText = items[activeService]!
+
   return (
     <section id="leistungen" className={`${shared.section} ${shared.sectionDarker} ${shared.sectionWithDivider} ${styles.sectionDivider}`}>
       <div className={shared.container}>
         <Reveal>
           <div className={shared.sectionHeader}>
-            <span className={shared.tagBadge}>LEISTUNGEN</span>
-            <h2 className={shared.sectionTitle}>Drei Bereiche. Ein Anspruch.</h2>
-            <p className={`${shared.subtitle} ${shared.subtitleCentered}`}>Technische Exzellenz, strukturiertes Vorgehen und nachvollziehbare Ergebnisse.</p>
+            <span className={shared.tagBadge}>{t('sectionTag')}</span>
+            <h2 className={shared.sectionTitle}>{t('sectionTitle')}</h2>
+            <p className={`${shared.subtitle} ${shared.subtitleCentered}`}>{t('sectionSubtitle')}</p>
           </div>
         </Reveal>
 
         <Reveal delay={0.1}>
           <div className={styles.tabs} role="tablist">
-            {SERVICES.map((s, i) => (
+            {SERVICES_META.map((s, i) => (
               <button
                 type="button"
                 key={s.key}
@@ -92,19 +104,19 @@ export function Services() {
                 <div className={styles.accentBar} aria-hidden="true" />
                 <h3 className={styles.contentTitle}><span lang="en">{svc.title}</span></h3>
               </div>
-              <p className={styles.contentSubtitle}>{svc.subtitle}</p>
-              <p className={styles.contentIntro}>{svc.intro}</p>
+              <p className={styles.contentSubtitle}>{svcText.subtitle}</p>
+              <p className={styles.contentIntro}>{svcText.intro}</p>
               <div className={styles.principles}>
-                {svc.principles.map((p) => (
+                {svcText.principles.map((p) => (
                   <span key={p} className={styles.principle}>{p}</span>
                 ))}
               </div>
             </div>
             <div className={styles.focusCards}>
-              {svc.focus.map((f) => (
+              {svcText.focus.map((f, fi) => (
                 <HoverCard key={f.title} accentColor={svc.accent} className={styles.focusCard}>
                   <div className={styles.focusIcon} aria-hidden="true">
-                    <Icon icon={f.icon} size={22} />
+                    <Icon icon={svc.focusIcons[fi]!} size={22} />
                   </div>
                   <div>
                     <h4 className={styles.focusTitle}>{f.title}</h4>
@@ -117,8 +129,8 @@ export function Services() {
 
           <div className={styles.bottomGrid}>
             <div className={styles.audienceCard}>
-              <h4 className={styles.audienceTitle}>Zielgruppe</h4>
-              {svc.audience.map((a) => (
+              <h4 className={styles.audienceTitle}>{t('audienceTitle')}</h4>
+              {svcText.audience.map((a) => (
                 <div key={a} className={styles.audienceItem}>
                   <span className={styles.audienceArrow} aria-hidden="true">
                     <ArrowRight size={16} strokeWidth={2} />
@@ -128,8 +140,8 @@ export function Services() {
               ))}
             </div>
             <div className={styles.strengthsCard}>
-              <h4 className={`${styles.audienceTitle} ${styles.strengthsTitle}`}>Warum LAB-ROOT</h4>
-              {svc.strengths.map((s) => (
+              <h4 className={`${styles.audienceTitle} ${styles.strengthsTitle}`}>{t('strengthsTitle')}</h4>
+              {svcText.strengths.map((s) => (
                 <div key={s} className={styles.strengthItem}>
                   <div className={styles.strengthBar} aria-hidden="true" />
                   <p className={styles.strengthText}>{s}</p>
@@ -144,7 +156,7 @@ export function Services() {
               onClick={() => scrollTo('kontakt')}
               className={`${shared.btn} ${styles.ctaBtn}`}
             >
-              {svc.title}-Anfrage senden
+              {svc.title}{t('ctaSuffix')}
             </button>
           </div>
         </div>

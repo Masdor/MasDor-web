@@ -1,13 +1,16 @@
 import { useState, useCallback, useRef } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Reveal } from '@/components/ui/Reveal'
 import { ChevronDown } from 'lucide-react'
-import { FAQ_ITEMS } from '@/data/faq'
+import { FAQ_IDS } from '@/data/faq'
 import shared from '@/styles/shared.module.css'
 import styles from './Faq.module.css'
 
 export function Faq() {
+  const { t } = useTranslation('faq')
   const [openId, setOpenId] = useState<string | null>(null)
   const contentRefs = useRef<Map<string, HTMLDivElement>>(new Map())
+  const items = t('items', { returnObjects: true }) as Array<{ question: string; answer: string }>
 
   const toggle = useCallback((id: string) => {
     setOpenId(prev => (prev === id ? null : id))
@@ -19,20 +22,20 @@ export function Faq() {
 
       if (e.key === 'ArrowDown') {
         e.preventDefault()
-        targetIndex = (index + 1) % FAQ_ITEMS.length
+        targetIndex = (index + 1) % FAQ_IDS.length
       } else if (e.key === 'ArrowUp') {
         e.preventDefault()
-        targetIndex = (index - 1 + FAQ_ITEMS.length) % FAQ_ITEMS.length
+        targetIndex = (index - 1 + FAQ_IDS.length) % FAQ_IDS.length
       } else if (e.key === 'Home') {
         e.preventDefault()
         targetIndex = 0
       } else if (e.key === 'End') {
         e.preventDefault()
-        targetIndex = FAQ_ITEMS.length - 1
+        targetIndex = FAQ_IDS.length - 1
       }
 
       if (targetIndex !== null) {
-        const targetId = FAQ_ITEMS[targetIndex]!.id
+        const targetId = FAQ_IDS[targetIndex]!
         document.getElementById(`${targetId}-trigger`)?.focus()
       }
     },
@@ -44,30 +47,31 @@ export function Faq() {
       <div className={shared.containerNarrow}>
         <Reveal>
           <div className={shared.sectionHeader}>
-            <span className={shared.tagBadge}>FAQ</span>
-            <h2 className={shared.sectionTitle}>Häufige Fragen</h2>
+            <span className={shared.tagBadge}>{t('sectionTag')}</span>
+            <h2 className={shared.sectionTitle}>{t('sectionTitle')}</h2>
             <p className={`${shared.subtitle} ${shared.subtitleCentered}`}>
-              Antworten auf die wichtigsten Fragen zu unserer Arbeitsweise und unserem Angebot.
+              {t('sectionSubtitle')}
             </p>
           </div>
         </Reveal>
 
         <div className={styles.accordion} role="presentation">
-          {FAQ_ITEMS.map((item, index) => {
-            const isOpen = openId === item.id
+          {FAQ_IDS.map((id, index) => {
+            const isOpen = openId === id
+            const item = items[index]!
 
             return (
-              <Reveal key={item.id} delay={index * 0.05}>
+              <Reveal key={id} delay={index * 0.05}>
                 <div className={`${styles.item} ${isOpen ? styles.itemOpen : ''}`}>
                   <h3>
                     <button
-                      id={`${item.id}-trigger`}
+                      id={`${id}-trigger`}
                       type="button"
                       className={styles.trigger}
-                      onClick={() => toggle(item.id)}
-                      onKeyDown={e => handleKeyDown(e, item.id, index)}
+                      onClick={() => toggle(id)}
+                      onKeyDown={e => handleKeyDown(e, id, index)}
                       aria-expanded={isOpen}
-                      aria-controls={`${item.id}-content`}
+                      aria-controls={`${id}-content`}
                     >
                       <span className={styles.question}>{item.question}</span>
                       <ChevronDown
@@ -79,21 +83,21 @@ export function Faq() {
                     </button>
                   </h3>
                   <div
-                    id={`${item.id}-content`}
+                    id={`${id}-content`}
                     role="region"
-                    aria-labelledby={`${item.id}-trigger`}
+                    aria-labelledby={`${id}-trigger`}
                     className={styles.content}
                     style={
                       {
-                        '--content-height': contentRefs.current.get(item.id)
-                          ? `${contentRefs.current.get(item.id)!.scrollHeight}px`
+                        '--content-height': contentRefs.current.get(id)
+                          ? `${contentRefs.current.get(id)!.scrollHeight}px`
                           : '0px',
                       } as React.CSSProperties
                     }
                   >
                     <div
                       ref={el => {
-                        if (el) contentRefs.current.set(item.id, el)
+                        if (el) contentRefs.current.set(id, el)
                       }}
                       className={styles.answer}
                     >

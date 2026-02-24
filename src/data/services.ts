@@ -1,59 +1,18 @@
-import type { ServiceData } from '@/types'
+import type { ServiceMeta } from '@/types'
 import {
   HeartPulse, ScanLine, ClipboardCheck, ShieldCheck,
   Cog, Zap, Radio, Factory,
   Server, Globe, BarChart3, Terminal,
 } from 'lucide-react'
 
-export const SERVICES: ServiceData[] = [
+export const SERVICES_META: ServiceMeta[] = [
   {
     key: 'medical',
     tag: 'MEDICAL_SYS',
     title: 'Medical Systems',
     accent: '#22c55e',
     accentText: '#fff',
-    subtitle: 'Technische Unterstützung für stabile medizinische Betriebsumgebungen',
-    intro:
-      'In sensiblen Umgebungen zählt nicht nur, dass ein System wieder läuft – sondern dass die Lösung sauber, dokumentiert und betriebssicher umgesetzt wird. LAB-ROOT arbeitet mit dem Verständnis für regulatorische Anforderungen und hohe Verfügbarkeit.',
-    focus: [
-      {
-        icon: HeartPulse,
-        title: 'Diagnostik & Laboranalytik',
-        desc: 'Komponentenebene-Diagnose an Analysegeräten, Zentrifugen und Laborautomation.',
-      },
-      {
-        icon: ScanLine,
-        title: 'Bildgebende Systeme',
-        desc: 'Technische Betreuung von Röntgen-, Ultraschall- und Endoskopie-Systemen.',
-      },
-      {
-        icon: ClipboardCheck,
-        title: 'Dokumentierte Prozesse',
-        desc: 'Strukturierte Dokumentation orientiert an GMP-Standards für jede Maßnahme.',
-      },
-      {
-        icon: ShieldCheck,
-        title: 'Regulatorisches Verständnis',
-        desc: 'Arbeit mit Blick auf IEC 62353, MPBetreibV und ISO 13485-nahe Prozesse.',
-      },
-    ],
-    principles: [
-      'Hohe Verfügbarkeit',
-      'Reproduzierbare Arbeitsweise',
-      'Lückenlose Dokumentation',
-      'Zuverlässige Kommunikation',
-      'Geringe Fehlertoleranz',
-    ],
-    audience: [
-      'Labore und Kliniken mit technischer Eigenverantwortung',
-      'Medizintechnik-Unternehmen mit Bedarf an externer Unterstützung',
-      'Betriebe mit medizinnahen Systemen (Veterinär, Dental, Reha)',
-    ],
-    strengths: [
-      'Ursachenorientierte Diagnose statt Schnelllösungen',
-      'Dokumentation orientiert an regulatorischen Anforderungen',
-      'Erfahrung mit Laboranalytik & bildgebenden Systemen',
-    ],
+    focusIcons: [HeartPulse, ScanLine, ClipboardCheck, ShieldCheck],
   },
   {
     key: 'industrial',
@@ -61,48 +20,7 @@ export const SERVICES: ServiceData[] = [
     title: 'Industrial Systems',
     accent: '#CFA956',
     accentText: 'var(--dark)',
-    subtitle: 'Praxisnahe Engineering-Unterstützung für industrielle Systeme',
-    intro:
-      'Wenn Produktions- oder Prozessumgebungen betroffen sind, braucht es mehr als einen schnellen Fix. LAB-ROOT bringt technische Klarheit und saubere Umsetzung – mit Fokus auf Verfügbarkeit im realen Betrieb.',
-    focus: [
-      {
-        icon: Cog,
-        title: 'SPS & Automatisierung',
-        desc: 'Diagnose, Reparatur und Integration von SPS-Systemen (Siemens, Allen-Bradley, Beckhoff).',
-      },
-      {
-        icon: Zap,
-        title: 'Antriebstechnik',
-        desc: 'Frequenzumrichter, Servoregler und Motorsteuerungen auf Komponentenebene.',
-      },
-      {
-        icon: Radio,
-        title: 'Sensorik & Aktorik',
-        desc: 'Integration und Fehleranalyse industrieller Sensoren, Ventile und Aktoren.',
-      },
-      {
-        icon: Factory,
-        title: 'Schaltschrankbau',
-        desc: 'Prüfung, Modifikation und Dokumentation industrieller Schaltanlagen.',
-      },
-    ],
-    principles: [
-      'Robuste Umsetzung',
-      'Nachvollziehbare Ursachenanalyse',
-      'Klare Schnittstellen',
-      'Reduktion von Wiederholfehlern',
-      'Wartbarkeit',
-    ],
-    audience: [
-      'Produktionsbetriebe mit automatisierten Fertigungslinien',
-      'Unternehmen mit komplexen elektronischen Steuerungssystemen',
-      'Betriebe mit wiederkehrenden Störungen ohne klare Ursachen',
-    ],
-    strengths: [
-      'Erfahrung mit SPS, Antriebstechnik & Industrieelektronik',
-      'Strukturierte Umsetzung im laufenden Betrieb',
-      'Nachhaltige Stabilisierung statt kurzfristiger Workarounds',
-    ],
+    focusIcons: [Cog, Zap, Radio, Factory],
   },
   {
     key: 'it',
@@ -110,47 +28,6 @@ export const SERVICES: ServiceData[] = [
     title: 'IT Infrastructure',
     accent: '#3b82f6',
     accentText: '#fff',
-    subtitle: 'Stabile IT-Infrastruktur für einen verlässlichen Betrieb',
-    intro:
-      'Von Servern und Netzwerken bis zu Monitoring, Backup und Automatisierung. Wir helfen dabei, IT-Umgebungen betriebsfähig, übersichtlich und belastbar zu halten – mit Fokus auf Struktur statt Komplexität.',
-    focus: [
-      {
-        icon: Server,
-        title: 'Server & Systeme',
-        desc: 'Linux/Windows-Server, Virtualisierung mit Proxmox/VMware, Container-Orchestrierung mit Docker.',
-      },
-      {
-        icon: Globe,
-        title: 'Netzwerk & Konnektivität',
-        desc: 'Netzwerkarchitektur, Firewalls, VPN, VLAN-Segmentierung und Systemintegration.',
-      },
-      {
-        icon: BarChart3,
-        title: 'Monitoring & Operations',
-        desc: 'Zabbix, Grafana, Prometheus – strukturiertes Monitoring mit klarer Alarmierung.',
-      },
-      {
-        icon: Terminal,
-        title: 'Automatisierung',
-        desc: 'Ansible, Docker, CI/CD – wiederkehrende Aufgaben automatisieren, Aufwand reduzieren.',
-      },
-    ],
-    principles: [
-      'Technische Klarheit',
-      'Saubere Strukturierung',
-      'Reproduzierbare Lösungen',
-      'Langfristige Stabilität',
-      'Effizienz',
-    ],
-    audience: [
-      'KMU, die eine stabile IT-Basis brauchen',
-      'Unternehmen mit wiederkehrenden IT-Problemen ohne klare Ursache',
-      'Teams, die Monitoring und Transparenz verbessern wollen',
-    ],
-    strengths: [
-      'Erfahrung mit Linux, Container & Cloud-Infrastruktur',
-      'Praxisnahe Umsetzung statt unnötiger Komplexität',
-      'Technisches Verständnis über Standard-IT hinaus',
-    ],
+    focusIcons: [Server, Globe, BarChart3, Terminal],
   },
 ]

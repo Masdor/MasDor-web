@@ -1,0 +1,91 @@
+{
+  "sectionTag": "SERVICES",
+  "sectionTitle": "Three Domains. One Standard.",
+  "sectionSubtitle": "Technical excellence, structured methodology and traceable results.",
+  "ctaSuffix": " inquiry",
+  "audienceTitle": "Target audience",
+  "strengthsTitle": "Why LAB-ROOT",
+  "items": [
+    {
+      "subtitle": "Technical support for stable medical operating environments",
+      "intro": "In sensitive environments, it's not just about getting a system running again – it's about implementing the solution cleanly, with proper documentation and operational safety. LAB-ROOT works with an understanding of regulatory requirements and high availability.",
+      "focus": [
+        { "title": "Diagnostics & Lab Analytics", "desc": "Component-level diagnostics on analyzers, centrifuges and laboratory automation." },
+        { "title": "Imaging Systems", "desc": "Technical support for X-ray, ultrasound and endoscopy systems." },
+        { "title": "Documented Processes", "desc": "Structured documentation aligned with GMP standards for every measure." },
+        { "title": "Regulatory Understanding", "desc": "Work with regard to IEC 62353, MPBetreibV and ISO 13485-aligned processes." }
+      ],
+      "principles": [
+        "High availability",
+        "Reproducible methodology",
+        "Complete documentation",
+        "Reliable communication",
+        "Low error tolerance"
+      ],
+      "audience": [
+        "Laboratories and clinics with technical self-responsibility",
+        "Medical technology companies requiring external support",
+        "Facilities with medical-adjacent systems (veterinary, dental, rehab)"
+      ],
+      "strengths": [
+        "Root-cause diagnostics instead of quick fixes",
+        "Documentation aligned with regulatory requirements",
+        "Experience with lab analytics & imaging systems"
+      ]
+    },
+    {
+      "subtitle": "Practical engineering support for industrial systems",
+      "intro": "When production or process environments are affected, more than a quick fix is needed. LAB-ROOT brings technical clarity and clean implementation – with a focus on availability in real-world operations.",
+      "focus": [
+        { "title": "PLC & Automation", "desc": "Diagnostics, repair and integration of PLC systems (Siemens, Allen-Bradley, Beckhoff)." },
+        { "title": "Drive Technology", "desc": "Frequency inverters, servo controllers and motor controls at component level." },
+        { "title": "Sensors & Actuators", "desc": "Integration and fault analysis of industrial sensors, valves and actuators." },
+        { "title": "Control Cabinet Engineering", "desc": "Inspection, modification and documentation of industrial control panels." }
+      ],
+      "principles": [
+        "Robust implementation",
+        "Traceable root-cause analysis",
+        "Clear interfaces",
+        "Reduction of recurring faults",
+        "Maintainability"
+      ],
+      "audience": [
+        "Production facilities with automated manufacturing lines",
+        "Companies with complex electronic control systems",
+        "Facilities with recurring faults without clear causes"
+      ],
+      "strengths": [
+        "Experience with PLC, drive technology & industrial electronics",
+        "Structured implementation during ongoing operations",
+        "Sustainable stabilization instead of short-term workarounds"
+      ]
+    },
+    {
+      "subtitle": "Stable IT infrastructure for reliable operations",
+      "intro": "From servers and networks to monitoring, backup and automation. We help keep IT environments operational, organized and resilient – with a focus on structure over complexity.",
+      "focus": [
+        { "title": "Servers & Systems", "desc": "Linux/Windows servers, virtualization with Proxmox/VMware, container orchestration with Docker." },
+        { "title": "Network & Connectivity", "desc": "Network architecture, firewalls, VPN, VLAN segmentation and system integration." },
+        { "title": "Monitoring & Operations", "desc": "Zabbix, Grafana, Prometheus – structured monitoring with clear alerting." },
+        { "title": "Automation", "desc": "Ansible, Docker, CI/CD – automate recurring tasks, reduce overhead." }
+      ],
+      "principles": [
+        "Technical clarity",
+        "Clean structure",
+        "Reproducible solutions",
+        "Long-term stability",
+        "Efficiency"
+      ],
+      "audience": [
+        "SMEs that need a stable IT foundation",
+        "Companies with recurring IT issues without clear causes",
+        "Teams looking to improve monitoring and transparency"
+      ],
+      "strengths": [
+        "Experience with Linux, containers & cloud infrastructure",
+        "Practical implementation instead of unnecessary complexity",
+        "Technical understanding beyond standard IT"
+      ]
+    }
+  ]
+}

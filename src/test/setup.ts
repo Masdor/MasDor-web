@@ -1,4 +1,5 @@
 import '@testing-library/jest-dom/vitest'
+import '@/i18n'
 
 // Global IntersectionObserver mock
 export let intersectionCallback: IntersectionObserverCallback

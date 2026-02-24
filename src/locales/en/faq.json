@@ -1,0 +1,31 @@
+{
+  "sectionTag": "FAQ",
+  "sectionTitle": "Frequently Asked Questions",
+  "sectionSubtitle": "Answers to the most important questions about our methodology and services.",
+  "items": [
+    {
+      "question": "Which industries does LAB-ROOT serve?",
+      "answer": "LAB-ROOT operates in three core areas: Medical Systems (lab analytics, imaging systems, medical-adjacent devices), Industrial Systems (PLC controls, drive technology, control cabinet engineering) and IT Infrastructure (servers, networks, monitoring, containerization). The combination of these areas enables us to take a holistic view of systems."
+    },
+    {
+      "question": "What does a typical collaboration look like?",
+      "answer": "Every project starts with a structured assessment of the technical situation. This is followed by root-cause analysis — we don't treat symptoms, but identify the actual source of the problem. Implementation is documented and traceable, and finally we stabilize the system for long-term operation. This five-step process applies to all our projects."
+    },
+    {
+      "question": "Does LAB-ROOT offer emergency support?",
+      "answer": "For existing clients with service agreements, we offer prioritized response times. For acute technical problems, you can reach us by phone through our contact persons. As a general rule, we respond to inquiries within 24 hours."
+    },
+    {
+      "question": "Does LAB-ROOT work remotely?",
+      "answer": "Yes. IT infrastructure projects (servers, monitoring, Docker environments) can be fully implemented remotely. For Medical and Industrial systems, on-site deployment is often required, which we carry out throughout Germany. Our location is Cham in the Upper Palatinate."
+    },
+    {
+      "question": "What documentation standards are maintained?",
+      "answer": "Every measure is documented in a structured manner. In the Medical sector, we follow GMP standards and work with regard to ISO 13485 and IEC 62353. In the Industrial sector, we document according to EN 60204 and EPLAN standards. In IT, we use infrastructure-as-code and version control for complete traceability."
+    },
+    {
+      "question": "How large is the LAB-ROOT team?",
+      "answer": "LAB-ROOT is a specialized engineering team, founded by Mahmoud Baddour (Medical & Industrial Engineering) and Moustafa Almasri (IT Infrastructure & Automation). We deliberately work lean and with high personal responsibility — every project is managed by experienced engineers, not junior technicians."
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "sectionTag": "KONTAKT",
+  "sectionTitle": "Sprechen Sie mit uns",
+  "sectionSubtitle": "Ob technische Anfrage, Projektbesprechung oder allgemeine Frage – wir melden uns zeitnah.",
+  "form": {
+    "name": "Name *",
+    "namePlaceholder": "Vollständiger Name",
+    "email": "E-Mail *",
+    "emailPlaceholder": "ihre@email.de",
+    "phone": "Telefon (optional)",
+    "phonePlaceholder": "+49 ...",
+    "subject": "Betreff",
+    "subjects": {
+      "general": "Allgemeine Anfrage",
+      "medical": "Medical Systems",
+      "industrial": "Industrial Systems",
+      "it": "IT Infrastructure",
+      "project": "Projektbesprechung"
+    },
+    "message": "Nachricht *",
+    "messagePlaceholder": "Beschreiben Sie kurz Ihr Anliegen...",
+    "submit": "Nachricht senden",
+    "submitting": "Wird gesendet…",
+    "fillRequired": "Bitte füllen Sie alle Pflichtfelder korrekt aus."
+  },
+  "validation": {
+    "nameRequired": "Bitte geben Sie Ihren Namen ein.",
+    "emailInvalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+    "messageRequired": "Bitte geben Sie eine Nachricht ein."
+  },
+  "success": {
+    "title": "Nachricht gesendet",
+    "text": "Wir melden uns in der Regel innerhalb von 24 Stunden.",
+    "reset": "Neue Nachricht senden"
+  },
+  "errors": {
+    "noEndpoint": "Kontaktformular ist derzeit nicht verfügbar. Bitte kontaktieren Sie uns direkt per E-Mail an info@lab-root.com.",
+    "generic": "Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es erneut.",
+    "fallback": "Kontaktformular ist derzeit nicht verfügbar. Bitte kontaktieren Sie uns direkt per E-Mail an"
+  },
+  "info": {
+    "directContact": "Direkter Kontakt",
+    "location": "Standort",
+    "email": "E-Mail",
+    "emailNote": "Antwort i.d.R. innerhalb von 24h",
+    "taxInfo": "USt-IdNr: {{ustIdNr}} · StNr: {{stNr}}"
+  }
+}

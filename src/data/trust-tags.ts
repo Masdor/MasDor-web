@@ -1,10 +1,3 @@
-export const TRUST_TAGS = [
-  'ISO 13485-nah',
-  'IEC 62353',
-  'MPBetreibV',
-  'Technische Compliance',
-  'GMP-orientiert',
-  'TIA Portal',
-  'Docker',
-  'Zabbix',
-]
+// Trust tags are now sourced from trust.json translations
+// This file kept for backwards compatibility — tag count used in data integrity tests
+export const TRUST_TAG_COUNT = 8

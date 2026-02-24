@@ -4,13 +4,13 @@ export const TEAM_MEMBERS: TeamMember[] = [
   {
     name: 'Mahmoud Baddour, M.Eng.',
     role: 'Founder & Owner',
-    focus: 'Medical & Industrial Engineering',
+    focusIndex: 0,
     initials: 'MB',
   },
   {
     name: 'Moustafa Almasri',
     role: 'CTO & Lead Systems Engineer',
-    focus: 'IT Infrastructure & Automation',
+    focusIndex: 1,
     initials: 'MA',
   },
 ]

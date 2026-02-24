@@ -2,6 +2,7 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { NavigationProvider } from '@/context/NavigationContext'
 import { NAV_LINKS } from '@/data/navigation'
+import i18n from '@/i18n'
 import { Navbar } from '../Navbar'
 
 function renderNavbar() {
@@ -22,7 +23,8 @@ describe('Navbar', () => {
   it('displays all NAV_LINKS', () => {
     renderNavbar()
     for (const link of NAV_LINKS) {
-      expect(screen.getAllByText(link.label).length).toBeGreaterThanOrEqual(1)
+      const label = i18n.t(link.labelKey)
+      expect(screen.getAllByText(label).length).toBeGreaterThanOrEqual(1)
     }
   })
 

@@ -1,4 +1,5 @@
 import { useReducer, useCallback, useState } from 'react'
+import i18n from '@/i18n'
 import type { ContactFormData, FormErrors } from '@/types'
 
 interface FormState {
@@ -35,15 +36,16 @@ const initialState: FormState = {
 }
 
 function validateField(field: keyof ContactFormData, value: string): string | undefined {
+  const t = i18n.t.bind(i18n)
   switch (field) {
     case 'name':
-      return value.trim() ? undefined : 'Bitte geben Sie Ihren Namen ein.'
+      return value.trim() ? undefined : t('contact:validation.nameRequired')
     case 'email':
       return value.trim() && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
         ? undefined
-        : 'Bitte geben Sie eine gültige E-Mail-Adresse ein.'
+        : t('contact:validation.emailInvalid')
     case 'nachricht':
-      return value.trim() ? undefined : 'Bitte geben Sie eine Nachricht ein.'
+      return value.trim() ? undefined : t('contact:validation.messageRequired')
     default:
       return undefined
   }
@@ -144,10 +146,11 @@ export function useContactForm() {
         if (!res.ok) throw new Error(`HTTP ${res.status}`)
         dispatch({ type: 'SUBMIT_SUCCESS' })
       } catch (err) {
+        const t = i18n.t.bind(i18n)
         const message =
           err instanceof Error && err.message === 'NO_ENDPOINT'
-            ? 'Kontaktformular ist derzeit nicht verfügbar. Bitte kontaktieren Sie uns direkt per E-Mail an info@lab-root.com.'
-            : 'Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es erneut.'
+            ? t('contact:errors.noEndpoint')
+            : t('contact:errors.generic')
         dispatch({ type: 'SUBMIT_ERROR', error: message })
       }
     },

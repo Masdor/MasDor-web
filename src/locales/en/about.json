@@ -1,0 +1,24 @@
+{
+  "sectionTag": "ABOUT US",
+  "sectionTitle": "Engineering with Responsibility",
+  "intro": "LAB-ROOT is a specialized technical services company based in Cham, Germany. Founded by engineers with the commitment to solve technical problems sustainably and with thorough documentation.",
+  "values": [
+    {
+      "title": "Our Standard",
+      "text": "We work methodically, transparently and root-cause oriented. Every measure is documented, every solution is traceable. Our goal is not the fastest fix, but the most stable solution."
+    },
+    {
+      "title": "Our Strength",
+      "text": "The combination of Medical, Industrial and IT competence makes us unique. We understand systems in the interplay of hardware, software and operational processes."
+    },
+    {
+      "title": "Our Promise",
+      "text": "Clear communication, honest assessments and technical work you can rely on. We work as partners – not as interchangeable service providers."
+    }
+  ],
+  "teamTitle": "Team",
+  "members": [
+    { "focus": "Medical & Industrial Engineering" },
+    { "focus": "IT Infrastructure & Automation" }
+  ]
+}
