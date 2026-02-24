@@ -52,7 +52,7 @@ export function Navbar() {
   }, [menuOpen, setMenuOpen])
 
   return (
-    <nav className={`${styles.nav} ${scrolled ? styles.navScrolled : ''}`}>
+    <nav className={`${styles.nav} ${scrolled ? styles.navScrolled : ''}`} aria-label="Hauptnavigation">
       <div className={styles.inner}>
         <button type="button" onClick={() => scrollTo('home')} className={styles.logo}>
           <div className={styles.logoBox}>LR</div>
@@ -82,6 +82,7 @@ export function Navbar() {
           aria-label={menuOpen ? 'Menü schließen' : 'Menü öffnen'}
           aria-expanded={menuOpen}
           aria-controls="mobile-menu"
+          aria-haspopup="true"
           onClick={() => setMenuOpen(!menuOpen)}
         >
           <span

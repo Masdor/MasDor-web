@@ -178,6 +178,8 @@ export function Portfolio() {
             onMouseDown={(e) => {
               if (e.target === e.currentTarget) closeDetail()
             }}
+            aria-label="Dialog schließen"
+            role="presentation"
           >
             <div
               ref={modalRef}
