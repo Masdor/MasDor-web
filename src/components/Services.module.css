@@ -59,7 +59,7 @@
   font-size: 10px;
   letter-spacing: 2px;
   margin-bottom: var(--sp-2);
-  opacity: 0.6;
+  color: var(--text-secondary);
 }
 
 /* ─── Content ─── */

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, lazy, Suspense } from 'react'
+import { useState, useEffect, useCallback, useRef, lazy, Suspense } from 'react'
 import { NavigationProvider } from '@/context/NavigationContext'
 import { Navbar } from '@/components/Navbar'
 import { Hero } from '@/components/Hero'
@@ -26,8 +26,10 @@ export default function App() {
   const [legalPage, setLegalPage] = useState<'impressum' | 'datenschutz' | null>(() =>
     parseLegalHash(window.location.hash),
   )
+  const legalTriggerRef = useRef<HTMLElement | null>(null)
 
   const openLegal = useCallback((page: 'impressum' | 'datenschutz') => {
+    legalTriggerRef.current = document.activeElement as HTMLElement
     setLegalPage(page)
     window.history.pushState(null, '', `#${page}`)
   }, [])
@@ -35,6 +37,7 @@ export default function App() {
   const closeLegal = useCallback(() => {
     setLegalPage(null)
     window.history.pushState(null, '', window.location.pathname)
+    requestAnimationFrame(() => { legalTriggerRef.current?.focus() })
   }, [])
 
   useEffect(() => {

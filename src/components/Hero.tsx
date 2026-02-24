@@ -14,9 +14,9 @@ export function Hero() {
   return (
     <section id="home" className={styles.hero}>
       <ParticleField />
-      <div className={styles.grid} />
-      <div className={styles.glowGold} />
-      <div className={styles.glowGreen} />
+      <div className={styles.grid} aria-hidden="true" />
+      <div className={styles.glowGold} aria-hidden="true" />
+      <div className={styles.glowGreen} aria-hidden="true" />
 
       <div className={styles.content}>
         <Reveal direction="left">

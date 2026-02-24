@@ -82,13 +82,14 @@ export function Services() {
           id={`service-panel-${svc.key}`}
           role="tabpanel"
           aria-labelledby={`tab-${svc.key}`}
+          aria-live="polite"
           className={`${styles.panel} ${panelVisible ? styles.panelVisible : ''}`}
           style={{ '--accent': svc.accent, '--accent-text': svc.accentText } as React.CSSProperties}
         >
           <div className={styles.contentGrid}>
             <div>
               <div className={styles.contentHeader}>
-                <div className={styles.accentBar} />
+                <div className={styles.accentBar} aria-hidden="true" />
                 <h3 className={styles.contentTitle}><span lang="en">{svc.title}</span></h3>
               </div>
               <p className={styles.contentSubtitle}>{svc.subtitle}</p>

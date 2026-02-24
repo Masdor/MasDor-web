@@ -10,8 +10,8 @@ export function Counter({ end, suffix = '', trigger }: CounterProps) {
   const val = useCounter(end, 1800, trigger)
   return (
     <span>
-      {val}
-      {suffix}
+      <span aria-hidden="true">{val}{suffix}</span>
+      <span className="sr-only">{end}{suffix}</span>
     </span>
   )
 }

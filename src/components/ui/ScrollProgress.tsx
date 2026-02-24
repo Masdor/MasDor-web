@@ -33,11 +33,7 @@ export function ScrollProgress() {
     <div
       className={styles.bar}
       style={{ '--progress': progress } as React.CSSProperties}
-      role="progressbar"
-      aria-valuenow={Math.round(progress * 100)}
-      aria-valuemin={0}
-      aria-valuemax={100}
-      aria-label="Scroll-Fortschritt"
+      aria-hidden="true"
     />
   )
 }
