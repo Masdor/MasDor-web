@@ -37,8 +37,8 @@ export function Services() {
   }, [switchTab])
 
   return (
-    <section id="leistungen" className={styles.section}>
-      <div className={styles.container}>
+    <section id="leistungen" className={`${shared.section} ${shared.sectionDarker} ${shared.sectionWithDivider} ${styles.sectionDivider}`}>
+      <div className={shared.container}>
         <Reveal>
           <div className={shared.sectionHeader}>
             <span className={shared.tagBadge}>LEISTUNGEN</span>

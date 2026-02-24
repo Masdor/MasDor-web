@@ -3,8 +3,8 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
-  transition: background 0.4s var(--ease-out), border-color 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out);
+  z-index: var(--z-nav);
+  transition: background var(--tr-slower), border-color var(--tr-slower), box-shadow var(--tr-slower);
   border-bottom: 1px solid transparent;
 }
 
@@ -12,7 +12,7 @@
   background: rgba(11, 15, 21, 0.82);
   backdrop-filter: blur(24px) saturate(1.3);
   -webkit-backdrop-filter: blur(24px) saturate(1.3);
-  border-bottom-color: rgba(207, 169, 86, 0.08);
+  border-bottom-color: var(--gold-8);
   box-shadow: 0 4px 32px rgba(0, 0, 0, 0.3);
 }
 
@@ -25,7 +25,7 @@
 .inner {
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 var(--sp-6);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -39,7 +39,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  transition: opacity 0.2s ease;
+  transition: opacity var(--tr-fast);
 }
 
 @media (hover: hover) {
@@ -58,15 +58,15 @@
   justify-content: center;
   font-family: var(--font-mono);
   font-weight: 600;
-  font-size: 13px;
+  font-size: var(--fs-base-sm);
   color: var(--gold);
-  background: rgba(207, 169, 86, 0.04);
+  background: var(--gold-4);
 }
 
 .logoText {
   font-family: var(--font-mono);
   font-weight: 600;
-  font-size: 15px;
+  font-size: var(--fs-md);
   color: var(--text-primary);
   letter-spacing: 2.5px;
 }
@@ -80,12 +80,12 @@
 .navLink {
   border: none;
   cursor: pointer;
-  padding: 8px 16px;
+  padding: var(--sp-2) var(--sp-4);
   border-radius: var(--radius-sm);
   font-family: var(--font-sans);
-  font-size: 14px;
+  font-size: var(--fs-base);
   font-weight: 500;
-  transition: color 0.25s var(--ease-out), background 0.25s var(--ease-out);
+  transition: color var(--tr-base), background var(--tr-base);
   position: relative;
   background: none;
   color: var(--text-secondary);
@@ -94,12 +94,12 @@
 @media (hover: hover) {
   .navLink:hover {
     color: var(--text-primary);
-    background: rgba(255, 255, 255, 0.04);
+    background: var(--white-4);
   }
 }
 
 .navLinkActive {
-  background: rgba(207, 169, 86, 0.08);
+  background: var(--gold-8);
   color: var(--gold);
 }
 
@@ -111,7 +111,7 @@
   width: 0;
   height: 1.5px;
   background: var(--gold);
-  transition: width 0.3s var(--ease-out), left 0.3s var(--ease-out);
+  transition: width var(--tr-mid), left var(--tr-mid);
   border-radius: 1px;
 }
 
@@ -130,26 +130,26 @@
 .ctaBtn {
   display: inline-flex;
   align-items: center;
-  padding: 10px 24px;
+  padding: 10px var(--sp-6);
   font-weight: 600;
-  font-size: 13px;
+  font-size: var(--fs-base-sm);
   border-radius: var(--radius-md);
   font-family: var(--font-sans);
   letter-spacing: 0.01em;
-  transition: background 0.3s var(--ease-out), transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
-  margin-left: 12px;
+  transition: background var(--tr-mid), transform var(--tr-mid), box-shadow var(--tr-mid);
+  margin-left: var(--sp-3);
   background: var(--gold);
   color: var(--dark);
   border: none;
   cursor: pointer;
-  box-shadow: 0 2px 12px rgba(207, 169, 86, 0.15);
+  box-shadow: 0 2px 12px var(--gold-15);
 }
 
 @media (hover: hover) {
   .ctaBtn:hover {
     background: var(--gold-light);
     transform: translateY(-1px);
-    box-shadow: 0 4px 20px rgba(207, 169, 86, 0.25);
+    box-shadow: 0 4px 20px var(--gold-25);
   }
 }
 
@@ -171,12 +171,12 @@
   flex-direction: column;
   position: relative;
   border-radius: var(--radius-sm);
-  transition: background 0.2s ease;
+  transition: background var(--tr-fast);
 }
 
 @media (hover: hover) {
   .mobileToggle:hover {
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--white-5);
   }
 }
 
@@ -185,7 +185,7 @@
   height: 2px;
   background: var(--gold);
   border-radius: 2px;
-  transition: transform 0.3s var(--ease-out), background 0.3s var(--ease-out);
+  transition: transform var(--tr-mid), background var(--tr-mid);
 }
 
 .hamburgerMiddle {
@@ -217,8 +217,8 @@
   background: rgba(7, 10, 15, 0.97);
   backdrop-filter: blur(32px);
   -webkit-backdrop-filter: blur(32px);
-  padding: 12px 24px 32px;
-  border-top: 1px solid rgba(207, 169, 86, 0.08);
+  padding: var(--sp-3) var(--sp-6) var(--sp-8);
+  border-top: 1px solid var(--gold-8);
 }
 
 @supports not (backdrop-filter: blur(1px)) {
@@ -235,14 +235,14 @@
   border: none;
   border-bottom: none;
   cursor: pointer;
-  padding: 16px 0;
-  font-size: 16px;
+  padding: var(--sp-4) 0;
+  font-size: var(--fs-lg);
   font-weight: 500;
   font-family: var(--font-sans);
   color: var(--text-secondary);
   animation: slideIn 0.3s ease both;
   animation-delay: var(--delay, 0s);
-  transition: color 0.2s ease;
+  transition: color var(--tr-fast);
 }
 
 @media (hover: hover) {
@@ -261,7 +261,7 @@
 
 @media (max-width: 768px) {
   .inner {
-    padding: 0 16px;
+    padding: 0 var(--sp-4);
   }
 
   .desktopNav {

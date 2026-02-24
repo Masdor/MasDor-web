@@ -6,7 +6,7 @@
   background: var(--dark);
   color: var(--text-primary);
   font-family: var(--font-sans);
-  padding: 24px;
+  padding: var(--sp-6);
   text-align: center;
 }
 
@@ -16,22 +16,22 @@
 
 .icon {
   font-family: var(--font-mono);
-  font-size: 48px;
+  font-size: var(--fs-8xl);
   color: var(--gold);
-  margin-bottom: 24px;
+  margin-bottom: var(--sp-6);
 }
 
 .title {
-  font-size: 24px;
+  font-size: var(--fs-5xl);
   font-weight: 700;
-  margin-bottom: 12px;
+  margin-bottom: var(--sp-3);
 }
 
 .message {
   color: var(--text-secondary);
-  font-size: 15px;
+  font-size: var(--fs-md);
   line-height: 1.7;
-  margin-bottom: 32px;
+  margin-bottom: var(--sp-8);
 }
 
 .reload {
@@ -41,10 +41,10 @@
   border-radius: var(--radius-md);
   padding: 14px 36px;
   font-weight: 600;
-  font-size: 15px;
+  font-size: var(--fs-md);
   cursor: pointer;
   font-family: var(--font-sans);
-  transition: background 0.25s var(--ease-out), transform 0.25s var(--ease-out);
+  transition: background var(--tr-base), transform var(--tr-base);
 }
 
 @media (hover: hover) {
@@ -55,7 +55,7 @@
 }
 
 .sectionError {
-  padding: 64px 24px;
+  padding: var(--sp-12) var(--sp-6);
   text-align: center;
   background: var(--dark);
   color: var(--text-primary);
@@ -64,11 +64,11 @@
 
 .sectionMessage {
   color: var(--text-secondary);
-  font-size: 15px;
-  margin-bottom: 16px;
+  font-size: var(--fs-md);
+  margin-bottom: var(--sp-4);
 }
 
 .sectionReload {
-  padding: 10px 24px;
-  font-size: 13px;
+  padding: 10px var(--sp-6);
+  font-size: var(--fs-base-sm);
 }

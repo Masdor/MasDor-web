@@ -26,6 +26,85 @@
   --radius-xl: 24px;
   --container-max: 1200px;
   --container-narrow: 1100px;
+
+  /* === Gold Opacity Scale === */
+  --gold-2: rgba(207, 169, 86, 0.02);
+  --gold-4: rgba(207, 169, 86, 0.04);
+  --gold-6: rgba(207, 169, 86, 0.06);
+  --gold-8: rgba(207, 169, 86, 0.08);
+  --gold-10: rgba(207, 169, 86, 0.1);
+  --gold-12: rgba(207, 169, 86, 0.12);
+  --gold-15: rgba(207, 169, 86, 0.15);
+  --gold-18: rgba(207, 169, 86, 0.18);
+  --gold-20: rgba(207, 169, 86, 0.2);
+  --gold-25: rgba(207, 169, 86, 0.25);
+  --gold-30: rgba(207, 169, 86, 0.3);
+  --gold-35: rgba(207, 169, 86, 0.35);
+
+  /* === White Opacity Scale === */
+  --white-4: rgba(255, 255, 255, 0.04);
+  --white-5: rgba(255, 255, 255, 0.05);
+  --white-6: rgba(255, 255, 255, 0.06);
+  --white-8: rgba(255, 255, 255, 0.08);
+  --white-12: rgba(255, 255, 255, 0.12);
+  --white-15: rgba(255, 255, 255, 0.15);
+
+  /* === Spacing Scale (4px base) === */
+  --sp-1: 0.25rem;    /* 4px */
+  --sp-2: 0.5rem;     /* 8px */
+  --sp-3: 0.75rem;    /* 12px */
+  --sp-4: 1rem;       /* 16px */
+  --sp-5: 1.25rem;    /* 20px */
+  --sp-6: 1.5rem;     /* 24px */
+  --sp-7: 1.75rem;    /* 28px */
+  --sp-8: 2rem;       /* 32px */
+  --sp-9: 2.5rem;     /* 40px */
+  --sp-10: 3rem;      /* 48px */
+  --sp-11: 3.5rem;    /* 56px */
+  --sp-12: 4rem;      /* 64px */
+  --sp-14: 5rem;      /* 80px */
+  --sp-16: 5.5rem;    /* 88px */
+  --sp-18: 6.25rem;   /* 100px */
+  --sp-20: 7.5rem;    /* 120px */
+  --sp-22: 8.125rem;  /* 130px */
+  --sp-24: 10rem;     /* 160px */
+
+  /* === Font Size Tokens === */
+  --fs-2xs: 9px;
+  --fs-xs: 11px;
+  --fs-sm: 12px;
+  --fs-base-sm: 13px;
+  --fs-base: 14px;
+  --fs-md: 15px;
+  --fs-lg: 16px;
+  --fs-xl: 17px;
+  --fs-2xl: 18px;
+  --fs-3xl: 20px;
+  --fs-4xl: 22px;
+  --fs-5xl: 24px;
+  --fs-6xl: 28px;
+  --fs-7xl: 32px;
+  --fs-8xl: 48px;
+  --fs-9xl: 72px;
+
+  /* === Transition Presets === */
+  --tr-fast: 0.2s ease;
+  --tr-base: 0.25s var(--ease-out);
+  --tr-mid: 0.3s var(--ease-out);
+  --tr-slow: 0.35s var(--ease-out);
+  --tr-slower: 0.4s var(--ease-out);
+
+  /* === Z-Index Scale === */
+  --z-base: 1;
+  --z-above: 2;
+  --z-backtop: 999;
+  --z-nav: 1000;
+  --z-cookie: 1500;
+  --z-modal: 2000;
+  --z-skip: 9999;
+
+  /* === Divider Gradient === */
+  --divider-gradient: linear-gradient(90deg, transparent, var(--gold-12), transparent);
 }
 
 *,
@@ -61,12 +140,12 @@ body.menu-open {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(207, 169, 86, 0.2);
+  background: var(--gold-20);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(207, 169, 86, 0.35);
+  background: var(--gold-35);
 }
 
 ::selection {
@@ -86,7 +165,7 @@ textarea:focus,
 select:focus {
   border-color: rgba(207, 169, 86, 0.53) !important;
   outline: none;
-  box-shadow: 0 0 0 3px rgba(207, 169, 86, 0.08);
+  box-shadow: 0 0 0 3px var(--gold-8);
 }
 
 /* ─── Skip to Content ─── */
@@ -95,15 +174,15 @@ select:focus {
   position: absolute;
   top: -100%;
   left: 16px;
-  z-index: 9999;
-  padding: 12px 24px;
+  z-index: var(--z-skip);
+  padding: var(--sp-3) var(--sp-6);
   background: var(--gold);
   color: var(--dark);
   font-weight: 600;
-  font-size: 14px;
+  font-size: var(--fs-base);
   border-radius: 0 0 8px 8px;
   text-decoration: none;
-  transition: top 0.2s ease;
+  transition: top var(--tr-fast);
 }
 
 .skip-to-content:focus {
