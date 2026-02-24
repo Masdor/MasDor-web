@@ -59,7 +59,7 @@
   font-size: 10px;
   letter-spacing: 2px;
   margin-bottom: var(--sp-2);
-  opacity: 0.6;
+  color: var(--text-secondary);
 }
 
 /* ─── Content ─── */
@@ -355,5 +355,67 @@
   .bottomGrid {
     grid-template-columns: 1fr;
     gap: var(--sp-6);
+  }
+}
+
+@media (max-width: 480px) {
+  .tab {
+    min-width: 170px;
+    padding: 14px 20px;
+    font-size: 14px;
+  }
+
+  .tabTag {
+    font-size: 9px;
+  }
+
+  .contentTitle {
+    font-size: clamp(1.3rem, 5vw, 1.6rem);
+  }
+
+  .contentSubtitle {
+    font-size: 15px;
+  }
+
+  .contentIntro {
+    font-size: 14px;
+  }
+
+  .focusCard {
+    padding: 18px 16px;
+    gap: 12px;
+  }
+
+  .focusIcon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+  }
+
+  .focusTitle {
+    font-size: 14px;
+  }
+
+  .focusDesc {
+    font-size: 12px;
+  }
+
+  .audienceCard,
+  .strengthsCard {
+    padding: 28px 24px;
+  }
+
+  .audienceText,
+  .strengthText {
+    font-size: 13px;
+  }
+
+  .principles {
+    gap: 6px;
+  }
+
+  .principle {
+    padding: 6px 12px;
+    font-size: 12px;
   }
 }

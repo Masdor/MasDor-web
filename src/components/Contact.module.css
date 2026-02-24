@@ -238,7 +238,7 @@
 @media (max-width: 768px) {
   .grid {
     grid-template-columns: 1fr;
-    gap: var(--sp-8);
+    gap: 32px;
   }
 
   .formRow {
@@ -246,6 +246,34 @@
   }
 
   .form {
-    padding: var(--sp-7) var(--sp-5);
+    padding: 28px 20px;
+  }
+
+  .success {
+    padding: 40px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .form {
+    padding: 24px 16px;
+    border-radius: var(--radius-lg);
+  }
+
+  .success {
+    padding: 32px 20px;
+  }
+
+  .successIcon {
+    width: 64px;
+    height: 64px;
+  }
+
+  .successTitle {
+    font-size: 18px;
+  }
+
+  .infoCard {
+    padding: 20px 18px;
   }
 }

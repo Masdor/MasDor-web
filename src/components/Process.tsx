@@ -20,11 +20,11 @@ export function Process() {
           {PROCESS_STEPS.map((step, i) => (
             <Reveal key={step.num} delay={i * 0.08}>
               <div className={styles.step}>
-                <div className={styles.stepNum}>{step.num}</div>
+                <div className={styles.stepNum} aria-hidden="true">{step.num}</div>
                 <div className={styles.stepIcon}>
                   <Icon icon={step.icon} size={24} />
                 </div>
-                <div className={styles.stepLabel}>SCHRITT {step.num}</div>
+                <div className={styles.stepLabel}><span className="sr-only">Schritt </span>SCHRITT {step.num}</div>
                 <h4 className={styles.stepTitle}>{step.title}</h4>
                 <p className={styles.stepDesc}>{step.desc}</p>
               </div>

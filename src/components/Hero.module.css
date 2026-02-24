@@ -183,24 +183,41 @@
 
 @media (max-width: 768px) {
   .content {
-    padding: var(--sp-22) var(--sp-5) var(--sp-14);
+    padding: 120px 20px 80px;
   }
 
   .title {
     font-size: clamp(2rem, 8vw, 2.8rem);
   }
 
+  .subtitle {
+    margin-bottom: 36px;
+  }
+
   .statsGrid {
     grid-template-columns: repeat(2, 1fr);
+    margin-top: 56px;
   }
 
   .scrollIndicator {
-    bottom: var(--sp-5);
+    bottom: 20px;
   }
 
   .tagline {
     font-size: 10px;
     letter-spacing: 2px;
+  }
+
+  .glowGold {
+    width: 400px;
+    height: 400px;
+    right: -20%;
+  }
+
+  .glowGreen {
+    width: 300px;
+    height: 300px;
+    left: -20%;
   }
 
   .titleAccent {
@@ -209,5 +226,77 @@
     -webkit-text-fill-color: var(--gold);
     background-clip: unset;
     color: var(--gold);
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    padding: 110px 16px 64px;
+  }
+
+  .title {
+    font-size: clamp(1.75rem, 7.5vw, 2.2rem);
+    margin-bottom: 20px;
+  }
+
+  .subtitle {
+    font-size: clamp(0.9rem, 3.5vw, 1.05rem);
+    margin-bottom: 28px;
+  }
+
+  .actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .tagline {
+    font-size: 9px;
+    padding: 6px 14px 6px 10px;
+    gap: 8px;
+  }
+
+  .statsGrid {
+    margin-top: 48px;
+  }
+
+  .statCell {
+    padding: 24px 16px;
+  }
+
+  .statValue {
+    font-size: 24px;
+  }
+
+  .statLabel {
+    font-size: 11px;
+  }
+
+  .glowGold {
+    width: 250px;
+    height: 250px;
+  }
+
+  .glowGreen {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero {
+    min-height: auto;
+    padding: 20px 0;
+  }
+
+  .content {
+    padding: 80px 24px 40px;
+  }
+
+  .statsGrid {
+    margin-top: 32px;
+  }
+
+  .scrollIndicator {
+    display: none;
   }
 }

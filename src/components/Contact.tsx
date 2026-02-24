@@ -26,7 +26,7 @@ export function Contact() {
         <div className={styles.grid}>
           <Reveal delay={0.1} direction="left">
             {formSent ? (
-              <div className={styles.success}>
+              <div className={styles.success} role="status">
                 <div className={styles.successIcon}>
                   <Check size={36} strokeWidth={2.5} />
                 </div>

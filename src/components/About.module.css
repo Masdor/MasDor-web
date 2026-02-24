@@ -133,3 +133,36 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 480px) {
+  .valueCard {
+    padding: 32px 22px;
+  }
+
+  .valueTitle {
+    font-size: 16px;
+  }
+
+  .valueText {
+    font-size: 14px;
+  }
+
+  .teamCard {
+    padding: 24px 20px;
+    gap: 16px;
+  }
+
+  .teamSection {
+    margin-top: 56px;
+  }
+
+  .avatar {
+    width: 52px;
+    height: 52px;
+    font-size: 16px;
+  }
+
+  .memberName {
+    font-size: 15px;
+  }
+}
