@@ -2,6 +2,7 @@
 import { defineConfig, type Plugin } from 'vite'
 import react from '@vitejs/plugin-react'
 import { compression } from 'vite-plugin-compression2'
+import { VitePWA } from 'vite-plugin-pwa'
 import { resolve } from 'path'
 import { fileURLToPath } from 'url'
 
@@ -29,37 +30,49 @@ function fontPreloadPlugin(): Plugin {
   }
 }
 
-/** Injects a Content-Security-Policy meta tag into index.html during production builds only. */
-function cspPlugin(): Plugin {
-  const csp = [
-    "default-src 'self'",
-    "script-src 'self'",
-    "style-src 'self' 'unsafe-inline'",
-    "font-src 'self'",
-    "img-src 'self' data:",
-    "connect-src 'self'",
-  ].join('; ')
-
-  return {
-    name: 'inject-csp',
-    apply: 'build',
-    transformIndexHtml(html) {
-      return html.replace(
-        '</head>',
-        `    <meta http-equiv="Content-Security-Policy" content="${csp}" />\n  </head>`,
-      )
-    },
-  }
-}
-
 export default defineConfig({
   plugins: [
     react(),
     fontPreloadPlugin(),
-    cspPlugin(),
     compression({
       algorithms: ['gzip', 'brotliCompress'],
       exclude: [/\.(br)$/, /\.(gz)$/],
+    }),
+    VitePWA({
+      registerType: 'autoUpdate',
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,woff2,svg,png,ico}'],
+        runtimeCaching: [
+          {
+            urlPattern: /\.(?:png|jpg|jpeg|webp|svg|gif|ico)$/i,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'images',
+              expiration: {
+                maxEntries: 50,
+                maxAgeSeconds: 30 * 24 * 60 * 60,
+              },
+            },
+          },
+          {
+            urlPattern: /\.(?:woff2?)$/i,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'fonts',
+              expiration: {
+                maxEntries: 10,
+                maxAgeSeconds: 365 * 24 * 60 * 60,
+              },
+            },
+          },
+        ],
+        navigateFallback: '/offline.html',
+        navigateFallbackDenylist: [/^\/assets\//, /\.(?:js|css|json|png|svg|ico|woff2)$/],
+      },
+      manifest: false,
+      devOptions: {
+        enabled: false,
+      },
     }),
   ],
   resolve: {

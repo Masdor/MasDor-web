@@ -4,11 +4,14 @@
   "description": "Spezialisierte technische Dienstleistungen für Medical Systems, Industrial Automation und IT-Infrastruktur.",
   "start_url": "/",
   "scope": "/",
+  "id": "/",
   "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
   "orientation": "portrait-primary",
   "background_color": "#0b0f15",
   "theme_color": "#0b0f15",
   "categories": ["business", "productivity"],
+  "prefer_related_applications": false,
   "icons": [
     {
       "src": "/favicon.svg",
@@ -26,6 +29,22 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Leistungen",
+      "short_name": "Leistungen",
+      "url": "/#leistungen",
+      "description": "Unsere technischen Dienstleistungen",
+      "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+    },
+    {
+      "name": "Kontakt",
+      "short_name": "Kontakt",
+      "url": "/#kontakt",
+      "description": "Nehmen Sie Kontakt auf",
+      "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
     }
   ],
   "lang": "de",
