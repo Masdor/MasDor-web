@@ -1,22 +1,22 @@
 .card {
-  transition: border-color 0.35s var(--ease-out), transform 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out);
+  transition: border-color var(--tr-slow), transform var(--tr-slow), box-shadow var(--tr-slow);
   border-color: var(--card-border);
   transform: translateY(0);
 }
 
 @media (hover: hover) {
   .card:hover {
-    border-color: rgba(207, 169, 86, 0.2);
+    border-color: var(--gold-20);
     transform: translateY(-4px);
   }
 
   .cardGlow:hover {
     box-shadow:
-      0 8px 40px rgba(207, 169, 86, 0.06),
-      0 0 0 1px rgba(207, 169, 86, 0.08);
+      0 8px 40px var(--gold-6),
+      0 0 0 1px var(--gold-8);
   }
 }
 
 .card:active {
-  border-color: rgba(207, 169, 86, 0.15);
+  border-color: var(--gold-15);
 }

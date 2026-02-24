@@ -3,17 +3,17 @@
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 1500;
+  z-index: var(--z-cookie);
   background: rgba(7, 10, 15, 0.92);
   backdrop-filter: blur(24px) saturate(1.2);
   -webkit-backdrop-filter: blur(24px) saturate(1.2);
   border-top: 1px solid var(--card-border);
-  padding: 20px 24px;
+  padding: var(--sp-5) var(--sp-6);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
-  transition: transform 0.4s var(--ease-out), opacity 0.4s var(--ease-out);
+  gap: var(--sp-6);
+  transition: transform var(--tr-slower), opacity var(--tr-slower);
 }
 
 .bannerHidden {
@@ -23,7 +23,7 @@
 }
 
 .text {
-  font-size: 13px;
+  font-size: var(--fs-base-sm);
   color: var(--text-body);
   line-height: 1.6;
   flex: 1;
@@ -48,10 +48,10 @@
   border-radius: var(--radius-sm);
   padding: 10px 22px;
   font-weight: 600;
-  font-size: 13px;
+  font-size: var(--fs-base-sm);
   font-family: var(--font-sans);
   cursor: pointer;
-  transition: background 0.25s var(--ease-out), transform 0.25s var(--ease-out);
+  transition: background var(--tr-base), transform var(--tr-base);
 }
 
 @media (hover: hover) {
@@ -67,10 +67,10 @@
   border: 1px solid var(--card-border);
   border-radius: var(--radius-sm);
   padding: 10px 22px;
-  font-size: 13px;
+  font-size: var(--fs-base-sm);
   font-family: var(--font-sans);
   cursor: pointer;
-  transition: border-color 0.25s var(--ease-out), color 0.25s var(--ease-out);
+  transition: border-color var(--tr-base), color var(--tr-base);
 }
 
 @media (hover: hover) {
@@ -84,7 +84,7 @@
   .banner {
     flex-direction: column;
     align-items: stretch;
-    gap: 16px;
+    gap: var(--sp-4);
   }
 
   .actions {

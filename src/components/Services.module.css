@@ -1,47 +1,29 @@
-.section {
-  padding: 120px 0 100px;
-  background: var(--darker);
-  position: relative;
-  content-visibility: auto;
-  contain-intrinsic-size: auto 800px;
-}
+/* ─── Section Divider Override (uses --gold-10 instead of shared --gold-12) ─── */
 
-.section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(207, 169, 86, 0.1), transparent);
-}
-
-.container {
-  max-width: var(--container-max);
-  margin: 0 auto;
-  padding: 0 24px;
+.sectionDivider::before {
+  background: linear-gradient(90deg, transparent, var(--gold-10), transparent);
 }
 
 /* ─── Tabs ─── */
 
 .tabs {
   display: flex;
-  gap: 12px;
+  gap: var(--sp-3);
   justify-content: center;
-  margin-bottom: 56px;
+  margin-bottom: var(--sp-11);
 }
 
 .tab {
   background: rgba(255, 255, 255, 0.025);
   border: 1px solid var(--card-border);
   border-radius: var(--radius-md);
-  padding: 18px 28px;
+  padding: 18px var(--sp-7);
   cursor: pointer;
-  transition: color 0.3s var(--ease-out), background 0.3s var(--ease-out);
+  transition: color var(--tr-mid), background var(--tr-mid);
   color: var(--text-secondary);
   font-family: var(--font-sans);
   font-weight: 500;
-  font-size: 15px;
+  font-size: var(--fs-md);
   flex: 1 1 0;
   max-width: 280px;
   position: relative;
@@ -57,14 +39,14 @@
   height: 2px;
   background: var(--accent, var(--gold));
   transform: scaleX(0);
-  transition: transform 0.3s var(--ease-out);
+  transition: transform var(--tr-mid);
 }
 
 .tabActive {
   font-weight: 600;
   color: var(--accent);
-  background: rgba(207, 169, 86, 0.06);
-  border-color: rgba(207, 169, 86, 0.18);
+  background: var(--gold-6);
+  border-color: var(--gold-18);
 }
 
 .tabActive::before {
@@ -75,7 +57,7 @@
   font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 2px;
-  margin-bottom: 8px;
+  margin-bottom: var(--sp-2);
   opacity: 0.6;
 }
 
@@ -84,7 +66,7 @@
 .panel {
   opacity: 0;
   transform: translateY(10px);
-  transition: opacity 0.25s var(--ease-out), transform 0.25s var(--ease-out);
+  transition: opacity var(--tr-base), transform var(--tr-base);
 }
 
 .panelVisible {
@@ -95,14 +77,14 @@
 .contentGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 48px;
-  margin-bottom: 56px;
+  gap: var(--sp-10);
+  margin-bottom: var(--sp-11);
   align-items: start;
 }
 
 .accentBar {
   width: 4px;
-  height: 32px;
+  height: var(--sp-8);
   border-radius: 2px;
   background: var(--accent);
 }
@@ -110,8 +92,8 @@
 .contentHeader {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 20px;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-5);
 }
 
 .contentTitle {
@@ -122,42 +104,42 @@
 
 .contentSubtitle {
   color: var(--text-secondary);
-  font-size: 17px;
+  font-size: var(--fs-xl);
   line-height: 1.7;
-  margin-bottom: 16px;
+  margin-bottom: var(--sp-4);
 }
 
 .contentIntro {
   color: var(--text-body);
-  font-size: 15px;
+  font-size: var(--fs-md);
   line-height: 1.8;
 }
 
 .principles {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 28px;
+  gap: var(--sp-2);
+  margin-top: var(--sp-7);
 }
 
 .principle {
-  padding: 8px 16px;
-  font-size: 13px;
+  padding: var(--sp-2) var(--sp-4);
+  font-size: var(--fs-base-sm);
   color: var(--text-body);
   background: rgba(255, 255, 255, 0.025);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--white-6);
   border-radius: 100px;
   transition: border-color 0.25s ease, background 0.25s ease;
 }
 
 @media (hover: hover) {
   .tab:hover {
-    border-color: rgba(255, 255, 255, 0.12);
-    background: rgba(255, 255, 255, 0.04);
+    border-color: var(--white-12);
+    background: var(--white-4);
   }
 
   .principle:hover {
-    border-color: rgba(255, 255, 255, 0.12);
+    border-color: var(--white-12);
     background: rgba(255, 255, 255, 0.045);
   }
 }
@@ -172,15 +154,15 @@
 
 .focusCard {
   display: flex;
-  gap: 16px;
-  padding: 22px 20px;
+  gap: var(--sp-4);
+  padding: 22px var(--sp-5);
   background: var(--card-bg);
   border-radius: var(--radius-md);
   border: 1px solid var(--card-border);
 }
 
 .focusIcon {
-  font-size: 22px;
+  color: var(--gold);
   flex-shrink: 0;
   width: 46px;
   height: 46px;
@@ -192,13 +174,13 @@
 }
 
 .focusTitle {
-  font-size: 15px;
+  font-size: var(--fs-md);
   font-weight: 600;
   margin-bottom: 4px;
 }
 
 .focusDesc {
-  font-size: 13px;
+  font-size: var(--fs-base-sm);
   color: var(--text-secondary);
   line-height: 1.6;
 }
@@ -208,45 +190,45 @@
 .bottomGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  gap: var(--sp-6);
 }
 
 .audienceCard {
-  padding: 36px 32px;
+  padding: 36px var(--sp-8);
   border-radius: var(--radius-lg);
-  background: rgba(207, 169, 86, 0.02);
+  background: var(--gold-2);
   border: 1px solid rgba(207, 169, 86, 0.07);
 }
 
 .audienceTitle {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: var(--fs-sm);
   letter-spacing: 2px;
-  margin-bottom: 24px;
+  margin-bottom: var(--sp-6);
   text-transform: uppercase;
   color: var(--accent);
 }
 
 .audienceItem {
   display: flex;
-  gap: 12px;
+  gap: var(--sp-3);
   align-items: flex-start;
 }
 
 .audienceItem + .audienceItem {
-  margin-top: 16px;
+  margin-top: var(--sp-4);
 }
 
 .audienceArrow {
-  font-family: var(--font-mono);
-  font-size: 16px;
-  margin-top: 1px;
-  flex-shrink: 0;
   color: var(--accent);
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-top: 1px;
 }
 
 .audienceText {
-  font-size: 14px;
+  font-size: var(--fs-base);
   color: var(--text-body);
   line-height: 1.65;
 }
@@ -256,7 +238,7 @@
 }
 
 .strengthsCard {
-  padding: 36px 32px;
+  padding: 36px var(--sp-8);
   background: var(--card-bg);
   border-radius: var(--radius-lg);
   border: 1px solid var(--card-border);
@@ -264,17 +246,17 @@
 
 .strengthItem {
   display: flex;
-  gap: 12px;
+  gap: var(--sp-3);
   align-items: flex-start;
 }
 
 .strengthItem + .strengthItem {
-  margin-top: 16px;
+  margin-top: var(--sp-4);
 }
 
 .strengthBar {
   width: 3px;
-  height: 20px;
+  height: var(--sp-5);
   background: var(--gold);
   border-radius: 2px;
   margin-top: 2px;
@@ -282,7 +264,7 @@
 }
 
 .strengthText {
-  font-size: 14px;
+  font-size: var(--fs-base);
   color: var(--text-body);
   line-height: 1.65;
 }
@@ -293,27 +275,23 @@
 }
 
 .cta {
-  margin-top: 48px;
+  margin-top: var(--sp-10);
   text-align: center;
 }
 
 @media (max-width: 1024px) and (min-width: 769px) {
   .contentGrid {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: var(--sp-8);
   }
 }
 
 @media (max-width: 768px) {
-  .section {
-    padding: 80px 0 60px;
-  }
-
   .tabs {
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    padding-bottom: 8px;
+    padding-bottom: var(--sp-2);
     justify-content: flex-start;
     flex-wrap: nowrap;
     mask-image: linear-gradient(to right, black 85%, transparent 100%);
@@ -329,6 +307,6 @@
   .contentGrid,
   .bottomGrid {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: var(--sp-6);
   }
 }

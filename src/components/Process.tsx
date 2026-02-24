@@ -1,4 +1,5 @@
 import { Reveal } from '@/components/ui/Reveal'
+import { Icon } from '@/components/ui/Icon'
 import { PROCESS_STEPS } from '@/data/process'
 import shared from '@/styles/shared.module.css'
 import styles from './Process.module.css'
@@ -20,7 +21,9 @@ export function Process() {
             <Reveal key={step.num} delay={i * 0.08}>
               <div className={styles.step}>
                 <div className={styles.stepNum}>{step.num}</div>
-                <div className={styles.stepIcon}>{step.icon}</div>
+                <div className={styles.stepIcon}>
+                  <Icon icon={step.icon} size={24} />
+                </div>
                 <div className={styles.stepLabel}>SCHRITT {step.num}</div>
                 <h4 className={styles.stepTitle}>{step.title}</h4>
                 <p className={styles.stepDesc}>{step.desc}</p>

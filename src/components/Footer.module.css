@@ -1,6 +1,6 @@
 .footer {
-  padding: 40px 24px 28px;
-  border-top: 1px solid rgba(207, 169, 86, 0.06);
+  padding: var(--sp-9) var(--sp-6) var(--sp-7);
+  border-top: 1px solid var(--gold-6);
   background: var(--darker);
   position: relative;
 }
@@ -12,7 +12,7 @@
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(207, 169, 86, 0.12), transparent);
+  background: var(--divider-gradient);
 }
 
 .inner {
@@ -22,7 +22,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  gap: 20px;
+  gap: var(--sp-5);
 }
 
 .brand {
@@ -41,20 +41,20 @@
   justify-content: center;
   font-family: var(--font-mono);
   font-weight: 600;
-  font-size: 9px;
+  font-size: var(--fs-2xs);
   color: var(--gold);
-  background: rgba(207, 169, 86, 0.04);
+  background: var(--gold-4);
 }
 
 .brandText {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: var(--fs-sm);
   color: var(--text-secondary);
 }
 
 .nav {
   display: flex;
-  gap: 24px;
+  gap: var(--sp-6);
   flex-wrap: wrap;
 }
 
@@ -62,10 +62,10 @@
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 12px;
+  font-size: var(--fs-sm);
   color: var(--text-secondary);
   font-family: var(--font-sans);
-  transition: color 0.2s ease;
+  transition: color var(--tr-fast);
 }
 
 @media (hover: hover) {
@@ -75,19 +75,19 @@
 }
 
 .legal {
-  font-size: 12px;
+  font-size: var(--fs-sm);
   color: var(--text-secondary);
   width: 100%;
   text-align: center;
-  padding-top: 20px;
-  margin-top: 8px;
+  padding-top: var(--sp-5);
+  margin-top: var(--sp-2);
   border-top: 1px solid var(--card-border);
 }
 
 .legalLink {
   color: var(--text-secondary);
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color var(--tr-fast);
 }
 
 @media (hover: hover) {

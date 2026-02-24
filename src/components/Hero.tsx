@@ -1,3 +1,4 @@
+import { ChevronDown } from 'lucide-react'
 import { useNavigation } from '@/context/useNavigation'
 import { Reveal } from '@/components/ui/Reveal'
 import { ParticleField } from '@/components/ui/ParticleField'
@@ -67,7 +68,9 @@ export function Hero() {
       </div>
 
       <div className={styles.scrollIndicator}>
-        <span className={styles.scrollArrow}>↓</span>
+        <span className={styles.scrollArrow}>
+          <ChevronDown size={20} strokeWidth={2} />
+        </span>
       </div>
     </section>
   )

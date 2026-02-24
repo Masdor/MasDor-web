@@ -1,7 +1,7 @@
 /* ─── Shared Section Patterns ─── */
 
 .section {
-  padding: 120px 0 100px;
+  padding: var(--sp-20) 0 var(--sp-18);
   position: relative;
   content-visibility: auto;
   contain-intrinsic-size: auto 800px;
@@ -18,33 +18,49 @@
 .container {
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 var(--sp-6);
 }
 
 .containerNarrow {
   max-width: var(--container-narrow);
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 var(--sp-6);
+}
+
+/* ─── Section Divider Line ─── */
+
+.sectionWithDivider {
+  position: relative;
+}
+
+.sectionWithDivider::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--divider-gradient);
 }
 
 /* ─── Section Header ─── */
 
 .sectionHeader {
   text-align: center;
-  margin-bottom: 56px;
+  margin-bottom: var(--sp-11);
 }
 
 .tagBadge {
   display: inline-block;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--fs-xs);
   letter-spacing: 3px;
   color: var(--gold);
   text-transform: uppercase;
-  background: rgba(207, 169, 86, 0.06);
-  padding: 8px 18px;
+  background: var(--gold-6);
+  padding: var(--sp-2) 18px;
   border-radius: 100px;
-  border: 1px solid rgba(207, 169, 86, 0.12);
+  border: 1px solid var(--gold-12);
 }
 
 .sectionTitle {
@@ -52,7 +68,7 @@
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.15;
-  margin-top: 20px;
+  margin-top: var(--sp-5);
 }
 
 .subtitle {
@@ -63,15 +79,15 @@
 
 .subtitleCentered {
   max-width: 560px;
-  margin: 16px auto 0;
+  margin: var(--sp-4) auto 0;
 }
 
 .sectionHeaderLg {
-  margin-bottom: 64px;
+  margin-bottom: var(--sp-12);
 }
 
 .sectionTitleSpaced {
-  margin-bottom: 20px;
+  margin-bottom: var(--sp-5);
 }
 
 /* ─── Buttons ─── */
@@ -84,12 +100,12 @@
   border-radius: var(--radius-md);
   font-family: var(--font-sans);
   letter-spacing: 0.01em;
-  transition: background 0.3s var(--ease-out), transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+  transition: background var(--tr-mid), transform var(--tr-mid), box-shadow var(--tr-mid);
   cursor: pointer;
   border: none;
-  font-size: 15px;
-  padding: 16px 36px;
-  gap: 8px;
+  font-size: var(--fs-md);
+  padding: var(--sp-4) 36px;
+  gap: var(--sp-2);
   position: relative;
   overflow: hidden;
 }
@@ -121,32 +137,32 @@
 .btnPrimary {
   background: var(--gold);
   color: var(--dark);
-  box-shadow: 0 4px 24px rgba(207, 169, 86, 0.15);
+  box-shadow: 0 4px 24px var(--gold-15);
 }
 
 .btnOutline {
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--white-4);
   color: var(--text-primary);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid var(--white-12);
   backdrop-filter: blur(8px);
 }
 
 @media (hover: hover) {
   .btnPrimary:hover {
-    box-shadow: 0 8px 32px rgba(207, 169, 86, 0.25);
+    box-shadow: 0 8px 32px var(--gold-25);
     background: var(--gold-light);
   }
 
   .btnOutline:hover {
-    border-color: rgba(207, 169, 86, 0.3);
-    background: rgba(207, 169, 86, 0.06);
+    border-color: var(--gold-30);
+    background: var(--gold-6);
     color: var(--gold-light);
   }
 }
 
 .btnSmall {
-  padding: 10px 24px;
-  font-size: 13px;
+  padding: 10px var(--sp-6);
+  font-size: var(--fs-base-sm);
 }
 
 .btnFull {
@@ -161,7 +177,7 @@
   background: var(--card-bg);
   border: 1px solid var(--card-border);
   border-radius: var(--radius-lg);
-  transition: border-color 0.35s var(--ease-out), background 0.35s var(--ease-out);
+  transition: border-color var(--tr-slow), background var(--tr-slow);
 }
 
 @media (hover: hover) {
@@ -176,7 +192,7 @@
   border: 1px solid var(--card-border);
   border-radius: var(--radius-lg);
   backdrop-filter: blur(8px);
-  transition: border-color 0.35s var(--ease-out), background 0.35s var(--ease-out);
+  transition: border-color var(--tr-slow), background var(--tr-slow);
 }
 
 @media (hover: hover) {
@@ -190,23 +206,23 @@
 .label {
   display: block;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--fs-xs);
   letter-spacing: 1.5px;
   color: var(--text-secondary);
-  margin-bottom: 8px;
+  margin-bottom: var(--sp-2);
   text-transform: uppercase;
 }
 
 .input {
   width: 100%;
-  padding: 14px 16px;
+  padding: 14px var(--sp-4);
   background: rgba(255, 255, 255, 0.025);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--white-8);
   border-radius: var(--radius-sm);
   color: var(--text-primary);
-  font-size: 15px;
+  font-size: var(--fs-md);
   font-family: var(--font-sans);
-  transition: border-color 0.3s var(--ease-out), background 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+  transition: border-color var(--tr-mid), background var(--tr-mid), box-shadow var(--tr-mid);
 }
 
 .input::placeholder {
@@ -216,7 +232,7 @@
 
 @media (hover: hover) {
   .input:hover {
-    border-color: rgba(255, 255, 255, 0.15);
+    border-color: var(--white-15);
     background: rgba(255, 255, 255, 0.035);
   }
 }
@@ -239,9 +255,28 @@
 
 .monoTag {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: var(--fs-sm);
   letter-spacing: 2px;
   text-transform: uppercase;
+}
+
+/* ─── Mono Label ─── */
+
+.monoLabel {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.monoLabelGold {
+  composes: monoLabel;
+  color: var(--gold);
+}
+
+.monoLabelMuted {
+  composes: monoLabel;
+  color: var(--text-secondary);
 }
 
 /* ─── Grids ─── */
@@ -249,21 +284,21 @@
 .gridRow {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  gap: var(--sp-4);
 }
 
 /* ─── Section Divider ─── */
 
 .sectionDivider {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(207, 169, 86, 0.12), transparent);
+  background: var(--divider-gradient);
   border: none;
   margin: 0;
 }
 
 @media (max-width: 768px) {
   .section {
-    padding: 80px 0 60px;
+    padding: var(--sp-14) 0 60px;
   }
 
   .gridRow {
