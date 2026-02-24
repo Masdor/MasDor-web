@@ -1,7 +1,7 @@
 {
   "name": "lab-root-website",
   "private": true,
-  "version": "4.0.0",
+  "version": "5.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,7 +9,14 @@
     "build:report": "tsc -b && vite build && node scripts/bundle-report.mjs",
     "preview": "vite preview",
     "lint": "eslint .",
-    "test": "vitest run"
+    "lint:fix": "eslint . --fix",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest run --coverage",
+    "typecheck": "tsc -b --noEmit",
+    "check": "npm run typecheck && npm run lint && npm run test && npm run build",
+    "clean": "rm -rf dist node_modules/.vite"
   },
   "dependencies": {
     "@fontsource-variable/dm-sans": "^5.2.8",
