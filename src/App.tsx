@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback, useRef, lazy, Suspense } from 'react'
 import { NavigationProvider } from '@/context/NavigationContext'
 import { Navbar } from '@/components/Navbar'
 import { Hero } from '@/components/Hero'
+import { Analytics } from '@/components/Analytics'
 import { ErrorBoundary } from '@/components/ErrorBoundary'
 import { BackToTop } from '@/components/ui/BackToTop'
 import { ScrollProgress } from '@/components/ui/ScrollProgress'
@@ -111,6 +112,7 @@ export default function App() {
             <CookieConsent />
             <Legal page={legalPage} onClose={closeLegal} />
           </Suspense>
+          <Analytics />
         </main>
         <BackToTop />
       </div>

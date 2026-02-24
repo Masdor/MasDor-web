@@ -1,0 +1,52 @@
+# Umami Analytics — Self-hosted deployment
+# Platzieren auf dem Server (194.164.54.111)
+# Zugriff über Nginx Proxy Manager: analytics.lab-root.com → localhost:3001
+#
+# Setup:
+# 1. docker compose up -d
+# 2. Im Browser: https://analytics.lab-root.com
+# 3. Login: admin / umami (sofort ändern!)
+# 4. Website "lab-root.com" anlegen → Website-ID kopieren
+# 5. Website-ID in index.html eintragen: data-website-id="<ID>"
+# 6. In Nginx Proxy Manager: Proxy Host für analytics.lab-root.com → localhost:3001
+
+services:
+  umami:
+    image: ghcr.io/umami-software/umami:postgresql-latest
+    container_name: umami
+    restart: unless-stopped
+    ports:
+      - "3001:3000"
+    environment:
+      DATABASE_URL: postgresql://umami:${UMAMI_DB_PASSWORD}@umami-db:5432/umami
+      DATABASE_TYPE: postgresql
+      APP_SECRET: ${UMAMI_APP_SECRET}
+      TRACKER_SCRIPT_NAME: script.js
+      DISABLE_TELEMETRY: 1
+    depends_on:
+      umami-db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:3000/api/heartbeat || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  umami-db:
+    image: postgres:16-alpine
+    container_name: umami-db
+    restart: unless-stopped
+    volumes:
+      - umami-db-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: umami
+      POSTGRES_USER: umami
+      POSTGRES_PASSWORD: ${UMAMI_DB_PASSWORD}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U umami"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  umami-db-data:
