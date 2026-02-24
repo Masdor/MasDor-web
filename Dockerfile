@@ -25,6 +25,17 @@ RUN npm run build
 # ─── Stage 3: Production ───
 FROM nginx:1.27-alpine
 
+# Build-Metadaten
+ARG BUILD_DATE
+ARG VCS_REF
+
+LABEL org.opencontainers.image.title="LAB-ROOT Website" \
+      org.opencontainers.image.description="Engineering für Medical, Industrial & IT" \
+      org.opencontainers.image.url="https://lab-root.com" \
+      org.opencontainers.image.source="https://github.com/Masdor/MasDor-web" \
+      org.opencontainers.image.created="${BUILD_DATE}" \
+      org.opencontainers.image.revision="${VCS_REF}"
+
 # Install Brotli modules
 COPY --from=brotli-build /brotli-modules/ngx_http_brotli_filter_module.so /usr/lib/nginx/modules/
 COPY --from=brotli-build /brotli-modules/ngx_http_brotli_static_module.so /usr/lib/nginx/modules/
