@@ -72,7 +72,7 @@ export function Services() {
                 style={{ '--accent': s.accent } as React.CSSProperties}
               >
                 <div className={styles.tabTag}>{s.tag}</div>
-                {s.title}
+                <span lang="en">{s.title}</span>
               </button>
             ))}
           </div>
@@ -89,7 +89,7 @@ export function Services() {
             <div>
               <div className={styles.contentHeader}>
                 <div className={styles.accentBar} />
-                <h3 className={styles.contentTitle}>{svc.title}</h3>
+                <h3 className={styles.contentTitle}><span lang="en">{svc.title}</span></h3>
               </div>
               <p className={styles.contentSubtitle}>{svc.subtitle}</p>
               <p className={styles.contentIntro}>{svc.intro}</p>

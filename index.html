@@ -1,12 +1,21 @@
 <!doctype html>
 <html lang="de">
   <head>
+    <link rel="preconnect" href="https://lab-root.com" />
+    <link rel="dns-prefetch" href="https://lab-root.com" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="dark" />
     <title>LAB-ROOT | Engineering für Medical, Industrial & IT</title>
     <meta name="description" content="LAB-ROOT – Spezialisierte technische Dienstleistungen für Medical Systems, Industrial Automation und IT-Infrastruktur. Strukturierte Fehleranalyse und dokumentierte Umsetzung aus Cham, Deutschland." />
     <meta name="keywords" content="Medizintechnik, Industrieautomatisierung, IT-Infrastruktur, Cham, Engineering, Laboranalytik, SPS, TIA Portal" />
+    <!-- Ergänzende Meta-Tags -->
+    <meta name="author" content="LAB-ROOT (Root Trading)" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="geo.region" content="DE-BY" />
+    <meta name="geo.placename" content="Cham" />
+    <meta name="geo.position" content="49.2236;12.6627" />
+    <meta name="ICBM" content="49.2236, 12.6627" />
     <link rel="canonical" href="https://lab-root.com" />
     <link rel="alternate" hreflang="de" href="https://lab-root.com/" />
     <link rel="alternate" hreflang="x-default" href="https://lab-root.com/" />
@@ -93,6 +102,73 @@
     }
     </script>
 
+    <!-- Additional Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://lab-root.com/#website",
+          "url": "https://lab-root.com",
+          "name": "LAB-ROOT",
+          "description": "Engineering für Medical, Industrial & IT",
+          "inLanguage": "de-DE",
+          "publisher": { "@id": "https://lab-root.com/#organization" }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://lab-root.com/#organization",
+          "name": "LAB-ROOT",
+          "legalName": "Root Trading",
+          "url": "https://lab-root.com",
+          "email": "info@lab-root.com",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Steinweg 6",
+            "addressLocality": "Cham",
+            "postalCode": "93413",
+            "addressCountry": "DE"
+          },
+          "founder": [
+            {
+              "@type": "Person",
+              "name": "Mahmoud Baddour",
+              "jobTitle": "Founder & Owner"
+            },
+            {
+              "@type": "Person",
+              "name": "Moustafa Almasri",
+              "jobTitle": "CTO & Lead Systems Engineer"
+            }
+          ],
+          "knowsAbout": [
+            "Medical Systems Engineering",
+            "Industrial Automation",
+            "IT Infrastructure",
+            "SPS Programming",
+            "Docker",
+            "Zabbix Monitoring"
+          ],
+          "areaServed": {
+            "@type": "Country",
+            "name": "Germany"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://lab-root.com/#webpage",
+          "url": "https://lab-root.com",
+          "name": "LAB-ROOT | Engineering für Medical, Industrial & IT",
+          "isPartOf": { "@id": "https://lab-root.com/#website" },
+          "about": { "@id": "https://lab-root.com/#organization" },
+          "inLanguage": "de-DE",
+          "dateModified": "2026-02-24"
+        }
+      ]
+    }
+    </script>
+
     <!-- Theme color -->
     <meta name="theme-color" content="#0b0f15" />
   </head>
@@ -100,9 +176,30 @@
     <a href="#home" class="skip-to-content">Zum Inhalt springen</a>
     <div id="root"></div>
     <noscript>
-      <p style="padding:2rem;text-align:center;color:#e6edf3;background:#0b0f15;min-height:100vh">
-        Bitte aktivieren Sie JavaScript, um LAB-ROOT zu verwenden.
-      </p>
+      <div style="background:#0b0f15;color:#e6edf3;font-family:system-ui,sans-serif;padding:2rem;max-width:800px;margin:0 auto">
+        <h1 style="color:#CFA956;margin-bottom:1rem">LAB-ROOT — Engineering für Medical, Industrial & IT</h1>
+        <p style="color:#c0c8d2;line-height:1.8;margin-bottom:2rem">
+          Spezialisierte technische Dienstleistungen für Medical Systems, Industrial Automation
+          und IT-Infrastruktur. Strukturierte Fehleranalyse, belastbare Instandhaltung und
+          dokumentierte Umsetzung – von Ingenieuren, für den realen Betrieb.
+        </p>
+        <h2 style="color:#CFA956;font-size:1.2rem;margin-bottom:0.5rem">Leistungen</h2>
+        <ul style="color:#c0c8d2;line-height:1.8;margin-bottom:1.5rem;padding-left:1.5rem">
+          <li><strong>Medical Systems</strong> — Diagnostik, Laboranalytik, bildgebende Systeme, dokumentierte Prozesse</li>
+          <li><strong>Industrial Systems</strong> — SPS, Antriebstechnik, Sensorik, Schaltschrankbau</li>
+          <li><strong>IT Infrastructure</strong> — Server, Netzwerk, Monitoring, Automatisierung</li>
+        </ul>
+        <h2 style="color:#CFA956;font-size:1.2rem;margin-bottom:0.5rem">Kontakt</h2>
+        <p style="color:#c0c8d2;line-height:1.8">
+          LAB-ROOT (Root Trading)<br>
+          Steinweg 6, 93413 Cham, Deutschland<br>
+          E-Mail: <a href="mailto:info@lab-root.com" style="color:#CFA956">info@lab-root.com</a><br>
+          Telefon: <a href="tel:+491775389347" style="color:#CFA956">+49 177 538 9347</a>
+        </p>
+        <p style="color:#8b949e;font-size:0.85rem;margin-top:2rem">
+          Für die volle Erfahrung aktivieren Sie bitte JavaScript.
+        </p>
+      </div>
     </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>

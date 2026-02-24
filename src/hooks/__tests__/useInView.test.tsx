@@ -13,7 +13,7 @@ describe('useInView', () => {
     mockUnobserve = vi.fn()
 
     vi.stubGlobal('IntersectionObserver', class {
-      constructor(cb: IntersectionObserverCallback, _options?: IntersectionObserverInit) {
+      constructor(cb: IntersectionObserverCallback) {
         capturedCallback = cb
       }
       observe = mockObserve

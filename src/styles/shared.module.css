@@ -4,7 +4,7 @@
   padding: var(--sp-20) 0 var(--sp-18);
   position: relative;
   content-visibility: auto;
-  contain-intrinsic-size: auto 800px;
+  contain-intrinsic-size: auto 700px;
 }
 
 .sectionDark {
