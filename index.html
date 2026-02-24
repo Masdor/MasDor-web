@@ -36,6 +36,7 @@
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:alt" content="LAB-ROOT — Engineering für Medical, Industrial & IT Infrastructure" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -47,13 +48,16 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "LocalBusiness",
+      "@type": ["LocalBusiness", "ProfessionalService"],
+      "@id": "https://lab-root.com/#business",
       "name": "LAB-ROOT",
       "legalName": "Root Trading",
       "description": "Spezialisierte technische Dienstleistungen für Medical Systems, Industrial Automation und IT-Infrastruktur.",
       "url": "https://lab-root.com",
+      "image": "https://lab-root.com/og-image.png",
       "email": "info@lab-root.com",
       "telephone": "+49 177 538 9347",
+      "priceRange": "$$",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Steinweg 6",
@@ -69,6 +73,24 @@
       "vatID": "DE367983356",
       "areaServed": "DE",
       "serviceType": ["Medical Systems Engineering", "Industrial Automation", "IT Infrastructure"],
+      "foundingDate": "2024",
+      "numberOfEmployees": {
+        "@type": "QuantitativeValue",
+        "minValue": 2,
+        "maxValue": 5
+      },
+      "knowsLanguage": ["de", "en", "ar"],
+      "sameAs": [
+        "https://github.com/lab-root"
+      ],
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "08:00",
+          "closes": "18:00"
+        }
+      ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Technische Dienstleistungen",
@@ -77,24 +99,36 @@
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
+              "@id": "https://lab-root.com/#service-medical",
               "name": "Medical Systems",
-              "description": "Technische Betreuung medizinischer und medizinnaher Systeme – Laboranalytik, bildgebende Systeme, Steuerungseinheiten."
+              "description": "Technische Betreuung medizinischer und medizinnaher Systeme – Laboranalytik, bildgebende Systeme, Steuerungseinheiten.",
+              "provider": { "@id": "https://lab-root.com/#business" },
+              "areaServed": { "@type": "Country", "name": "Germany" },
+              "serviceType": "Medical Systems Engineering"
             }
           },
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
+              "@id": "https://lab-root.com/#service-industrial",
               "name": "Industrial Systems",
-              "description": "Analyse, Stabilisierung und Engineering-Unterstützung für SPS-Systeme, Antriebstechnik und industrielle Steuerungen."
+              "description": "Analyse, Stabilisierung und Engineering-Unterstützung für SPS-Systeme, Antriebstechnik und industrielle Steuerungen.",
+              "provider": { "@id": "https://lab-root.com/#business" },
+              "areaServed": { "@type": "Country", "name": "Germany" },
+              "serviceType": "Industrial Automation Engineering"
             }
           },
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
+              "@id": "https://lab-root.com/#service-it",
               "name": "IT Infrastructure",
-              "description": "Server, Netzwerke, Virtualisierung, Monitoring und Automatisierung – stabil, übersichtlich und wartbar."
+              "description": "Server, Netzwerke, Virtualisierung, Monitoring und Automatisierung – stabil, übersichtlich und wartbar.",
+              "provider": { "@id": "https://lab-root.com/#business" },
+              "areaServed": { "@type": "Country", "name": "Germany" },
+              "serviceType": "IT Infrastructure Services"
             }
           }
         ]
@@ -122,6 +156,7 @@
           "name": "LAB-ROOT",
           "legalName": "Root Trading",
           "url": "https://lab-root.com",
+          "image": "https://lab-root.com/og-image.png",
           "email": "info@lab-root.com",
           "address": {
             "@type": "PostalAddress",
@@ -133,13 +168,18 @@
           "founder": [
             {
               "@type": "Person",
+              "@id": "https://lab-root.com/#person-mb",
               "name": "Mahmoud Baddour",
-              "jobTitle": "Founder & Owner"
+              "honorificSuffix": "M.Eng.",
+              "jobTitle": "Founder & Owner",
+              "worksFor": { "@id": "https://lab-root.com/#organization" }
             },
             {
               "@type": "Person",
+              "@id": "https://lab-root.com/#person-ma",
               "name": "Moustafa Almasri",
-              "jobTitle": "CTO & Lead Systems Engineer"
+              "jobTitle": "CTO & Lead Systems Engineer",
+              "worksFor": { "@id": "https://lab-root.com/#organization" }
             }
           ],
           "knowsAbout": [
@@ -154,6 +194,16 @@
             "@type": "Country",
             "name": "Germany"
           },
+          "foundingDate": "2024",
+          "numberOfEmployees": {
+            "@type": "QuantitativeValue",
+            "minValue": 2,
+            "maxValue": 5
+          },
+          "knowsLanguage": ["de", "en", "ar"],
+          "sameAs": [
+            "https://github.com/lab-root"
+          ],
           "hasCredential": [
             {
               "@type": "EducationalOccupationalCredential",
@@ -173,7 +223,56 @@
           "isPartOf": { "@id": "https://lab-root.com/#website" },
           "about": { "@id": "https://lab-root.com/#organization" },
           "inLanguage": "de-DE",
-          "dateModified": "2026-02-24"
+          "dateModified": "2026-02-24",
+          "breadcrumb": { "@id": "https://lab-root.com/#breadcrumb" }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://lab-root.com/#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Startseite",
+              "item": "https://lab-root.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Leistungen",
+              "item": "https://lab-root.com/#leistungen"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Methode",
+              "item": "https://lab-root.com/#methode"
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "name": "Über uns",
+              "item": "https://lab-root.com/#about"
+            },
+            {
+              "@type": "ListItem",
+              "position": 5,
+              "name": "Referenzen",
+              "item": "https://lab-root.com/#referenzen"
+            },
+            {
+              "@type": "ListItem",
+              "position": 6,
+              "name": "FAQ",
+              "item": "https://lab-root.com/#faq"
+            },
+            {
+              "@type": "ListItem",
+              "position": 7,
+              "name": "Kontakt",
+              "item": "https://lab-root.com/#kontakt"
+            }
+          ]
         },
         {
           "@type": "FAQPage",
