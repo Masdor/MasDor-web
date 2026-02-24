@@ -139,6 +139,8 @@
   margin-bottom: var(--sp-2);
   letter-spacing: -0.02em;
   transition: transform 0.3s var(--ease-spring);
+  min-height: 1.2em;
+  line-height: 1.2;
 }
 
 .statLabel {
@@ -265,6 +267,7 @@
 
   .statValue {
     font-size: 24px;
+    min-height: 1.2em;
   }
 
   .statLabel {
