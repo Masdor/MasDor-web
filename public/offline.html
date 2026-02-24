@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b0f15" />
+    <title>Offline — LAB-ROOT</title>
+    <style>
+      *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+      :root{--dark:#0b0f15;--gold:#CFA956;--text-primary:#e6edf3;--text-secondary:#9ba4ae;--surface:#151b24}
+      body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--dark);color:var(--text-primary);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:1.5rem}
+      .container{text-align:center;max-width:420px}
+      .logo{display:inline-flex;align-items:center;gap:.75rem;margin-bottom:2.5rem}
+      .logo-mark{width:44px;height:44px;border:2px solid var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.125rem;font-weight:700;color:var(--gold);letter-spacing:.5px}
+      .logo-text{font-size:1.25rem;font-weight:600;color:var(--text-primary);letter-spacing:1.5px}
+      .icon{width:64px;height:64px;margin:0 auto 1.5rem;border-radius:50%;background:var(--surface);display:flex;align-items:center;justify-content:center}
+      .icon svg{width:32px;height:32px;stroke:var(--gold);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+      h1{font-size:1.375rem;font-weight:600;margin-bottom:.75rem}
+      p{color:var(--text-secondary);line-height:1.6;margin-bottom:2rem;font-size:.9375rem}
+      button{background:transparent;color:var(--gold);border:1px solid var(--gold);padding:.75rem 2rem;border-radius:6px;font-size:.9375rem;font-weight:500;cursor:pointer;transition:background .2s,color .2s}
+      button:hover{background:var(--gold);color:var(--dark)}
+      button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="logo">
+        <div class="logo-mark">LR</div>
+        <div class="logo-text">LAB-ROOT</div>
+      </div>
+      <div class="icon">
+        <svg viewBox="0 0 24 24"><path d="M1 1l22 22M16.72 11.06A10.94 10.94 0 0 1 19 12.55M5 12.55a10.94 10.94 0 0 1 5.17-2.39M10.71 5.05A16 16 0 0 1 22.56 9M1.42 9a15.91 15.91 0 0 1 4.7-2.88M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></svg>
+      </div>
+      <h1>Keine Internetverbindung</h1>
+      <p>Diese Seite ist aktuell nicht verfügbar. Bitte prüfen Sie Ihre Internetverbindung und versuchen Sie es erneut.</p>
+      <button onclick="window.location.reload()">Erneut versuchen</button>
+    </div>
+  </body>
+</html>
