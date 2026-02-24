@@ -11,6 +11,7 @@ const Services = lazy(() => import('@/components/Services').then(m => ({ default
 const Process = lazy(() => import('@/components/Process').then(m => ({ default: m.Process })))
 const TrustBar = lazy(() => import('@/components/TrustBar').then(m => ({ default: m.TrustBar })))
 const About = lazy(() => import('@/components/About').then(m => ({ default: m.About })))
+const Portfolio = lazy(() => import('@/components/Portfolio').then(m => ({ default: m.Portfolio })))
 const Contact = lazy(() => import('@/components/Contact').then(m => ({ default: m.Contact })))
 const Footer = lazy(() => import('@/components/Footer').then(m => ({ default: m.Footer })))
 const Legal = lazy(() => import('@/components/Legal').then(m => ({ default: m.Legal })))
@@ -77,6 +78,7 @@ export default function App() {
             <Suspense fallback={<div className={styles.loading} aria-busy="true" />}>
               <TrustBar />
               <About />
+              <Portfolio />
               <Contact />
               <Footer />
             </Suspense>

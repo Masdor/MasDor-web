@@ -58,3 +58,22 @@ export interface FormErrors {
   email?: string
   nachricht?: string
 }
+
+export type ProjectCategory = 'medical' | 'industrial' | 'it'
+
+export interface ProjectMetric {
+  label: string
+  value: string
+}
+
+export interface Project {
+  id: string
+  category: ProjectCategory
+  title: string
+  client: string
+  summary: string
+  description: string
+  metrics: ProjectMetric[]
+  tags: string[]
+  icon: LucideIcon
+}
