@@ -29,34 +29,10 @@ function fontPreloadPlugin(): Plugin {
   }
 }
 
-/** Injects a Content-Security-Policy meta tag into index.html during production builds only. */
-function cspPlugin(): Plugin {
-  const csp = [
-    "default-src 'self'",
-    "script-src 'self'",
-    "style-src 'self' 'unsafe-inline'",
-    "font-src 'self'",
-    "img-src 'self' data:",
-    "connect-src 'self'",
-  ].join('; ')
-
-  return {
-    name: 'inject-csp',
-    apply: 'build',
-    transformIndexHtml(html) {
-      return html.replace(
-        '</head>',
-        `    <meta http-equiv="Content-Security-Policy" content="${csp}" />\n  </head>`,
-      )
-    },
-  }
-}
-
 export default defineConfig({
   plugins: [
     react(),
     fontPreloadPlugin(),
-    cspPlugin(),
     compression({
       algorithms: ['gzip', 'brotliCompress'],
       exclude: [/\.(br)$/, /\.(gz)$/],

@@ -37,6 +37,10 @@ RUN sed -i '1i load_module /usr/lib/nginx/modules/ngx_http_brotli_static_module.
 COPY --from=build /app/dist /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
+# Copy security headers snippet (inkludiert in jedem location-Block)
+RUN mkdir -p /etc/nginx/snippets
+COPY security-headers.conf /etc/nginx/snippets/security-headers.conf
+
 # Healthcheck
 HEALTHCHECK --interval=30s --timeout=3s --retries=3 \
   CMD wget -qO- http://localhost:80/ || exit 1
