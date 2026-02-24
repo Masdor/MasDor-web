@@ -9,18 +9,26 @@ export function ParticleField() {
 
     const c = canvasRef.current
     if (!c) return
-    const ctx = c.getContext('2d')
+    const ctx = c.getContext('2d', { alpha: true })
     if (!ctx) return
+    ctx.globalCompositeOperation = 'source-over'
 
     let raf: number
     let resizeTimer: ReturnType<typeof setTimeout>
     const isMobile = window.innerWidth < 768
-    const particleCount = isMobile ? 18 : 35
-    const connectionDist = isMobile ? 90 : 110
+    const lowEnd = isMobile && (navigator.hardwareConcurrency ?? 8) <= 4
+
+    const particleCount = isMobile ? (lowEnd ? 6 : 12) : 35
+    const connectionDist = isMobile ? 80 : 110
     const connectionDistSq = connectionDist * connectionDist
+    const FRAME_INTERVAL = isMobile ? 33.33 : 0
 
     let prevW = c.offsetWidth
     let prevH = c.offsetHeight
+    let isVisible = true
+    let isTabActive = true
+    let running = false
+    let lastFrameTime = 0
 
     const particles = Array.from({ length: particleCount }, () => ({
       x: Math.random() * prevW,
@@ -32,7 +40,7 @@ export function ParticleField() {
     }))
 
     const resize = () => {
-      const dpr = Math.min(window.devicePixelRatio || 1, 2)
+      const dpr = Math.min(window.devicePixelRatio || 1, isMobile ? 1.5 : 2)
       const newW = c.offsetWidth
       const newH = c.offsetHeight
 
@@ -60,7 +68,15 @@ export function ParticleField() {
     }
     window.addEventListener('resize', debouncedResize)
 
-    const draw = () => {
+    const draw = (now: DOMHighResTimeStamp) => {
+      if (FRAME_INTERVAL > 0) {
+        if (now - lastFrameTime < FRAME_INTERVAL) {
+          raf = requestAnimationFrame(draw)
+          return
+        }
+        lastFrameTime = now
+      }
+
       const lw = prevW
       const lh = prevH
       ctx.clearRect(0, 0, lw, lh)
@@ -100,11 +116,45 @@ export function ParticleField() {
 
       raf = requestAnimationFrame(draw)
     }
-    draw()
+
+    const tryStart = () => {
+      if (!running && isVisible && isTabActive) {
+        running = true
+        raf = requestAnimationFrame(draw)
+      }
+    }
+
+    const tryStop = () => {
+      running = false
+      cancelAnimationFrame(raf)
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          isVisible = entry.isIntersecting
+        }
+        if (isVisible) tryStart()
+        else tryStop()
+      },
+      { threshold: 0 },
+    )
+    observer.observe(c)
+
+    const onVisibilityChange = () => {
+      isTabActive = document.visibilityState === 'visible'
+      if (isTabActive) tryStart()
+      else tryStop()
+    }
+    document.addEventListener('visibilitychange', onVisibilityChange)
+
+    tryStart()
 
     return () => {
       cancelAnimationFrame(raf)
       clearTimeout(resizeTimer)
+      observer.disconnect()
+      document.removeEventListener('visibilitychange', onVisibilityChange)
       window.removeEventListener('resize', debouncedResize)
     }
   }, [])
