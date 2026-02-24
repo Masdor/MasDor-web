@@ -28,7 +28,7 @@ export function Hero() {
 
         <Reveal delay={0.08} direction="left">
           <h1 className={styles.title}>
-            Precision Engineering.<br />
+            <span lang="en">Precision Engineering.</span><br />
             <span className={styles.titleAccent}>Intelligente Lösungen.</span>
           </h1>
         </Reveal>

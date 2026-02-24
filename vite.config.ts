@@ -1,6 +1,7 @@
 /// <reference types="vitest/config" />
 import { defineConfig, type Plugin } from 'vite'
 import react from '@vitejs/plugin-react'
+import { compression } from 'vite-plugin-compression2'
 import { resolve } from 'path'
 import { fileURLToPath } from 'url'
 
@@ -52,19 +53,28 @@ function cspPlugin(): Plugin {
 }
 
 export default defineConfig({
-  plugins: [react(), fontPreloadPlugin(), cspPlugin()],
+  plugins: [
+    react(),
+    fontPreloadPlugin(),
+    cspPlugin(),
+    compression({
+      algorithms: ['gzip', 'brotliCompress'],
+      exclude: [/\.(br)$/, /\.(gz)$/],
+    }),
+  ],
   resolve: {
     alias: {
       '@': resolve(__dirname, './src'),
     },
   },
   build: {
-    target: 'es2020',
+    target: 'es2022',
     cssMinify: true,
     rollupOptions: {
       output: {
         manualChunks: {
-          react: ['react', 'react-dom'],
+          'react-core': ['react', 'react-dom'],
+          'icons': ['lucide-react'],
         },
       },
     },

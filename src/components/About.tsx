@@ -43,7 +43,7 @@ export function About() {
                   <div className={styles.avatar}>{m.initials}</div>
                   <div>
                     <h4 className={styles.memberName}>{m.name}</h4>
-                    <p className={styles.memberRole}>{m.role}</p>
+                    <p className={styles.memberRole} lang="en">{m.role}</p>
                     <p className={styles.memberFocus}>{m.focus}</p>
                   </div>
                 </HoverCard>

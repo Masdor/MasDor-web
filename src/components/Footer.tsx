@@ -13,11 +13,11 @@ export function Footer() {
           <div className={styles.brandBox}>LR</div>
           <span className={styles.brandText}>LAB-ROOT — Engineering mit Verantwortung</span>
         </div>
-        <div className={styles.nav}>
+        <nav className={styles.nav} aria-label="Footer Navigation">
           {NAV_LINKS.map(l => (
             <button type="button" key={l.id} onClick={() => scrollTo(l.id)} className={styles.navBtn}>{l.label}</button>
           ))}
-        </div>
+        </nav>
         <p className={styles.legal}>
           © {YEAR} LAB-ROOT. Alle Rechte vorbehalten. ·{' '}
           <a href="#impressum" className={styles.legalLink}>Impressum</a> ·{' '}
