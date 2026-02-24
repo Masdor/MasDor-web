@@ -105,3 +105,28 @@
     max-height: 90vh;
   }
 }
+
+@media (max-width: 480px) {
+  .overlay {
+    padding: 16px;
+  }
+
+  .modal {
+    padding: 28px 20px;
+    border-radius: var(--radius-lg);
+  }
+
+  .title {
+    font-size: 20px;
+    margin-bottom: 24px;
+    padding-right: 32px;
+  }
+
+  .content h3 {
+    font-size: 15px;
+  }
+
+  .content p {
+    font-size: 13px;
+  }
+}

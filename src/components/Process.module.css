@@ -150,3 +150,27 @@
     display: none;
   }
 }
+
+@media (max-width: 480px) {
+  .step {
+    padding: 20px 16px;
+    column-gap: 12px;
+  }
+
+  .stepIcon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .stepTitle {
+    font-size: 15px;
+  }
+
+  .stepDesc {
+    font-size: 12px;
+  }
+
+  .stepLabel {
+    font-size: 10px;
+  }
+}

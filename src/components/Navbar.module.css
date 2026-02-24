@@ -6,6 +6,7 @@
   z-index: var(--z-nav);
   transition: background var(--tr-slower), border-color var(--tr-slower), box-shadow var(--tr-slower);
   border-bottom: 1px solid transparent;
+  padding-top: var(--safe-top, 0px);
 }
 
 .navScrolled {
@@ -262,6 +263,8 @@
 @media (max-width: 768px) {
   .inner {
     padding: 0 var(--sp-4);
+    padding-left: max(16px, var(--safe-left, 16px));
+    padding-right: max(16px, var(--safe-right, 16px));
   }
 
   .desktopNav {
@@ -270,5 +273,18 @@
 
   .mobileToggle {
     display: flex;
+  }
+
+  .mobileLink {
+    padding: 14px 0;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+  }
+
+  .mobileMenu {
+    padding: 12px 20px 32px;
+    padding-left: max(20px, var(--safe-left, 20px));
+    padding-right: max(20px, var(--safe-right, 20px));
   }
 }
