@@ -1,10 +1,13 @@
 import { useEffect, useRef } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useNavigation } from '@/context/useNavigation'
 import { NAV_LINKS } from '@/data/navigation'
+import { LanguageSwitcher } from '@/components/ui/LanguageSwitcher'
 import styles from './Navbar.module.css'
 
 export function Navbar() {
   const { scrollTo, menuOpen, setMenuOpen, scrolled, activeSection } = useNavigation()
+  const { t } = useTranslation()
   const toggleRef = useRef<HTMLButtonElement>(null)
   const menuRef = useRef<HTMLDivElement>(null)
 
@@ -52,7 +55,7 @@ export function Navbar() {
   }, [menuOpen, setMenuOpen])
 
   return (
-    <nav className={`${styles.nav} ${scrolled ? styles.navScrolled : ''}`} aria-label="Hauptnavigation">
+    <nav className={`${styles.nav} ${scrolled ? styles.navScrolled : ''}`} aria-label={t('nav.mainNav')}>
       <div className={styles.inner}>
         <button type="button" onClick={() => scrollTo('home')} className={styles.logo}>
           <div className={styles.logoBox}>LR</div>
@@ -67,19 +70,20 @@ export function Navbar() {
               onClick={() => scrollTo(link.id)}
               className={`${styles.navLink} ${activeSection === link.id ? styles.navLinkActive : ''}`}
             >
-              {link.label}
+              {t(link.labelKey)}
             </button>
           ))}
           <button type="button" onClick={() => scrollTo('kontakt')} className={styles.ctaBtn}>
-            Anfrage senden
+            {t('nav.cta')}
           </button>
+          <LanguageSwitcher />
         </div>
 
         <button
           ref={toggleRef}
           type="button"
           className={styles.mobileToggle}
-          aria-label={menuOpen ? 'Menü schließen' : 'Menü öffnen'}
+          aria-label={menuOpen ? t('nav.menuClose') : t('nav.menuOpen')}
           aria-expanded={menuOpen}
           aria-controls="mobile-menu"
           aria-haspopup="true"
@@ -98,7 +102,7 @@ export function Navbar() {
       {menuOpen && (
         <>
           <div className={styles.mobileOverlay} onClick={() => setMenuOpen(false)} aria-hidden="true" />
-          <div ref={menuRef} id="mobile-menu" className={styles.mobileMenu} role="navigation" aria-label="Mobile Navigation">
+          <div ref={menuRef} id="mobile-menu" className={styles.mobileMenu} role="navigation" aria-label={t('nav.mobileNav')}>
             {NAV_LINKS.map((link, i) => (
               <button
                 type="button"
@@ -107,9 +111,12 @@ export function Navbar() {
                 className={`${styles.mobileLink} ${i < NAV_LINKS.length - 1 ? styles.mobileLinkBorder : ''} ${activeSection === link.id ? styles.mobileLinkActive : ''}`}
                 style={{ '--delay': `${i * 0.05}s` } as React.CSSProperties}
               >
-                {link.label}
+                {t(link.labelKey)}
               </button>
             ))}
+            <div className={styles.mobileLink} style={{ '--delay': `${NAV_LINKS.length * 0.05}s` } as React.CSSProperties}>
+              <LanguageSwitcher />
+            </div>
           </div>
         </>
       )}

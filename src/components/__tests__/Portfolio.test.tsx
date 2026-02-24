@@ -1,7 +1,8 @@
 import { render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { Portfolio } from '../Portfolio'
-import { PROJECTS } from '@/data/projects'
+import { PROJECTS_META } from '@/data/projects'
+import portfolioTranslations from '@/locales/de/portfolio.json'
 
 vi.mock('@/hooks/useInView', () => ({
   useInView: () => [{ current: null }, true],
@@ -18,7 +19,7 @@ describe('Portfolio', () => {
   it('renders all projects by default (filter: Alle)', () => {
     render(<Portfolio />)
     const items = screen.getAllByRole('listitem')
-    expect(items).toHaveLength(PROJECTS.length)
+    expect(items).toHaveLength(PROJECTS_META.length)
   })
 
   it('renders filter buttons', () => {
@@ -38,7 +39,7 @@ describe('Portfolio', () => {
 
     await user.click(screen.getByRole('button', { name: 'Medical' }))
 
-    const medicalCount = PROJECTS.filter(p => p.category === 'medical').length
+    const medicalCount = PROJECTS_META.filter(p => p.category === 'medical').length
     expect(screen.getAllByRole('listitem')).toHaveLength(medicalCount)
     expect(screen.getByRole('button', { name: 'Medical' })).toHaveAttribute('aria-pressed', 'true')
   })
@@ -48,7 +49,7 @@ describe('Portfolio', () => {
     render(<Portfolio />)
 
     await user.click(screen.getByRole('button', { name: 'IT' }))
-    const itCount = PROJECTS.filter(p => p.category === 'it').length
+    const itCount = PROJECTS_META.filter(p => p.category === 'it').length
     expect(screen.getAllByRole('listitem')).toHaveLength(itCount)
   })
 
@@ -61,7 +62,7 @@ describe('Portfolio', () => {
     // Back to Alle
     await user.click(screen.getByRole('button', { name: 'Alle' }))
 
-    expect(screen.getAllByRole('listitem')).toHaveLength(PROJECTS.length)
+    expect(screen.getAllByRole('listitem')).toHaveLength(PROJECTS_META.length)
   })
 
   // ─── Detail Modal ───
@@ -104,11 +105,11 @@ describe('Portfolio', () => {
     const user = userEvent.setup()
     render(<Portfolio />)
 
-    const firstProject = PROJECTS[0]!
+    const firstProjectTranslation = portfolioTranslations.items[0]!
     await user.click(screen.getAllByRole('button', { name: /Details anzeigen/ })[0]!)
 
     const dialog = screen.getByRole('dialog')
-    expect(within(dialog).getByText(firstProject.title)).toBeInTheDocument()
-    expect(within(dialog).getByText(firstProject.description)).toBeInTheDocument()
+    expect(within(dialog).getByText(firstProjectTranslation.title)).toBeInTheDocument()
+    expect(within(dialog).getByText(firstProjectTranslation.description)).toBeInTheDocument()
   })
 })

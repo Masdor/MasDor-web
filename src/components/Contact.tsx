@@ -1,4 +1,5 @@
 import { Check } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import { Reveal } from '@/components/ui/Reveal'
 import { useContactForm } from '@/hooks/useContactForm'
 import { CONTACT_PERSONS, COMPANY_INFO } from '@/data/team'
@@ -6,6 +7,7 @@ import shared from '@/styles/shared.module.css'
 import styles from './Contact.module.css'
 
 export function Contact() {
+  const { t } = useTranslation('contact')
   const {
     formData, formErrors, formSent, formSubmitting, submitError,
     honeypot, setHoneypot,
@@ -17,9 +19,9 @@ export function Contact() {
       <div className={shared.containerNarrow}>
         <Reveal>
           <div className={shared.sectionHeader}>
-            <span className={shared.tagBadge}>KONTAKT</span>
-            <h2 className={shared.sectionTitle}>Sprechen Sie mit uns</h2>
-            <p className={`${shared.subtitle} ${shared.subtitleCentered}`}>Ob technische Anfrage, Projektbesprechung oder allgemeine Frage – wir melden uns zeitnah.</p>
+            <span className={shared.tagBadge}>{t('sectionTag')}</span>
+            <h2 className={shared.sectionTitle}>{t('sectionTitle')}</h2>
+            <p className={`${shared.subtitle} ${shared.subtitleCentered}`}>{t('sectionSubtitle')}</p>
           </div>
         </Reveal>
 
@@ -30,10 +32,10 @@ export function Contact() {
                 <div className={styles.successIcon}>
                   <Check size={36} strokeWidth={2.5} />
                 </div>
-                <h3 className={styles.successTitle}>Nachricht gesendet</h3>
-                <p className={styles.successText}>Wir melden uns in der Regel innerhalb von 24 Stunden.</p>
+                <h3 className={styles.successTitle}>{t('success.title')}</h3>
+                <p className={styles.successText}>{t('success.text')}</p>
                 <button type="button" onClick={reset} className={styles.resetBtn}>
-                  Neue Nachricht senden
+                  {t('success.reset')}
                 </button>
               </div>
             ) : (
@@ -52,7 +54,7 @@ export function Contact() {
                 </div>
                 <div className={styles.formRow}>
                   <div>
-                    <label htmlFor="contact-name" className={shared.label}>Name *</label>
+                    <label htmlFor="contact-name" className={shared.label}>{t('form.name')}</label>
                     <input
                       id="contact-name"
                       type="text"
@@ -60,7 +62,7 @@ export function Contact() {
                       onChange={e => updateField('name', e.target.value)}
                       onBlur={() => touchField('name')}
                       className={`${shared.input} ${formErrors.name ? shared.inputError : ''}`}
-                      placeholder="Vollständiger Name"
+                      placeholder={t('form.namePlaceholder')}
                       aria-required="true"
                       aria-invalid={!!formErrors.name}
                       aria-describedby={formErrors.name ? 'error-name' : undefined}
@@ -69,7 +71,7 @@ export function Contact() {
                     {formErrors.name && <p id="error-name" className={styles.fieldError} role="alert">{formErrors.name}</p>}
                   </div>
                   <div>
-                    <label htmlFor="contact-email" className={shared.label}>E-Mail *</label>
+                    <label htmlFor="contact-email" className={shared.label}>{t('form.email')}</label>
                     <input
                       id="contact-email"
                       type="email"
@@ -77,7 +79,7 @@ export function Contact() {
                       onChange={e => updateField('email', e.target.value)}
                       onBlur={() => touchField('email')}
                       className={`${shared.input} ${formErrors.email ? shared.inputError : ''}`}
-                      placeholder="ihre@email.de"
+                      placeholder={t('form.emailPlaceholder')}
                       aria-required="true"
                       aria-invalid={!!formErrors.email}
                       aria-describedby={formErrors.email ? 'error-email' : undefined}
@@ -88,19 +90,19 @@ export function Contact() {
                 </div>
                 <div className={styles.formRow}>
                   <div>
-                    <label htmlFor="contact-telefon" className={shared.label}>Telefon (optional)</label>
+                    <label htmlFor="contact-telefon" className={shared.label}>{t('form.phone')}</label>
                     <input
                       id="contact-telefon"
                       type="tel"
                       value={formData.telefon}
                       onChange={e => updateField('telefon', e.target.value)}
                       className={shared.input}
-                      placeholder="+49 ..."
+                      placeholder={t('form.phonePlaceholder')}
                       disabled={formSubmitting}
                     />
                   </div>
                   <div>
-                    <label htmlFor="contact-betreff" className={shared.label}>Betreff</label>
+                    <label htmlFor="contact-betreff" className={shared.label}>{t('form.subject')}</label>
                     <select
                       id="contact-betreff"
                       value={formData.betreff}
@@ -108,23 +110,23 @@ export function Contact() {
                       className={`${shared.input} ${shared.select}`}
                       disabled={formSubmitting}
                     >
-                      <option>Allgemeine Anfrage</option>
+                      <option>{t('form.subjects.general')}</option>
                       <option>Medical Systems</option>
                       <option>Industrial Systems</option>
                       <option>IT Infrastructure</option>
-                      <option>Projektbesprechung</option>
+                      <option>{t('form.subjects.project')}</option>
                     </select>
                   </div>
                 </div>
                 <div className={styles.messageField}>
-                  <label htmlFor="contact-nachricht" className={shared.label}>Nachricht *</label>
+                  <label htmlFor="contact-nachricht" className={shared.label}>{t('form.message')}</label>
                   <textarea
                     id="contact-nachricht"
                     value={formData.nachricht}
                     onChange={e => updateField('nachricht', e.target.value)}
                     onBlur={() => touchField('nachricht')}
                     className={`${shared.input} ${styles.textarea} ${formErrors.nachricht ? shared.inputError : ''}`}
-                    placeholder="Beschreiben Sie kurz Ihr Anliegen..."
+                    placeholder={t('form.messagePlaceholder')}
                     aria-required="true"
                     aria-invalid={!!formErrors.nachricht}
                     aria-describedby={formErrors.nachricht ? 'error-nachricht' : undefined}
@@ -138,18 +140,18 @@ export function Contact() {
                   disabled={formSubmitting}
                   aria-busy={formSubmitting || undefined}
                 >
-                  {formSubmitting ? <><span className={styles.spinner} aria-hidden="true" />Wird gesendet…</> : 'Nachricht senden'}
+                  {formSubmitting ? <><span className={styles.spinner} aria-hidden="true" />{t('form.submitting')}</> : t('form.submit')}
                 </button>
                 {submitError && (
                   <p className={styles.formError} role="alert">
                     {submitError.includes('info@lab-root.com')
-                      ? <>Kontaktformular ist derzeit nicht verfügbar. Bitte kontaktieren Sie uns direkt per E-Mail an{' '}
+                      ? <>{t('errors.fallback')}{' '}
                           <a href={`mailto:${COMPANY_INFO.email}?subject=${encodeURIComponent(formData.betreff)}`} className={styles.errorLink}>{COMPANY_INFO.email}</a>.</>
                       : submitError}
                   </p>
                 )}
                 {!submitError && Object.values(formErrors).some(Boolean) && (
-                  <p className={styles.formError} role="alert">Bitte füllen Sie alle Pflichtfelder korrekt aus.</p>
+                  <p className={styles.formError} role="alert">{t('form.fillRequired')}</p>
                 )}
               </form>
             )}
@@ -158,7 +160,7 @@ export function Contact() {
           <Reveal delay={0.2} direction="right">
             <div className={styles.infoStack}>
               <div className={styles.infoCard}>
-                <h4 className={styles.infoTitle}>Direkter Kontakt</h4>
+                <h4 className={styles.infoTitle}>{t('info.directContact')}</h4>
                 {CONTACT_PERSONS.map((c) => {
                   const telDisplay = c.tel.join(' ')
                   const telHref = c.tel.join('')
@@ -171,16 +173,16 @@ export function Contact() {
                 })}
               </div>
               <div className={styles.infoCard}>
-                <h4 className={styles.infoTitle}>Standort</h4>
+                <h4 className={styles.infoTitle}>{t('info.location')}</h4>
                 <p className={styles.locationText}>{COMPANY_INFO.name} ({COMPANY_INFO.legalName})<br />{COMPANY_INFO.street}<br />{COMPANY_INFO.city}, {COMPANY_INFO.country}</p>
               </div>
               <div className={styles.infoCard}>
-                <h4 className={styles.infoTitle}>E-Mail</h4>
+                <h4 className={styles.infoTitle}>{t('info.email')}</h4>
                 <a href={`mailto:${COMPANY_INFO.email}`} className={styles.emailLink}>{COMPANY_INFO.email}</a>
-                <p className={styles.emailNote}>Antwort i.d.R. innerhalb von 24h</p>
+                <p className={styles.emailNote}>{t('info.emailNote')}</p>
               </div>
               <div className={styles.taxInfo}>
-                <p className={styles.taxText}>USt-IdNr: {COMPANY_INFO.ustIdNr} · StNr: {COMPANY_INFO.stNr}</p>
+                <p className={styles.taxText}>{t('info.taxInfo', { ustIdNr: COMPANY_INFO.ustIdNr, stNr: COMPANY_INFO.stNr })}</p>
               </div>
             </div>
           </Reveal>

@@ -1,0 +1,28 @@
+{
+  "impressum": {
+    "title": "Impressum",
+    "tmg": "Angaben gemäß § 5 TMG",
+    "contact": "Kontakt",
+    "email": "E-Mail",
+    "vatTitle": "Umsatzsteuer-ID",
+    "vatDesc": "Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG:",
+    "taxNumber": "Steuernummer",
+    "responsible": "Verantwortlich für den Inhalt",
+    "disclaimer": "Haftungsausschluss",
+    "disclaimerText": "Die Inhalte dieser Seite wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen."
+  },
+  "datenschutz": {
+    "title": "Datenschutzerklärung",
+    "s1Title": "1. Verantwortlicher",
+    "s2Title": "2. Erhebung und Speicherung personenbezogener Daten",
+    "s2Text": "Beim Besuch dieser Website werden automatisch Informationen allgemeiner Natur erfasst (Server-Logfiles). Diese umfassen den verwendeten Webbrowser, das Betriebssystem, den Domainnamen Ihres Internet-Service-Providers sowie ähnliche Informationen. Hierbei handelt es sich ausschließlich um Informationen, die keine Rückschlüsse auf Ihre Person zulassen.",
+    "s3Title": "3. Kontaktformular",
+    "s3Text": "Wenn Sie uns über das Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Formular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.",
+    "s4Title": "4. Cookies",
+    "s4Text": "Diese Website verwendet ausschließlich technisch notwendige Cookies. Es werden keine Tracking- oder Analyse-Cookies eingesetzt.",
+    "s5Title": "5. Ihre Rechte",
+    "s5Text": "Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch. Bitte wenden Sie sich bei Fragen an:",
+    "disclaimer": "Hinweis: Diese Datenschutzerklärung dient als Platzhalter und sollte von einem Rechtsanwalt geprüft und an Ihre konkreten Verarbeitungstätigkeiten angepasst werden."
+  },
+  "closeLabel": "Schließen"
+}

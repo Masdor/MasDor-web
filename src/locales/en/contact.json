@@ -1,0 +1,48 @@
+{
+  "sectionTag": "CONTACT",
+  "sectionTitle": "Talk to us",
+  "sectionSubtitle": "Whether technical inquiry, project discussion or general question – we'll get back to you promptly.",
+  "form": {
+    "name": "Name *",
+    "namePlaceholder": "Full name",
+    "email": "Email *",
+    "emailPlaceholder": "your@email.com",
+    "phone": "Phone (optional)",
+    "phonePlaceholder": "+49 ...",
+    "subject": "Subject",
+    "subjects": {
+      "general": "General inquiry",
+      "medical": "Medical Systems",
+      "industrial": "Industrial Systems",
+      "it": "IT Infrastructure",
+      "project": "Project discussion"
+    },
+    "message": "Message *",
+    "messagePlaceholder": "Briefly describe your request...",
+    "submit": "Send message",
+    "submitting": "Sending…",
+    "fillRequired": "Please fill in all required fields correctly."
+  },
+  "validation": {
+    "nameRequired": "Please enter your name.",
+    "emailInvalid": "Please enter a valid email address.",
+    "messageRequired": "Please enter a message."
+  },
+  "success": {
+    "title": "Message sent",
+    "text": "We typically respond within 24 hours.",
+    "reset": "Send another message"
+  },
+  "errors": {
+    "noEndpoint": "Contact form is currently unavailable. Please contact us directly via email at info@lab-root.com.",
+    "generic": "Message could not be sent. Please try again.",
+    "fallback": "Contact form is currently unavailable. Please contact us directly via email at"
+  },
+  "info": {
+    "directContact": "Direct contact",
+    "location": "Location",
+    "email": "Email",
+    "emailNote": "Response typically within 24h",
+    "taxInfo": "VAT ID: {{ustIdNr}} · Tax No: {{stNr}}"
+  }
+}

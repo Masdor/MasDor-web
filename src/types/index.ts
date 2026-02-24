@@ -1,41 +1,28 @@
 export interface NavLink {
   id: string
-  label: string
+  labelKey: string
 }
 
 import type { LucideIcon } from 'lucide-react'
 
-export interface ServiceFocus {
-  icon: LucideIcon
-  title: string
-  desc: string
-}
-
-export interface ServiceData {
+export interface ServiceMeta {
   key: string
   tag: string
   title: string
   accent: string
   accentText: string
-  subtitle: string
-  intro: string
-  focus: ServiceFocus[]
-  principles: string[]
-  audience: string[]
-  strengths: string[]
+  focusIcons: LucideIcon[]
 }
 
-export interface ProcessStep {
+export interface ProcessStepMeta {
   num: string
-  title: string
-  desc: string
   icon: LucideIcon
 }
 
 export interface TeamMember {
   name: string
   role: string
-  focus: string
+  focusIndex: number
   initials: string
 }
 
@@ -61,19 +48,10 @@ export interface FormErrors {
 
 export type ProjectCategory = 'medical' | 'industrial' | 'it'
 
-export interface ProjectMetric {
-  label: string
-  value: string
-}
-
-export interface Project {
+export interface ProjectMeta {
   id: string
   category: ProjectCategory
-  title: string
-  client: string
-  summary: string
-  description: string
-  metrics: ProjectMetric[]
   tags: string[]
   icon: LucideIcon
+  index: number
 }

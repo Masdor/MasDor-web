@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
+import { useTranslation } from 'react-i18next'
 import styles from './CookieConsent.module.css'
 
 const STORAGE_KEY = 'lab-root-cookie-consent'
@@ -20,6 +21,7 @@ function safeSetItem(key: string, value: string): void {
 }
 
 export function CookieConsent() {
+  const { t } = useTranslation()
   const [consent, setConsent] = useState<string | null>(() => safeGetItem(STORAGE_KEY))
   const [animateOut, setAnimateOut] = useState(false)
   const [removed, setRemoved] = useState(false)
@@ -59,14 +61,14 @@ export function CookieConsent() {
   if (removed) return null
 
   return (
-    <div className={`${styles.banner} ${animateOut ? styles.bannerHidden : ''}`} role="dialog" aria-label="Cookie-Einstellungen">
+    <div className={`${styles.banner} ${animateOut ? styles.bannerHidden : ''}`} role="dialog" aria-label={t('cookie.ariaLabel')}>
       <p className={styles.text}>
-        Diese Website verwendet ausschließlich technisch notwendige Cookies. Keine Tracking- oder Analyse-Cookies.{' '}
-        <a href="#datenschutz" className={styles.link}>Datenschutzerklärung</a>
+        {t('cookie.text')}{' '}
+        <a href="#datenschutz" className={styles.link}>{t('cookie.privacyLink')}</a>
       </p>
       <div className={styles.actions}>
-        <button ref={acceptRef} type="button" onClick={() => handleChoice('accepted')} className={styles.accept}>Akzeptieren</button>
-        <button type="button" onClick={() => handleChoice('rejected')} className={styles.reject}>Ablehnen</button>
+        <button ref={acceptRef} type="button" onClick={() => handleChoice('accepted')} className={styles.accept}>{t('cookie.accept')}</button>
+        <button type="button" onClick={() => handleChoice('rejected')} className={styles.reject}>{t('cookie.reject')}</button>
       </div>
     </div>
   )

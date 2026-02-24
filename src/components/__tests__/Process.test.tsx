@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { Process } from '../Process'
-import { PROCESS_STEPS } from '@/data/process'
+import processTranslations from '@/locales/de/process.json'
 
 vi.mock('@/hooks/useInView', () => ({
   useInView: () => [{ current: null }, true],
@@ -20,8 +20,8 @@ describe('Process', () => {
 
   it('renders all process steps', () => {
     render(<Process />)
-    for (const step of PROCESS_STEPS) {
-      expect(screen.getByText(step.title)).toBeInTheDocument()
+    for (const item of processTranslations.items) {
+      expect(screen.getByText(item.title)).toBeInTheDocument()
     }
   })
 
@@ -33,8 +33,8 @@ describe('Process', () => {
 
   it('renders step descriptions', () => {
     render(<Process />)
-    for (const step of PROCESS_STEPS) {
-      expect(screen.getByText(step.desc)).toBeInTheDocument()
+    for (const item of processTranslations.items) {
+      expect(screen.getByText(item.desc)).toBeInTheDocument()
     }
   })
 })

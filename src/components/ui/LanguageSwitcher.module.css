@@ -1,0 +1,31 @@
+.switcher {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  background: none;
+  border: 1px solid var(--gold-15);
+  border-radius: var(--radius-sm);
+  padding: 6px 10px;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  transition: border-color var(--tr-mid);
+}
+
+@media (hover: hover) {
+  .switcher:hover {
+    border-color: var(--gold-30);
+  }
+}
+
+.active {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.divider {
+  color: var(--gold-30);
+  margin: 0 1px;
+}

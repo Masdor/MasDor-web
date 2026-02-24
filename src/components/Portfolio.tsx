@@ -1,31 +1,41 @@
 import { useState, useCallback, useRef, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Reveal } from '@/components/ui/Reveal'
 import { HoverCard } from '@/components/ui/HoverCard'
 import { Icon } from '@/components/ui/Icon'
-import { PROJECTS, CATEGORY_LABELS } from '@/data/projects'
-import type { Project, ProjectCategory } from '@/types'
+import { PROJECTS_META, CATEGORY_KEYS } from '@/data/projects'
+import type { ProjectCategory } from '@/types'
 import { X } from 'lucide-react'
 import shared from '@/styles/shared.module.css'
 import styles from './Portfolio.module.css'
 
 type FilterKey = 'all' | ProjectCategory
+const FILTER_KEYS: FilterKey[] = ['all', 'medical', 'industrial', 'it']
 
 export function Portfolio() {
+  const { t } = useTranslation('portfolio')
   const [filter, setFilter] = useState<FilterKey>('all')
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null)
   const modalRef = useRef<HTMLDivElement>(null)
   const triggerRef = useRef<HTMLElement | null>(null)
 
-  const filtered = filter === 'all' ? PROJECTS : PROJECTS.filter(p => p.category === filter)
+  const filtered = filter === 'all' ? PROJECTS_META : PROJECTS_META.filter(p => p.category === filter)
+  const items = t('items', { returnObjects: true }) as Array<{
+    title: string
+    client: string
+    summary: string
+    description: string
+    metrics: Array<{ label: string; value: string }>
+  }>
 
-  const openDetail = useCallback((project: Project) => {
+  const openDetail = useCallback((projectIndex: number) => {
     triggerRef.current = document.activeElement as HTMLElement
-    setSelectedProject(project)
+    setSelectedIndex(projectIndex)
     document.body.classList.add('modal-open')
   }, [])
 
   const closeDetail = useCallback(() => {
-    setSelectedProject(null)
+    setSelectedIndex(null)
     document.body.classList.remove('modal-open')
     requestAnimationFrame(() => {
       triggerRef.current?.focus()
@@ -33,9 +43,8 @@ export function Portfolio() {
     })
   }, [])
 
-  // Modal keyboard handling
   useEffect(() => {
-    if (!selectedProject) return
+    if (selectedIndex === null) return
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
@@ -66,7 +75,6 @@ export function Portfolio() {
 
     document.addEventListener('keydown', handleKeyDown)
 
-    // Focus close button on open
     const timer = setTimeout(() => {
       modalRef.current?.querySelector<HTMLElement>('button')?.focus()
     }, 100)
@@ -75,110 +83,113 @@ export function Portfolio() {
       document.removeEventListener('keydown', handleKeyDown)
       clearTimeout(timer)
     }
-  }, [selectedProject, closeDetail])
+  }, [selectedIndex, closeDetail])
 
   const categoryColor = (cat: ProjectCategory) => {
-    return CATEGORY_LABELS[cat]?.color ?? 'var(--gold)'
+    return CATEGORY_KEYS[cat]?.color ?? 'var(--gold)'
   }
+
+  const selectedProject = selectedIndex !== null ? PROJECTS_META[selectedIndex] : null
+  const selectedText = selectedIndex !== null ? items[selectedIndex] : null
 
   return (
     <section id="referenzen" className={`${shared.section} ${shared.sectionDark}`}>
       <div className={shared.container}>
         <Reveal>
           <div className={shared.sectionHeader}>
-            <span className={shared.tagBadge}>REFERENZEN</span>
-            <h2 className={shared.sectionTitle}>Projekte. Ergebnisse. Vertrauen.</h2>
+            <span className={shared.tagBadge}>{t('sectionTag')}</span>
+            <h2 className={shared.sectionTitle}>{t('sectionTitle')}</h2>
             <p className={`${shared.subtitle} ${shared.subtitleCentered}`}>
-              Ausgewählte Projekte aus Medical, Industrial und IT — jedes mit messbarem Ergebnis.
+              {t('sectionSubtitle')}
             </p>
           </div>
         </Reveal>
 
-        {/* Filter Tabs */}
         <Reveal delay={0.08}>
-          <div className={styles.filters} role="toolbar" aria-label="Projekte filtern">
-            {(Object.keys(CATEGORY_LABELS) as FilterKey[]).map((key) => (
+          <div className={styles.filters} role="toolbar" aria-label={t('filterLabel')}>
+            {FILTER_KEYS.map((key) => (
               <button
                 key={key}
                 type="button"
                 onClick={() => setFilter(key)}
                 className={`${styles.filterBtn} ${filter === key ? styles.filterActive : ''}`}
-                style={{ '--accent': CATEGORY_LABELS[key]!.color } as React.CSSProperties}
+                style={{ '--accent': CATEGORY_KEYS[key]!.color } as React.CSSProperties}
                 aria-pressed={filter === key}
               >
-                {CATEGORY_LABELS[key]!.label}
+                {t(`categories.${key}`)}
               </button>
             ))}
           </div>
         </Reveal>
 
-        {/* Project Grid */}
         <div className={styles.grid} role="list">
-          {filtered.map((project, i) => (
-            <Reveal key={project.id} delay={i * 0.06} direction="up">
-              <div role="listitem">
-                <HoverCard
-                  glowOnHover
-                  accentColor={categoryColor(project.category)}
-                  className={`${shared.cardDark} ${styles.card}`}
-                >
-                  <button
-                    type="button"
-                    className={styles.cardButton}
-                    onClick={() => openDetail(project)}
-                    aria-label={`Projekt: ${project.title} — Details anzeigen`}
+          {filtered.map((project, i) => {
+            const projText = items[project.index]!
+            return (
+              <Reveal key={project.id} delay={i * 0.06} direction="up">
+                <div role="listitem">
+                  <HoverCard
+                    glowOnHover
+                    accentColor={categoryColor(project.category)}
+                    className={`${shared.cardDark} ${styles.card}`}
                   >
-                    <div className={styles.cardHeader}>
-                      <div
-                        className={styles.cardIcon}
-                        style={{ '--accent': categoryColor(project.category) } as React.CSSProperties}
-                      >
-                        <Icon icon={project.icon} size={24} />
-                      </div>
-                      <span
-                        className={styles.categoryBadge}
-                        style={{ '--accent': categoryColor(project.category) } as React.CSSProperties}
-                      >
-                        {CATEGORY_LABELS[project.category]!.label}
-                      </span>
-                    </div>
-
-                    <h3 className={styles.cardTitle}>{project.title}</h3>
-                    <p className={styles.cardClient}>{project.client}</p>
-                    <p className={styles.cardSummary}>{project.summary}</p>
-
-                    <div className={styles.metrics}>
-                      {project.metrics.map((m) => (
-                        <div key={m.label} className={styles.metric}>
-                          <span className={styles.metricValue}>{m.value}</span>
-                          <span className={styles.metricLabel}>{m.label}</span>
+                    <button
+                      type="button"
+                      className={styles.cardButton}
+                      onClick={() => openDetail(project.index)}
+                      aria-label={t('detailLabel', { title: projText.title })}
+                    >
+                      <div className={styles.cardHeader}>
+                        <div
+                          className={styles.cardIcon}
+                          style={{ '--accent': categoryColor(project.category) } as React.CSSProperties}
+                        >
+                          <Icon icon={project.icon} size={24} />
                         </div>
-                      ))}
-                    </div>
+                        <span
+                          className={styles.categoryBadge}
+                          style={{ '--accent': categoryColor(project.category) } as React.CSSProperties}
+                        >
+                          {t(`categories.${project.category}`)}
+                        </span>
+                      </div>
 
-                    <div className={styles.tags}>
-                      {project.tags.slice(0, 3).map((t) => (
-                        <span key={t} className={styles.tag}>{t}</span>
-                      ))}
-                      {project.tags.length > 3 && (
-                        <span className={styles.tag}>+{project.tags.length - 3}</span>
-                      )}
-                    </div>
-                  </button>
-                </HoverCard>
-              </div>
-            </Reveal>
-          ))}
+                      <h3 className={styles.cardTitle}>{projText.title}</h3>
+                      <p className={styles.cardClient}>{projText.client}</p>
+                      <p className={styles.cardSummary}>{projText.summary}</p>
+
+                      <div className={styles.metrics}>
+                        {projText.metrics.map((m) => (
+                          <div key={m.label} className={styles.metric}>
+                            <span className={styles.metricValue}>{m.value}</span>
+                            <span className={styles.metricLabel}>{m.label}</span>
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className={styles.tags}>
+                        {project.tags.slice(0, 3).map((tag) => (
+                          <span key={tag} className={styles.tag}>{tag}</span>
+                        ))}
+                        {project.tags.length > 3 && (
+                          <span className={styles.tag}>+{project.tags.length - 3}</span>
+                        )}
+                      </div>
+                    </button>
+                  </HoverCard>
+                </div>
+              </Reveal>
+            )
+          })}
         </div>
 
-        {/* Detail Modal */}
-        {selectedProject && (
+        {selectedProject && selectedText && (
           <div
             className={styles.overlay}
             onMouseDown={(e) => {
               if (e.target === e.currentTarget) closeDetail()
             }}
-            aria-label="Dialog schließen"
+            aria-label={t('closeDialogLabel')}
             role="presentation"
           >
             <div
@@ -192,7 +203,7 @@ export function Portfolio() {
                 type="button"
                 className={styles.closeBtn}
                 onClick={closeDetail}
-                aria-label="Schließen"
+                aria-label={t('closeLabel')}
               >
                 <X size={20} strokeWidth={2} />
               </button>
@@ -206,19 +217,19 @@ export function Portfolio() {
                 </div>
                 <div>
                   <span className={styles.modalCategory}>
-                    {CATEGORY_LABELS[selectedProject.category]!.label}
+                    {t(`categories.${selectedProject.category}`)}
                   </span>
                   <h2 id="project-title" className={styles.modalTitle}>
-                    {selectedProject.title}
+                    {selectedText.title}
                   </h2>
-                  <p className={styles.modalClient}>{selectedProject.client}</p>
+                  <p className={styles.modalClient}>{selectedText.client}</p>
                 </div>
               </div>
 
-              <p className={styles.modalDesc}>{selectedProject.description}</p>
+              <p className={styles.modalDesc}>{selectedText.description}</p>
 
               <div className={styles.modalMetrics}>
-                {selectedProject.metrics.map((m) => (
+                {selectedText.metrics.map((m) => (
                   <div key={m.label} className={styles.modalMetric}>
                     <span className={styles.modalMetricValue}>{m.value}</span>
                     <span className={styles.modalMetricLabel}>{m.label}</span>
@@ -227,8 +238,8 @@ export function Portfolio() {
               </div>
 
               <div className={styles.modalTags}>
-                {selectedProject.tags.map((t) => (
-                  <span key={t} className={styles.modalTag}>{t}</span>
+                {selectedProject.tags.map((tag) => (
+                  <span key={tag} className={styles.modalTag}>{tag}</span>
                 ))}
               </div>
             </div>

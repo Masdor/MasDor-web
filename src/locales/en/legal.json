@@ -1,0 +1,28 @@
+{
+  "impressum": {
+    "title": "Imprint",
+    "tmg": "Information according to § 5 TMG",
+    "contact": "Contact",
+    "email": "Email",
+    "vatTitle": "VAT ID",
+    "vatDesc": "VAT identification number according to § 27a UStG:",
+    "taxNumber": "Tax number",
+    "responsible": "Responsible for content",
+    "disclaimer": "Disclaimer",
+    "disclaimerText": "The content of this page has been created with the utmost care. However, we cannot guarantee the accuracy, completeness or timeliness of the content."
+  },
+  "datenschutz": {
+    "title": "Privacy Policy",
+    "s1Title": "1. Data Controller",
+    "s2Title": "2. Collection and Storage of Personal Data",
+    "s2Text": "When visiting this website, general information is automatically collected (server log files). This includes the web browser used, the operating system, the domain name of your internet service provider and similar information. This is exclusively information that does not allow any conclusions about your person.",
+    "s3Title": "3. Contact Form",
+    "s3Text": "When you send us inquiries via the contact form, your information from the form including the contact data you provided will be stored for the purpose of processing the inquiry and in case of follow-up questions. We will not share this data without your consent.",
+    "s4Title": "4. Cookies",
+    "s4Text": "This website uses only technically necessary cookies. No tracking or analytics cookies are used.",
+    "s5Title": "5. Your Rights",
+    "s5Text": "You have the right to access, rectification, deletion, restriction of processing, data portability and objection. Please contact us with questions at:",
+    "disclaimer": "Note: This privacy policy serves as a placeholder and should be reviewed by a lawyer and adapted to your specific processing activities."
+  },
+  "closeLabel": "Close"
+}
