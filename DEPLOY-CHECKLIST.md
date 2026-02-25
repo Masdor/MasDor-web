@@ -42,3 +42,11 @@
 - [x] nginx.conf mit Caching und Security Headers
 - [x] .dockerignore vorhanden
 - [x] Version in package.json aktualisiert (5.0.0)
+
+## Docker Build
+
+```bash
+docker build --build-arg UMAMI_WEBSITE_ID=<website-id> -t lab-root-web:5.x .
+```
+
+- `UMAMI_WEBSITE_ID`: Website-ID aus dem Umami-Dashboard (optional, leer = Analytics deaktiviert)
