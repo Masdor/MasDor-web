@@ -1,0 +1,14 @@
+{
+  "sectionTag": "METHOD",
+  "sectionTitle": "Structured, not reactive",
+  "sectionSubtitle": "Our approach is the same across all domains: methodical, documented and root-cause oriented.",
+  "stepLabel": "Step",
+  "stepPrefix": "STEP",
+  "items": [
+    { "title": "Assess", "desc": "Systematically capture the technical situation, dependencies and operational impact." },
+    { "title": "Analyze", "desc": "Identify the actual root cause – not just treat symptoms." },
+    { "title": "Implement", "desc": "Integrate measures into operations in a stable, traceable and practical manner." },
+    { "title": "Document", "desc": "Record all work steps, configurations and changes without gaps." },
+    { "title": "Stabilize", "desc": "Reduce recurring faults and permanently increase technical reliability." }
+  ]
+}

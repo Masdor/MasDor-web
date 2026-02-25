@@ -1,0 +1,24 @@
+{
+  "sectionTag": "ÜBER UNS",
+  "sectionTitle": "Engineering mit Verantwortung",
+  "intro": "LAB-ROOT ist ein technisches Dienstleistungsunternehmen mit Sitz in Cham, Deutschland. Gegründet von Ingenieuren mit dem Anspruch, technische Probleme nachhaltig und dokumentiert zu lösen.",
+  "values": [
+    {
+      "title": "Unser Anspruch",
+      "text": "Wir arbeiten methodisch, transparent und ursachenorientiert. Jede Maßnahme wird dokumentiert, jede Lösung ist nachvollziehbar. Unser Ziel ist nicht der schnellste Fix, sondern die stabilste Lösung."
+    },
+    {
+      "title": "Unsere Stärke",
+      "text": "Die Kombination aus Medical-, Industrial- und IT-Kompetenz macht uns einzigartig. Wir verstehen Systeme im Zusammenspiel von Hardware, Software und Betriebsprozessen."
+    },
+    {
+      "title": "Unser Versprechen",
+      "text": "Klare Kommunikation, ehrliche Einschätzungen und technische Arbeit, auf die man sich verlassen kann. Wir arbeiten partnerschaftlich – nicht als austauschbarer Dienstleister."
+    }
+  ],
+  "teamTitle": "Team",
+  "members": [
+    { "focus": "Medical & Industrial Engineering" },
+    { "focus": "IT Infrastructure & Automation" }
+  ]
+}

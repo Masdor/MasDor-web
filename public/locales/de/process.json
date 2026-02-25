@@ -1,0 +1,14 @@
+{
+  "sectionTag": "METHODE",
+  "sectionTitle": "Strukturiert statt reaktiv",
+  "sectionSubtitle": "Unser Vorgehen ist in allen Bereichen gleich: methodisch, dokumentiert und ursachenorientiert.",
+  "stepLabel": "Schritt",
+  "stepPrefix": "SCHRITT",
+  "items": [
+    { "title": "Erfassen", "desc": "Technische Lage, Abhängigkeiten und Auswirkungen im Betrieb systematisch aufnehmen." },
+    { "title": "Analysieren", "desc": "Die eigentliche Fehlerursache identifizieren – nicht nur Symptome behandeln." },
+    { "title": "Umsetzen", "desc": "Maßnahmen stabil, nachvollziehbar und praxisnah in den Betrieb integrieren." },
+    { "title": "Dokumentieren", "desc": "Arbeitsschritte, Konfigurationen und Änderungen lückenlos festhalten." },
+    { "title": "Stabilisieren", "desc": "Wiederholfehler reduzieren und technische Verlässlichkeit dauerhaft erhöhen." }
+  ]
+}
