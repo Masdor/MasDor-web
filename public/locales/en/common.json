@@ -1,0 +1,45 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "process": "Method",
+    "portfolio": "Portfolio",
+    "about": "About",
+    "contact": "Contact",
+    "cta": "Send inquiry",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu",
+    "mainNav": "Main navigation",
+    "mobileNav": "Mobile Navigation"
+  },
+  "footer": {
+    "tagline": "LAB-ROOT — Engineering with Responsibility",
+    "copyright": "© {{year}} LAB-ROOT. All rights reserved.",
+    "imprint": "Imprint",
+    "privacy": "Privacy Policy",
+    "navLabel": "Footer Navigation"
+  },
+  "cookie": {
+    "text": "This website uses only technically necessary cookies. No tracking or analytics cookies.",
+    "privacyLink": "Privacy Policy",
+    "accept": "Accept",
+    "reject": "Decline",
+    "ariaLabel": "Cookie Settings"
+  },
+  "error": {
+    "title": "Something went wrong",
+    "message": "An unexpected error occurred. Please reload the page.",
+    "reload": "Reload page",
+    "sectionMessage": "Content could not be loaded."
+  },
+  "language": {
+    "switchLabel": "Switch language"
+  },
+  "backToTop": "Back to top",
+  "cta": {
+    "label": "Ready for structured engineering?",
+    "title": "Let's discuss your next project.",
+    "subtitle": "Whether fault analysis, system optimization or new setup — we listen, analyze and deliver.",
+    "button": "Request project"
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "sectionTag": "PORTFOLIO",
+  "sectionTitle": "Projects. Results. Trust.",
+  "sectionSubtitle": "Selected projects from Medical, Industrial and IT — each with measurable results.",
+  "filterLabel": "Filter projects",
+  "detailLabel": "Project: {{title}} — Show details",
+  "closeLabel": "Close",
+  "closeDialogLabel": "Close dialog",
+  "categories": {
+    "all": "All",
+    "medical": "Medical",
+    "industrial": "Industrial",
+    "it": "IT"
+  },
+  "items": [
+    {
+      "title": "Ultrasound System Diagnostics",
+      "client": "Hospital Network Oberpfalz",
+      "summary": "Root-cause analysis and repair of GE Healthcare ultrasound systems with TXPS power supply failures.",
+      "description": "Systematic diagnosis of a recurring failure pattern in imaging ultrasound systems. Through component-level voltage analysis, the faulty voltage regulator in the TXPS power supply was identified and the defective GFI2 PCI board was located. Documentation according to GMP guidelines, spare parts procurement and commissioning validation with complete test protocol.",
+      "metrics": [
+        { "label": "Systems", "value": "4" },
+        { "label": "Downtime reduced", "value": "87%" },
+        { "label": "Documentation", "value": "GMP" }
+      ]
+    },
+    {
+      "title": "Lab Automation Retrofit",
+      "client": "MVZ Laboratory Medicine",
+      "summary": "Modernization of the control layer for laboratory analyzers to extend operational lifecycles.",
+      "description": "Technical overhaul and software update for centrifuges and photometers of a regional laboratory. Integration of new safety sensors, calibration of measurement units and creation of complete maintenance documentation. Training of laboratory staff for basic diagnostics to reduce external service calls.",
+      "metrics": [
+        { "label": "Devices", "value": "12" },
+        { "label": "Lifecycle", "value": "+3 yrs" },
+        { "label": "Service calls", "value": "−40%" }
+      ]
+    },
+    {
+      "title": "Vital Signs Network",
+      "client": "Rehabilitation Clinic",
+      "summary": "Setup of a central monitoring network for patient monitoring devices across three wards.",
+      "description": "Planning and implementation of a dedicated network infrastructure for connecting vital signs monitors. Segmentation of the medical network according to IT security guidelines, integration of a central dashboard for nursing staff and creation of an emergency operations concept for network outages.",
+      "metrics": [
+        { "label": "Wards", "value": "3" },
+        { "label": "Monitors", "value": "24" },
+        { "label": "Availability", "value": "99.7%" }
+      ]
+    },
+    {
+      "title": "PLC Migration TIA Portal",
+      "client": "Automotive Manufacturing",
+      "summary": "Migration of a STEP 7 controller to TIA Portal V18 with drive integration and HMI redesign.",
+      "description": "Complete migration of an existing STEP 7 program to TIA Portal V18 for a production line with 6 frequency inverters and 14 sensors. Restructuring of the block architecture, integration of drive parameterization via PROFINET, redesign of HMI visualization on Comfort Panel and creation of complete plant documentation.",
+      "metrics": [
+        { "label": "Drives", "value": "6" },
+        { "label": "I/O Points", "value": "380+" },
+        { "label": "Downtime", "value": "< 8h" }
+      ]
+    },
+    {
+      "title": "Control Cabinet Engineering",
+      "client": "Mechanical Engineering Company",
+      "summary": "Planning, construction and commissioning of control cabinets for a special machine with safety technology.",
+      "description": "Complete control cabinet engineering from electrical planning in EPLAN through component selection to wiring and commissioning. Integration of safety components according to SIL 2, implementation of safety controller (F-CPU), testing according to EN 60204-1 and handover with complete test documentation.",
+      "metrics": [
+        { "label": "Cabinets", "value": "3" },
+        { "label": "Safety", "value": "SIL 2" },
+        { "label": "Standard", "value": "EN 60204" }
+      ]
+    },
+    {
+      "title": "Drive Technology Retrofit",
+      "client": "Food Production",
+      "summary": "Replacement of outdated frequency inverters and optimization of drive control for a conveyor system.",
+      "description": "Analysis of existing drive topology, selection of compatible replacement inverters and parameterization via bus communication. Energy efficiency optimization through adapted ramp times and load profiles. Measurement protocol before/after conversion with documented energy savings.",
+      "metrics": [
+        { "label": "Inverters", "value": "8" },
+        { "label": "Energy", "value": "−22%" },
+        { "label": "Implementation", "value": "5 days" }
+      ]
+    },
+    {
+      "title": "MCP Operations Center",
+      "client": "LAB-ROOT (internal)",
+      "summary": "Setup of an AI-powered IT operations platform with 35+ Docker containers in isolated networks.",
+      "description": "Architecture and deployment of a comprehensive IT operations platform with Grafana, Zabbix, Keycloak, Ollama AI stack, Zammad ticketing and automated provisioning. 5 isolated Docker networks, central Nginx reverse proxy, Let's Encrypt certificate management and complete infrastructure-as-code documentation.",
+      "metrics": [
+        { "label": "Containers", "value": "35+" },
+        { "label": "Networks", "value": "5" },
+        { "label": "Uptime", "value": "99.9%" }
+      ]
+    },
+    {
+      "title": "Network Segmentation",
+      "client": "Mid-size Enterprise",
+      "summary": "Redesign of network architecture with VLAN segmentation, firewall policies and monitoring integration.",
+      "description": "Complete restructuring of a flat corporate network into segmented VLANs with dedicated firewall policy per segment. Integration of Zabbix monitoring for all active network components, setup of SNMP traps and automated alert chains. Documentation of the entire network topology.",
+      "metrics": [
+        { "label": "VLANs", "value": "8" },
+        { "label": "Endpoints", "value": "120+" },
+        { "label": "Incidents", "value": "−95%" }
+      ]
+    },
+    {
+      "title": "Web Infrastructure Stack",
+      "client": "E-Commerce Company",
+      "summary": "Stabilization and optimization of a Shopware infrastructure with PHP-FPM worker tuning.",
+      "description": "Analysis and resolution of critical PHP-FPM worker pool bottlenecks and segfaults causing regular outages. Implementation of OPcache optimization, worker pool sizing based on load profiles, setup of automatic health monitoring and configuration of Nginx caching strategies for static assets.",
+      "metrics": [
+        { "label": "Response", "value": "−65%" },
+        { "label": "Uptime", "value": "99.8%" },
+        { "label": "Crashes", "value": "0" }
+      ]
+    }
+  ]
+}

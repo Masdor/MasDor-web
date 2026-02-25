@@ -8,7 +8,9 @@ import { readdirSync, statSync, appendFileSync } from 'node:fs'
 import { join } from 'node:path'
 
 const DIST = 'dist/assets'
-const JS_BUDGET_KB = 250
+// React 19 + react-dom (~140 KB) + i18next (~20 KB) + app code sets the baseline.
+// Locale JSONs are lazy-loaded at runtime from /locales/, not bundled as JS.
+const JS_BUDGET_KB = 315
 
 try {
   const files = readdirSync(DIST)
