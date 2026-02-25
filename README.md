@@ -63,8 +63,8 @@ Die Seite läuft als Docker-Container hinter Nginx Proxy Manager auf `194.164.54
 npm run build
 
 # Docker
-docker build -t lab-root-web .
-docker run -d --name lab-root-web -p 8080:80 lab-root-web
+docker build --build-arg UMAMI_WEBSITE_ID=<website-id> -t lab-root-web:5.x .
+docker run -d --name lab-root-web -p 8080:80 lab-root-web:5.x
 ```
 
 Nginx-Konfiguration: siehe `nginx.conf` im Projekt.

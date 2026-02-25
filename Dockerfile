@@ -2,11 +2,16 @@
 FROM nginx:1.27-alpine AS brotli-build
 WORKDIR /root
 
-RUN apk add --no-cache build-base git pcre2-dev zlib-dev openssl-dev \
+RUN apk add --no-cache build-base git pcre2-dev zlib-dev openssl-dev cmake \
     && NGINX_VERSION=$(nginx -v 2>&1 | sed 's/.*nginx\///') \
     && wget https://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz \
     && tar zxf nginx-${NGINX_VERSION}.tar.gz \
     && git clone --recurse-submodules https://github.com/google/ngx_brotli.git \
+    && cd ngx_brotli/deps/brotli \
+    && mkdir -p out && cd out \
+    && cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF .. \
+    && make -j$(nproc) \
+    && cd /root \
     && cd nginx-${NGINX_VERSION} \
     && ./configure --with-compat --add-dynamic-module=../ngx_brotli \
     && make modules \
@@ -21,6 +26,16 @@ COPY package*.json ./
 RUN npm ci
 COPY . .
 RUN npm run build
+ARG UMAMI_WEBSITE_ID=""
+RUN if [ -n "$UMAMI_WEBSITE_ID" ]; then \
+      node -e " \
+        const fs = require('fs'); \
+        const f = '/app/dist/index.html'; \
+        let h = fs.readFileSync(f, 'utf8'); \
+        h = h.replace('data-website-id=\"\"', 'data-website-id=\"'+'$UMAMI_WEBSITE_ID'+'\"'); \
+        fs.writeFileSync(f, h); \
+      "; \
+    fi
 
 # ─── Stage 3: Production ───
 FROM nginx:1.27-alpine
